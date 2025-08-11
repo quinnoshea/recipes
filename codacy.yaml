@@ -1,0 +1,50 @@
+---
+# Global configuration
+exclude_paths:
+  - ".github/**"
+  - "**/__pycache__/**"
+  - "**/node_modules/**"
+
+# Per-tool configuration
+tools:
+  - name: ruff
+    # Applies to Python files
+    configuration:
+      line-length: 120
+      target-version: "py311"
+    paths:
+      - "recipes/**"
+      - "cookbook/**"
+      
+  - name: bandit
+    # Applies to Python for security scanning
+    configuration:
+      severity: HIGH
+      confidence: HIGH
+    paths:
+      - "recipes/**"
+      - "cookbook/**"
+      
+  - name: eslint-8
+    # Applies to JavaScript/TypeScript files in the frontend
+    configuration:
+      plugins:
+        - "eslint-plugin-vue"
+        - "eslint-plugin-vuejs-accessibility"
+      # You can extend from other configs here if you have them
+    paths:
+      - "vue3/**"
+      
+  - name: stylelint
+    # Lints CSS/Sass files in your Vue.js project
+    paths:
+      - "vue3/**"
+      
+  - name: mypy
+    # Static type checking for your Python code
+    configuration:
+      disallow_untyped_defs: true
+      strict_optional: true
+    paths:
+      - "recipes/**"
+      - "cookbook/**"
