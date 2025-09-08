@@ -265,4 +265,3 @@ pdfjs-web-fonts-disabled = वेब फन्टखौ लोरबां ख�
 
 
 ## Edit signature description dialog
-

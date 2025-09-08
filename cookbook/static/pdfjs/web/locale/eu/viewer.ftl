@@ -585,4 +585,3 @@ pdfjs-editor-add-signature-add-button = Gehitu
 
 
 ## Edit signature description dialog
-

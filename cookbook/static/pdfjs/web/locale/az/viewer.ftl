@@ -304,4 +304,3 @@ pdfjs-web-fonts-disabled = Web Şriftlər söndürülüb: yerləşdirilmiş PDF 
 
 
 ## Edit signature description dialog
-

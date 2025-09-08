@@ -9,30 +9,37 @@ DICTIONARY = {
     # 'hy': 'Armenian',
     # 'ca': 'Catalan',
     # 'cs': 'Czech',
-    'nl': 'dutch',
-    'en': 'english',
-    'fr': 'french',
-    'de': 'german',
-    'it': 'italian',
+    "nl": "dutch",
+    "en": "english",
+    "fr": "french",
+    "de": "german",
+    "it": "italian",
     # 'lv': 'Latvian',
-    'es': 'spanish',
-    'sv': 'swedish',
+    "es": "spanish",
+    "sv": "swedish",
 }
 
 
 # TODO add schedule index rebuild
 class RecipeSearchManager(models.Manager):
     def search(self, search_text, space):
-        language = DICTIONARY.get(translation.get_language(), 'simple')
+        language = DICTIONARY.get(translation.get_language(), "simple")
         search_query = SearchQuery(
-            search_text,
-            config=language,
-            search_type="websearch"
+            search_text, config=language, search_type="websearch"
         )
         search_vectors = (
-            SearchVector('search_vector')
-            + SearchVector(StringAgg('steps__ingredients__food__name__unaccent', delimiter=' '), weight='B', config=language)
-            + SearchVector(StringAgg('keywords__name__unaccent', delimiter=' '), weight='B', config=language))
+            SearchVector("search_vector")
+            + SearchVector(
+                StringAgg("steps__ingredients__food__name__unaccent", delimiter=" "),
+                weight="B",
+                config=language,
+            )
+            + SearchVector(
+                StringAgg("keywords__name__unaccent", delimiter=" "),
+                weight="B",
+                config=language,
+            )
+        )
         search_rank = SearchRank(search_vectors, search_query)
 
         return (
@@ -41,7 +48,6 @@ class RecipeSearchManager(models.Manager):
                 search=search_vectors,
                 rank=search_rank,
             )
-            .filter(
-                Q(search=search_query)
-            )
-            .order_by('-rank'))
+            .filter(Q(search=search_query))
+            .order_by("-rank")
+        )

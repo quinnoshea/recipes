@@ -1,7 +1,7 @@
 /* THIS FILE IS GENERATED - DO NOT EDIT */
 var OpenJPEG = (() => {
   var _scriptName = import.meta.url;
-  
+
   return (
 function(moduleArg = {}) {
   var moduleRtn;

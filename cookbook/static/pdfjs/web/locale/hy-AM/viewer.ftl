@@ -310,4 +310,3 @@ pdfjs-editor-highlight-show-all-button =
 
 
 ## Edit signature description dialog
-

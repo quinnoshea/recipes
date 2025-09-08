@@ -270,4 +270,3 @@ pdfjs-web-fonts-disabled = வலை எழுத்துருக்கள் 
 
 
 ## Edit signature description dialog
-

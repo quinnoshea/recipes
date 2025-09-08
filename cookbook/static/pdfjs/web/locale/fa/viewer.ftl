@@ -375,4 +375,3 @@ pdfjs-editor-alt-text-settings-close-button = بستن
 
 
 ## Edit signature description dialog
-

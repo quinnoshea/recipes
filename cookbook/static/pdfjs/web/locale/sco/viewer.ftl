@@ -311,4 +311,3 @@ pdfjs-web-fonts-disabled = Wab fonts are disabled: cannae yaise embeddit PDF fon
 
 
 ## Edit signature description dialog
-

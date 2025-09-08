@@ -577,4 +577,3 @@ pdfjs-editor-add-signature-save-checkbox = Simpan tanda tangan
 
 
 ## Edit signature description dialog
-

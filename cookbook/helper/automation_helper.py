@@ -35,14 +35,23 @@ class AutomationEngine:
         keyword = keyword.strip()
         if self.use_cache and self.keyword_aliases is None:
             self.keyword_aliases = {}
-            KEYWORD_CACHE_KEY = f'automation_keyword_alias_{self.request.space.pk}'
-            if c := caches['default'].get(KEYWORD_CACHE_KEY, None):
+            KEYWORD_CACHE_KEY = f"automation_keyword_alias_{self.request.space.pk}"
+            if c := caches["default"].get(KEYWORD_CACHE_KEY, None):
                 self.keyword_aliases = c
-                caches['default'].touch(KEYWORD_CACHE_KEY, 30)
+                caches["default"].touch(KEYWORD_CACHE_KEY, 30)
             else:
-                for a in Automation.objects.filter(space=self.request.space, disabled=False, type=Automation.KEYWORD_ALIAS).only('param_1', 'param_2').order_by('order').all():
+                for a in (
+                    Automation.objects.filter(
+                        space=self.request.space,
+                        disabled=False,
+                        type=Automation.KEYWORD_ALIAS,
+                    )
+                    .only("param_1", "param_2")
+                    .order_by("order")
+                    .all()
+                ):
                     self.keyword_aliases[a.param_1.lower()] = a.param_2
-                caches['default'].set(KEYWORD_CACHE_KEY, self.keyword_aliases, 30)
+                caches["default"].set(KEYWORD_CACHE_KEY, self.keyword_aliases, 30)
         else:
             self.keyword_aliases = {}
         if self.keyword_aliases:
@@ -51,7 +60,16 @@ class AutomationEngine:
             except KeyError:
                 pass
         else:
-            if automation := Automation.objects.filter(space=self.request.space, type=Automation.KEYWORD_ALIAS, param_1__iexact=keyword, disabled=False).order_by('order').first():
+            if (
+                automation := Automation.objects.filter(
+                    space=self.request.space,
+                    type=Automation.KEYWORD_ALIAS,
+                    param_1__iexact=keyword,
+                    disabled=False,
+                )
+                .order_by("order")
+                .first()
+            ):
                 return automation.param_2
         return keyword
 
@@ -59,14 +77,23 @@ class AutomationEngine:
         unit = unit.strip()
         if self.use_cache and self.unit_aliases is None:
             self.unit_aliases = {}
-            UNIT_CACHE_KEY = f'automation_unit_alias_{self.request.space.pk}'
-            if c := caches['default'].get(UNIT_CACHE_KEY, None):
+            UNIT_CACHE_KEY = f"automation_unit_alias_{self.request.space.pk}"
+            if c := caches["default"].get(UNIT_CACHE_KEY, None):
                 self.unit_aliases = c
-                caches['default'].touch(UNIT_CACHE_KEY, 30)
+                caches["default"].touch(UNIT_CACHE_KEY, 30)
             else:
-                for a in Automation.objects.filter(space=self.request.space, disabled=False, type=Automation.UNIT_ALIAS).only('param_1', 'param_2').order_by('order').all():
+                for a in (
+                    Automation.objects.filter(
+                        space=self.request.space,
+                        disabled=False,
+                        type=Automation.UNIT_ALIAS,
+                    )
+                    .only("param_1", "param_2")
+                    .order_by("order")
+                    .all()
+                ):
                     self.unit_aliases[a.param_1.lower()] = a.param_2
-                caches['default'].set(UNIT_CACHE_KEY, self.unit_aliases, 30)
+                caches["default"].set(UNIT_CACHE_KEY, self.unit_aliases, 30)
         else:
             self.unit_aliases = {}
         if self.unit_aliases:
@@ -75,7 +102,16 @@ class AutomationEngine:
             except KeyError:
                 pass
         else:
-            if automation := Automation.objects.filter(space=self.request.space, type=Automation.UNIT_ALIAS, param_1__iexact=unit, disabled=False).order_by('order').first():
+            if (
+                automation := Automation.objects.filter(
+                    space=self.request.space,
+                    type=Automation.UNIT_ALIAS,
+                    param_1__iexact=unit,
+                    disabled=False,
+                )
+                .order_by("order")
+                .first()
+            ):
                 return automation.param_2
         return self.apply_regex_replace_automation(unit, Automation.UNIT_REPLACE)
 
@@ -83,14 +119,23 @@ class AutomationEngine:
         food = food.strip()
         if self.use_cache and self.food_aliases is None:
             self.food_aliases = {}
-            FOOD_CACHE_KEY = f'automation_food_alias_{self.request.space.pk}'
-            if c := caches['default'].get(FOOD_CACHE_KEY, None):
+            FOOD_CACHE_KEY = f"automation_food_alias_{self.request.space.pk}"
+            if c := caches["default"].get(FOOD_CACHE_KEY, None):
                 self.food_aliases = c
-                caches['default'].touch(FOOD_CACHE_KEY, 30)
+                caches["default"].touch(FOOD_CACHE_KEY, 30)
             else:
-                for a in Automation.objects.filter(space=self.request.space, disabled=False, type=Automation.FOOD_ALIAS).only('param_1', 'param_2').order_by('order').all():
+                for a in (
+                    Automation.objects.filter(
+                        space=self.request.space,
+                        disabled=False,
+                        type=Automation.FOOD_ALIAS,
+                    )
+                    .only("param_1", "param_2")
+                    .order_by("order")
+                    .all()
+                ):
                     self.food_aliases[a.param_1.lower()] = a.param_2
-                caches['default'].set(FOOD_CACHE_KEY, self.food_aliases, 30)
+                caches["default"].set(FOOD_CACHE_KEY, self.food_aliases, 30)
         else:
             self.food_aliases = {}
 
@@ -98,9 +143,20 @@ class AutomationEngine:
             try:
                 return self.food_aliases[food.lower()]
             except KeyError:
-                return self.apply_regex_replace_automation(food, Automation.FOOD_REPLACE)
+                return self.apply_regex_replace_automation(
+                    food, Automation.FOOD_REPLACE
+                )
         else:
-            if automation := Automation.objects.filter(space=self.request.space, type=Automation.FOOD_ALIAS, param_1__iexact=food, disabled=False).order_by('order').first():
+            if (
+                automation := Automation.objects.filter(
+                    space=self.request.space,
+                    type=Automation.FOOD_ALIAS,
+                    param_1__iexact=food,
+                    disabled=False,
+                )
+                .order_by("order")
+                .first()
+            ):
                 return automation.param_2
         return self.apply_regex_replace_automation(food, Automation.FOOD_REPLACE)
 
@@ -116,14 +172,23 @@ class AutomationEngine:
 
         if self.use_cache and self.never_unit is None:
             self.never_unit = {}
-            NEVER_UNIT_CACHE_KEY = f'automation_never_unit_{self.request.space.pk}'
-            if c := caches['default'].get(NEVER_UNIT_CACHE_KEY, None):
+            NEVER_UNIT_CACHE_KEY = f"automation_never_unit_{self.request.space.pk}"
+            if c := caches["default"].get(NEVER_UNIT_CACHE_KEY, None):
                 self.never_unit = c
-                caches['default'].touch(NEVER_UNIT_CACHE_KEY, 30)
+                caches["default"].touch(NEVER_UNIT_CACHE_KEY, 30)
             else:
-                for a in Automation.objects.filter(space=self.request.space, disabled=False, type=Automation.NEVER_UNIT).only('param_1', 'param_2').order_by('order').all():
+                for a in (
+                    Automation.objects.filter(
+                        space=self.request.space,
+                        disabled=False,
+                        type=Automation.NEVER_UNIT,
+                    )
+                    .only("param_1", "param_2")
+                    .order_by("order")
+                    .all()
+                ):
                     self.never_unit[a.param_1.lower()] = a.param_2
-                caches['default'].set(NEVER_UNIT_CACHE_KEY, self.never_unit, 30)
+                caches["default"].set(NEVER_UNIT_CACHE_KEY, self.never_unit, 30)
         else:
             self.never_unit = {}
 
@@ -137,8 +202,17 @@ class AutomationEngine:
             except KeyError:
                 return tokens, never_unit
         else:
-            if a := Automation.objects.annotate(param_1_lower=Lower('param_1')).filter(space=self.request.space, type=Automation.NEVER_UNIT, param_1_lower__in=[
-                    tokens[1].lower(), alt_unit.lower()], disabled=False).order_by('order').first():
+            if (
+                a := Automation.objects.annotate(param_1_lower=Lower("param_1"))
+                .filter(
+                    space=self.request.space,
+                    type=Automation.NEVER_UNIT,
+                    param_1_lower__in=[tokens[1].lower(), alt_unit.lower()],
+                    disabled=False,
+                )
+                .order_by("order")
+                .first()
+            ):
                 new_unit = a.param_2
                 never_unit = True
 
@@ -155,31 +229,62 @@ class AutomationEngine:
         """
         if self.use_cache and self.transpose_words is None:
             self.transpose_words = {}
-            TRANSPOSE_WORDS_CACHE_KEY = f'automation_transpose_words_{self.request.space.pk}'
-            if c := caches['default'].get(TRANSPOSE_WORDS_CACHE_KEY, None):
+            TRANSPOSE_WORDS_CACHE_KEY = (
+                f"automation_transpose_words_{self.request.space.pk}"
+            )
+            if c := caches["default"].get(TRANSPOSE_WORDS_CACHE_KEY, None):
                 self.transpose_words = c
-                caches['default'].touch(TRANSPOSE_WORDS_CACHE_KEY, 30)
+                caches["default"].touch(TRANSPOSE_WORDS_CACHE_KEY, 30)
             else:
                 i = 0
-                for a in Automation.objects.filter(space=self.request.space, disabled=False, type=Automation.TRANSPOSE_WORDS).only(
-                        'param_1', 'param_2').order_by('order').all()[:512]:
+                for a in (
+                    Automation.objects.filter(
+                        space=self.request.space,
+                        disabled=False,
+                        type=Automation.TRANSPOSE_WORDS,
+                    )
+                    .only("param_1", "param_2")
+                    .order_by("order")
+                    .all()[:512]
+                ):
                     self.transpose_words[i] = [a.param_1.lower(), a.param_2.lower()]
                     i += 1
-                caches['default'].set(TRANSPOSE_WORDS_CACHE_KEY, self.transpose_words, 30)
+                caches["default"].set(
+                    TRANSPOSE_WORDS_CACHE_KEY, self.transpose_words, 30
+                )
         else:
             self.transpose_words = {}
 
-        tokens = [x.lower() for x in string.replace(',', ' ').split()]
+        tokens = [x.lower() for x in string.replace(",", " ").split()]
         if self.transpose_words:
             for key, value in self.transpose_words.items():
                 if value[0] in tokens and value[1] in tokens:
-                    string = re.sub(rf"\b({value[0]})\W*({value[1]})\b", r"\2 \1", string, flags=re.IGNORECASE)
+                    string = re.sub(
+                        rf"\b({value[0]})\W*({value[1]})\b",
+                        r"\2 \1",
+                        string,
+                        flags=re.IGNORECASE,
+                    )
         else:
-            for rule in Automation.objects.filter(space=self.request.space, type=Automation.TRANSPOSE_WORDS, disabled=False) \
-                    .annotate(param_1_lower=Lower('param_1'), param_2_lower=Lower('param_2')) \
-                    .filter(param_1_lower__in=tokens, param_2_lower__in=tokens).order_by('order')[:512]:
+            for rule in (
+                Automation.objects.filter(
+                    space=self.request.space,
+                    type=Automation.TRANSPOSE_WORDS,
+                    disabled=False,
+                )
+                .annotate(
+                    param_1_lower=Lower("param_1"), param_2_lower=Lower("param_2")
+                )
+                .filter(param_1_lower__in=tokens, param_2_lower__in=tokens)
+                .order_by("order")[:512]
+            ):
                 if rule.param_1 in tokens and rule.param_2 in tokens:
-                    string = re.sub(rf"\b({rule.param_1})\W*({rule.param_2})\b", r"\2 \1", string, flags=re.IGNORECASE)
+                    string = re.sub(
+                        rf"\b({rule.param_1})\W*({rule.param_2})\b",
+                        r"\2 \1",
+                        string,
+                        flags=re.IGNORECASE,
+                    )
         return string
 
     def apply_regex_replace_automation(self, string, automation_type):
@@ -201,17 +306,29 @@ class AutomationEngine:
         """
         if self.use_cache and self.regex_replace[automation_type] is None:
             self.regex_replace[automation_type] = {}
-            REGEX_REPLACE_CACHE_KEY = f'automation_regex_replace_{self.request.space.pk}'
-            if c := caches['default'].get(REGEX_REPLACE_CACHE_KEY, None):
+            REGEX_REPLACE_CACHE_KEY = (
+                f"automation_regex_replace_{self.request.space.pk}"
+            )
+            if c := caches["default"].get(REGEX_REPLACE_CACHE_KEY, None):
                 self.regex_replace[automation_type] = c[automation_type]
-                caches['default'].touch(REGEX_REPLACE_CACHE_KEY, 30)
+                caches["default"].touch(REGEX_REPLACE_CACHE_KEY, 30)
             else:
                 i = 0
-                for a in Automation.objects.filter(space=self.request.space, disabled=False, type=automation_type).only(
-                        'param_1', 'param_2', 'param_3').order_by('order').all()[:512]:
-                    self.regex_replace[automation_type][i] = [a.param_1, a.param_2, a.param_3]
+                for a in (
+                    Automation.objects.filter(
+                        space=self.request.space, disabled=False, type=automation_type
+                    )
+                    .only("param_1", "param_2", "param_3")
+                    .order_by("order")
+                    .all()[:512]
+                ):
+                    self.regex_replace[automation_type][i] = [
+                        a.param_1,
+                        a.param_2,
+                        a.param_3,
+                    ]
                     i += 1
-                caches['default'].set(REGEX_REPLACE_CACHE_KEY, self.regex_replace, 30)
+                caches["default"].set(REGEX_REPLACE_CACHE_KEY, self.regex_replace, 30)
         else:
             self.regex_replace[automation_type] = {}
 
@@ -220,8 +337,16 @@ class AutomationEngine:
                 if re.match(rule[0], (self.source)[:512]):
                     string = re.sub(rule[1], rule[2], string, flags=re.IGNORECASE)
         else:
-            for rule in Automation.objects.filter(space=self.request.space, disabled=False, type=automation_type).only(
-                    'param_1', 'param_2', 'param_3').order_by('order').all()[:512]:
+            for rule in (
+                Automation.objects.filter(
+                    space=self.request.space, disabled=False, type=automation_type
+                )
+                .only("param_1", "param_2", "param_3")
+                .order_by("order")
+                .all()[:512]
+            ):
                 if re.match(rule.param_1, (self.source)[:512]):
-                    string = re.sub(rule.param_2, rule.param_3, string, flags=re.IGNORECASE)
+                    string = re.sub(
+                        rule.param_2, rule.param_3, string, flags=re.IGNORECASE
+                    )
         return string

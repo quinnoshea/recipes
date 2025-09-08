@@ -272,4 +272,3 @@ pdfjs-web-fonts-disabled = Kijuko dit pa coc me kakube woko: pe romo tic ki dit 
 
 
 ## Edit signature description dialog
-

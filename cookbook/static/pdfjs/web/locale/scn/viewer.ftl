@@ -121,4 +121,3 @@ pdfjs-password-cancel-button = Sfai
 
 
 ## Edit signature description dialog
-

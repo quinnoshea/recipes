@@ -293,4 +293,3 @@ pdfjs-web-fonts-disabled = Šķārsteikla fonti nav aktivizāti: Navar īgult PD
 
 
 ## Edit signature description dialog
-

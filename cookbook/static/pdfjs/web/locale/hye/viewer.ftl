@@ -315,4 +315,3 @@ pdfjs-web-fonts-disabled = Վեբ-տառատեսակները անջատուած 
 
 
 ## Edit signature description dialog
-

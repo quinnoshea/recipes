@@ -259,4 +259,3 @@ pdfjs-web-fonts-disabled = Iifonti zewebhu ziqhwalelisiwe: ayikwazi ukusebenzisa
 
 
 ## Edit signature description dialog
-

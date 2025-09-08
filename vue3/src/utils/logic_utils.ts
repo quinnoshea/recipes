@@ -1,7 +1,7 @@
-import {ShoppingListEntry, Space} from "@/openapi";
-import {IShoppingListCategory, IShoppingListFood} from "@/types/Shopping";
-import {DeviceSettings} from "@/types/settings";
-import {useUserPreferenceStore} from "@/stores/UserPreferenceStore.ts";
+import { ShoppingListEntry, Space } from '@/openapi'
+import { IShoppingListCategory, IShoppingListFood } from '@/types/Shopping'
+import { DeviceSettings } from '@/types/settings'
+import { useUserPreferenceStore } from '@/stores/UserPreferenceStore.ts'
 
 // -------------- SHOPPING RELATED ----------------------
 
@@ -11,14 +11,14 @@ import {useUserPreferenceStore} from "@/stores/UserPreferenceStore.ts";
  * @param deviceSettings user device settings based on which entry visibility is controlled
  */
 export function isEntryVisible(entry: ShoppingListEntry, deviceSettings: DeviceSettings) {
-    let entryVisible = true
-    if (isDelayed(entry) && !deviceSettings.shopping_show_delayed_entries) {
-        entryVisible = false
-    }
-    if (entry.checked && !deviceSettings.shopping_show_checked_entries) {
-        entryVisible = false
-    }
-    return entryVisible
+  let entryVisible = true
+  if (isDelayed(entry) && !deviceSettings.shopping_show_delayed_entries) {
+    entryVisible = false
+  }
+  if (entry.checked && !deviceSettings.shopping_show_checked_entries) {
+    entryVisible = false
+  }
+  return entryVisible
 }
 
 /**
@@ -27,11 +27,11 @@ export function isEntryVisible(entry: ShoppingListEntry, deviceSettings: DeviceS
  * @param deviceSettings user device settings based on which entry visibility is controlled
  */
 export function isShoppingListFoodVisible(slf: IShoppingListFood, deviceSettings: DeviceSettings) {
-    let foodVisible = false
-    slf.entries.forEach(entry => {
-        foodVisible = foodVisible || isEntryVisible(entry, deviceSettings)
-    })
-    return foodVisible
+  let foodVisible = false
+  slf.entries.forEach((entry) => {
+    foodVisible = foodVisible || isEntryVisible(entry, deviceSettings)
+  })
+  return foodVisible
 }
 
 /**
@@ -39,20 +39,20 @@ export function isShoppingListFoodVisible(slf: IShoppingListFood, deviceSettings
  * @param entry
  */
 export function isDelayed(entry: ShoppingListEntry) {
-    // this function is needed because the openapi typescript fetch client always replaces null with undefined, so delayUntil cant be
-    // set back to null once it has been delayed once. This will hopefully be fixed at some point, until then un-delaying will set the date to 1997-1-1 00:00
-    return entry.delayUntil != null && entry.delayUntil > new Date()
+  // this function is needed because the openapi typescript fetch client always replaces null with undefined, so delayUntil cant be
+  // set back to null once it has been delayed once. This will hopefully be fixed at some point, until then un-delaying will set the date to 1997-1-1 00:00
+  return entry.delayUntil != null && entry.delayUntil > new Date()
 }
 
 /**
  * determine if any entry in a given IShoppingListFood is delayed, if so return true
  */
 export function isShoppingListFoodDelayed(slf: IShoppingListFood) {
-    let hasDelayedEntry = false
-    slf.entries.forEach(sle => {
-        hasDelayedEntry = hasDelayedEntry || isDelayed(sle)
-    })
-    return hasDelayedEntry
+  let hasDelayedEntry = false
+  slf.entries.forEach((sle) => {
+    hasDelayedEntry = hasDelayedEntry || isDelayed(sle)
+  })
+  return hasDelayedEntry
 }
 
 /**
@@ -60,16 +60,16 @@ export function isShoppingListFoodDelayed(slf: IShoppingListFood) {
  * @param category
  */
 export function isShoppingCategoryVisible(category: IShoppingListCategory) {
-    let entryCount = category.stats.countUnchecked
+  let entryCount = category.stats.countUnchecked
 
-    if (useUserPreferenceStore().deviceSettings.shopping_show_checked_entries) {
-        entryCount += category.stats.countChecked
-    }
-    if (useUserPreferenceStore().deviceSettings.shopping_show_delayed_entries) {
-        entryCount += category.stats.countUncheckedDelayed
-    }
+  if (useUserPreferenceStore().deviceSettings.shopping_show_checked_entries) {
+    entryCount += category.stats.countChecked
+  }
+  if (useUserPreferenceStore().deviceSettings.shopping_show_delayed_entries) {
+    entryCount += category.stats.countUncheckedDelayed
+  }
 
-    return entryCount > 0
+  return entryCount > 0
 }
 
 // -------------- SPACE RELATED ----------------------
@@ -79,7 +79,11 @@ export function isShoppingCategoryVisible(category: IShoppingListCategory) {
  * @param space space to check limit for
  */
 export function isSpaceAboveLimit(space: Space) {
-    return isSpaceAboveUserLimit(space) || isSpaceAboveRecipeLimit(space) || isSpaceAboveStorageLimit(space)
+  return (
+    isSpaceAboveUserLimit(space) ||
+    isSpaceAboveRecipeLimit(space) ||
+    isSpaceAboveStorageLimit(space)
+  )
 }
 
 /**
@@ -87,7 +91,7 @@ export function isSpaceAboveLimit(space: Space) {
  * @param space space to check limit for
  */
 export function isSpaceAboveUserLimit(space: Space) {
-    return space.userCount > space.maxUsers && space.maxUsers > 0
+  return space.userCount > space.maxUsers && space.maxUsers > 0
 }
 
 /**
@@ -95,7 +99,7 @@ export function isSpaceAboveUserLimit(space: Space) {
  * @param space space to check limit for
  */
 export function isSpaceAboveRecipeLimit(space: Space) {
-    return space.recipeCount > space.maxRecipes && space.maxRecipes > 0
+  return space.recipeCount > space.maxRecipes && space.maxRecipes > 0
 }
 
 /**
@@ -103,7 +107,7 @@ export function isSpaceAboveRecipeLimit(space: Space) {
  * @param space space to check limit for
  */
 export function isSpaceAtRecipeLimit(space: Space) {
-    return space.recipeCount >= space.maxRecipes && space.maxRecipes > 0
+  return space.recipeCount >= space.maxRecipes && space.maxRecipes > 0
 }
 
 /**
@@ -111,5 +115,5 @@ export function isSpaceAtRecipeLimit(space: Space) {
  * @param space space to check limit for
  */
 export function isSpaceAboveStorageLimit(space: Space) {
-    return space.fileSizeMb > space.maxFileStorageMb && space.maxFileStorageMb > 0
+  return space.fileSizeMb > space.maxFileStorageMb && space.maxFileStorageMb > 0
 }

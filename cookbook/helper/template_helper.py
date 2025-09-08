@@ -2,7 +2,7 @@ from gettext import gettext as _
 
 import bleach
 import markdown as md
-from jinja2 import Template, TemplateSyntaxError, UndefinedError
+from jinja2 import TemplateSyntaxError, UndefinedError
 from jinja2.exceptions import SecurityError
 from jinja2.sandbox import SandboxedEnvironment
 from markdown.extensions.tables import TableExtension
@@ -28,7 +28,11 @@ class IngredientObject(object):
             if ingredient.unit.plural_name in (None, ""):
                 self.unit = bleach.clean(str(ingredient.unit))
             else:
-                if ingredient.always_use_plural_unit or ingredient.amount > 1 and not ingredient.no_amount:
+                if (
+                    ingredient.always_use_plural_unit
+                    or ingredient.amount > 1
+                    and not ingredient.no_amount
+                ):
                     self.unit = bleach.clean(ingredient.unit.plural_name)
                 else:
                     self.unit = bleach.clean(str(ingredient.unit))
@@ -38,7 +42,11 @@ class IngredientObject(object):
             if ingredient.food.plural_name in (None, ""):
                 self.food = bleach.clean(str(ingredient.food))
             else:
-                if ingredient.always_use_plural_food or ingredient.amount > 1 and not ingredient.no_amount:
+                if (
+                    ingredient.always_use_plural_food
+                    or ingredient.amount > 1
+                    and not ingredient.no_amount
+                ):
                     self.food = bleach.clean(str(ingredient.food.plural_name))
                 else:
                     self.food = bleach.clean(str(ingredient.food))
@@ -49,33 +57,64 @@ class IngredientObject(object):
     def __str__(self):
         ingredient = self.amount
         if self.unit != "":
-            ingredient += f' {self.unit}'
-        return f'{ingredient} {self.food}'
+            ingredient += f" {self.unit}"
+        return f"{ingredient} {self.food}"
 
 
 def render_instructions(step):  # TODO deduplicate markdown cleanup code
     instructions = step.instruction
 
     tags = {
-        "h1", "h2", "h3", "h4", "h5", "h6",
-        "b", "i", "strong", "em", "tt",
-        "p", "br",
-        "span", "div", "blockquote", "code", "pre", "hr",
-        "ul", "ol", "li", "dd", "dt",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "b",
+        "i",
+        "strong",
+        "em",
+        "tt",
+        "p",
+        "br",
+        "span",
+        "div",
+        "blockquote",
+        "code",
+        "pre",
+        "hr",
+        "ul",
+        "ol",
+        "li",
+        "dd",
+        "dt",
         "img",
         "a",
-        "sub", "sup",
-        'pre', 'table', 'td', 'tr', 'th', 'tbody', 'style', 'thead'
+        "sub",
+        "sup",
+        "pre",
+        "table",
+        "td",
+        "tr",
+        "th",
+        "tbody",
+        "style",
+        "thead",
     }
     parsed_md = md.markdown(
         instructions,
         extensions=[
-            'markdown.extensions.fenced_code', 'markdown.extensions.sane_lists', 'markdown.extensions.nl2br', TableExtension(),
-            UrlizeExtension(), MarkdownFormatExtension()
-        ]
+            "markdown.extensions.fenced_code",
+            "markdown.extensions.sane_lists",
+            "markdown.extensions.nl2br",
+            TableExtension(),
+            UrlizeExtension(),
+            MarkdownFormatExtension(),
+        ],
     )
     markdown_attrs = {
-        "*": ["id", "class", 'width', 'height'],
+        "*": ["id", "class", "width", "height"],
         "img": ["src", "alt", "title"],
         "a": ["href", "alt", "title"],
     }
@@ -92,12 +131,14 @@ def render_instructions(step):  # TODO deduplicate markdown cleanup code
 
     try:
         env = SandboxedEnvironment()
-        instructions = env.from_string(instructions).render(ingredients=ingredients, scale=scale)
+        instructions = env.from_string(instructions).render(
+            ingredients=ingredients, scale=scale
+        )
     except TemplateSyntaxError:
-        return _('Could not parse template code.') + ' Error: Template Syntax broken'
+        return _("Could not parse template code.") + " Error: Template Syntax broken"
     except UndefinedError:
-        return _('Could not parse template code.') + ' Error: Undefined Error'
+        return _("Could not parse template code.") + " Error: Undefined Error"
     except SecurityError:
-        return _('Could not parse template code.') + ' Error: Security Error'
+        return _("Could not parse template code.") + " Error: Security Error"
 
     return instructions

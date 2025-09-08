@@ -234,4 +234,3 @@ pdfjs-web-fonts-disabled = Veb shriftlar oʻchirilgan: ichki PDF shriftlardan fo
 
 
 ## Edit signature description dialog
-

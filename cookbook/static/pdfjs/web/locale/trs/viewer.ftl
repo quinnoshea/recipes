@@ -244,4 +244,3 @@ pdfjs-password-cancel-button = Duyichin'
 
 
 ## Edit signature description dialog
-

@@ -248,4 +248,3 @@ pdfjs-password-cancel-button = Encaboxar
 
 
 ## Edit signature description dialog
-

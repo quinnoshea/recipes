@@ -40,11 +40,11 @@ There are a number of built in tasks that are available. Here are a few of the k
 - `Setup Dev Server` - Runs all the prerequisite steps so that the dev server can be run inside VSCode.
 - `Setup Tests` - Runs all prerequisites so tests can be run inside VSCode.
 
-Once these are run, there are 2 options.  If you want to run a vue3 server in a hot reload mode for quick development of the frontend, you should run a development vue server:
+Once these are run, there are 2 options. If you want to run a vue3 server in a hot reload mode for quick development of the frontend, you should run a development vue server:
 
 - `Yarn Dev` - Runs development Vue.js vite server not connected to VSCode. Useful if you want to make Vue changes and see them in realtime.
 
-If not, you need to build and copy the frontend to the django server.  If you make changes to the frontend, you need to re-run this and restart the django server:
+If not, you need to build and copy the frontend to the django server. If you make changes to the frontend, you need to re-run this and restart the django server:
 
 - `Collect Static Files` - Builds and collects the vue3 frontend so that it can be served via the django server.
 

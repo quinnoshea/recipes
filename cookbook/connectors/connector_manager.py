@@ -7,14 +7,15 @@ from dataclasses import dataclass
 from enum import Enum
 from logging import Logger
 from types import UnionType
-from typing import List, Any, Dict, Optional, Type
+from typing import Any, Dict, List, Optional, Type
 
 from django.conf import settings
+
 from django_scopes import scope
 
 from cookbook.connectors.connector import Connector, ShoppingListEntryDTO
 from cookbook.connectors.homeassistant import HomeAssistant
-from cookbook.models import ShoppingListEntry, Space, ConnectorConfig
+from cookbook.models import ConnectorConfig, ShoppingListEntry, Space
 
 REGISTERED_CLASSES: UnionType | Type = ShoppingListEntry
 
@@ -58,7 +59,14 @@ class ConnectorManager(metaclass=Singleton):
         self._logger = logging.getLogger("recipes.connector")
         self._logger.debug("ConnectorManager initializing")
         self._queue = queue.Queue(maxsize=settings.EXTERNAL_CONNECTORS_QUEUE_SIZE)
-        self._worker = threading.Thread(target=self.worker, args=(0, self._queue,), daemon=True)
+        self._worker = threading.Thread(
+            target=self.worker,
+            args=(
+                0,
+                self._queue,
+            ),
+            daemon=True,
+        )
         self._worker.start()
 
     # Called by post save & post delete signals
@@ -77,13 +85,17 @@ class ConnectorManager(metaclass=Singleton):
 
     def _add_work(self, action_type: ActionType, *instances: REGISTERED_CLASSES):
         for instance in instances:
-            if not isinstance(instance, self._listening_to_classes) or not hasattr(instance, "space"):
+            if not isinstance(instance, self._listening_to_classes) or not hasattr(
+                instance, "space"
+            ):
                 continue
             try:
                 _force_load_instance(instance)
                 self._queue.put_nowait(Work(instance, action_type))
             except queue.Full:
-                self._logger.info(f"queue was full, so skipping {action_type} of type {type(instance)}")
+                self._logger.info(
+                    f"queue was full, so skipping {action_type} of type {type(instance)}"
+                )
 
     def stop(self):
         self._queue.join()
@@ -145,7 +157,9 @@ class ConnectorManager(metaclass=Singleton):
                             continue
 
                         try:
-                            connector: Optional[Connector] = ConnectorManager.get_connected_for_config(config)
+                            connector: Optional[Connector] = (
+                                ConnectorManager.get_connected_for_config(config)
+                            )
                         except BaseException:
                             logger.exception(f"failed to initialize {config.name}")
                             continue
@@ -159,9 +173,13 @@ class ConnectorManager(metaclass=Singleton):
                 worker_queue.task_done()
                 continue
 
-            logger.debug(f"running {len(connectors)} connectors for {item.instance=} with {item.actionType=}")
+            logger.debug(
+                f"running {len(connectors)} connectors for {item.instance=} with {item.actionType=}"
+            )
 
-            loop.run_until_complete(run_connectors(connectors, item.instance, item.actionType))
+            loop.run_until_complete(
+                run_connectors(connectors, item.instance, item.actionType)
+            )
             worker_queue.task_done()
 
         logger.info(f"terminating ConnectionManager worker {worker_id}")
@@ -186,7 +204,9 @@ def _force_load_instance(instance: REGISTERED_CLASSES):
 
 
 async def _close_connectors(connectors: List[Connector]):
-    tasks: List[Task] = [asyncio.create_task(connector.close()) for connector in connectors]
+    tasks: List[Task] = [
+        asyncio.create_task(connector.close()) for connector in connectors
+    ]
 
     if len(tasks) == 0:
         return
@@ -197,7 +217,9 @@ async def _close_connectors(connectors: List[Connector]):
         logging.exception("received an exception while closing one of the connectors")
 
 
-async def run_connectors(connectors: List[Connector], instance: REGISTERED_CLASSES, action_type: ActionType):
+async def run_connectors(
+    connectors: List[Connector], instance: REGISTERED_CLASSES, action_type: ActionType
+):
     tasks: List[Task] = list()
 
     if isinstance(instance, ShoppingListEntry):
@@ -208,13 +230,31 @@ async def run_connectors(connectors: List[Connector], instance: REGISTERED_CLASS
         match action_type:
             case ActionType.CREATED:
                 for connector in connectors:
-                    tasks.append(asyncio.create_task(connector.on_shopping_list_entry_created(shopping_list_entry)))
+                    tasks.append(
+                        asyncio.create_task(
+                            connector.on_shopping_list_entry_created(
+                                shopping_list_entry
+                            )
+                        )
+                    )
             case ActionType.UPDATED:
                 for connector in connectors:
-                    tasks.append(asyncio.create_task(connector.on_shopping_list_entry_updated(shopping_list_entry)))
+                    tasks.append(
+                        asyncio.create_task(
+                            connector.on_shopping_list_entry_updated(
+                                shopping_list_entry
+                            )
+                        )
+                    )
             case ActionType.DELETED:
                 for connector in connectors:
-                    tasks.append(asyncio.create_task(connector.on_shopping_list_entry_deleted(shopping_list_entry)))
+                    tasks.append(
+                        asyncio.create_task(
+                            connector.on_shopping_list_entry_deleted(
+                                shopping_list_entry
+                            )
+                        )
+                    )
 
     if len(tasks) == 0:
         return

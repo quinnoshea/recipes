@@ -3,10 +3,10 @@
 These instructions are inspired from a standard django/gunicorn/postgresql instructions ([for example](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04))
 
 !!! warning
-    Make sure to use at least Python 3.10 (although 3.12 is preferred) or higher, and ensure that `pip` is associated with Python 3. Depending on your system configuration, using `python` or `pip` might default to Python 2. Make sure your machine has at least 2048 MB of memory; otherwise, the `yarn build` process may fail with the error: `FATAL ERROR: Reached heap limit - Allocation failed: JavaScript heap out of memory`.
+Make sure to use at least Python 3.10 (although 3.12 is preferred) or higher, and ensure that `pip` is associated with Python 3. Depending on your system configuration, using `python` or `pip` might default to Python 2. Make sure your machine has at least 2048 MB of memory; otherwise, the `yarn build` process may fail with the error: `FATAL ERROR: Reached heap limit - Allocation failed: JavaScript heap out of memory`.
 
 !!! warning
-    These instructions are **not** regularly reviewed and might be outdated.
+These instructions are **not** regularly reviewed and might be outdated.
 
 ## Prerequisites
 
@@ -29,6 +29,7 @@ Create virtual env: `python3 -m venv /var/www/recipes`
 Activate virtual env: `source /var/www/recipes/bin/activate`
 
 Install Javascript Tools (nodejs >= 12 required)
+
 ```shell
 ### Just use one of these possibilites!
 # Using Ubuntu
@@ -46,12 +47,13 @@ curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -
 ## ... no root privileges
 curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
 ```
+
 ```shell
 sudo npm install --global yarn
 ```
 
 !!! info "NodeJS installation issues"
-    If you run into problems with the NodeJS installation, please refer to the [official documentation](https://github.com/nodesource/distributions/blob/master/README.md).
+If you run into problems with the NodeJS installation, please refer to the [official documentation](https://github.com/nodesource/distributions/blob/master/README.md).
 
 ### Install postgresql requirements
 
@@ -68,8 +70,8 @@ sudo apt install -y libsasl2-dev python3-dev libldap2-dev libssl-dev
 ### Install project requirements
 
 !!! warning "Update"
-    Dependencies change with most updates so the following steps need to be re-run with every update or else the application might stop working.
-    See section [Updating](#updating) below.
+Dependencies change with most updates so the following steps need to be re-run with every update or else the application might stop working.
+See section [Updating](#updating) below.
 
 Using binaries from the virtual env:
 
@@ -112,6 +114,7 @@ exit
 ```
 
 Download the `.env` configuration file and **edit it accordingly**.
+
 ```shell
 wget https://raw.githubusercontent.com/vabene1111/recipes/develop/.env.template -O /var/www/recipes/.env
 ```
@@ -165,9 +168,9 @@ ExecStart=/var/www/recipes/bin/gunicorn --error-logfile /tmp/gunicorn_err.log --
 WantedBy=multi-user.target
 ```
 
-*Note*: `-error-logfile /tmp/gunicorn_err.log --log-level debug --capture-output` are useful for debugging and can be removed later
+_Note_: `-error-logfile /tmp/gunicorn_err.log --log-level debug --capture-output` are useful for debugging and can be removed later
 
-*Note2*: Fix the path in the `ExecStart` line to where you gunicorn and recipes are
+_Note2_: Fix the path in the `ExecStart` line to where you gunicorn and recipes are
 
 Finally, run `sudo systemctl enable --now gunicorn_recipes`. You can check that the service is correctly started with `systemctl status gunicorn_recipes`
 
@@ -187,7 +190,7 @@ server {
     location /static/ {
         alias /var/www/recipes/staticfiles;
     }
-    
+
     location /media/ {
         alias /var/www/recipes/mediafiles;
     }
@@ -201,11 +204,12 @@ server {
 }
 ```
 
-*Note*: Enter the correct path in static and proxy_pass lines.
+_Note_: Enter the correct path in static and proxy_pass lines.
 
 Reload nginx : `sudo systemctl reload nginx`
 
 ## Updating
+
 In order to update the application you will need to run the following commands (probably best to put them into a small script).
 
 ```shell
@@ -217,7 +221,7 @@ git pull
 export $(cat /var/www/recipes/.env |grep "^[^#]" | xargs)
 #install project requirements
 bin/pip3 install -r requirements.txt
-# migrate database 
+# migrate database
 bin/python3 manage.py migrate
 # collect static files
 # if the output is not "0 static files copied" you might want to run the commands again to make sure everythig is collected

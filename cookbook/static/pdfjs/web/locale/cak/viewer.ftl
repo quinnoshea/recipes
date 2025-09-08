@@ -338,4 +338,3 @@ pdfjs-ink-canvas =
 
 
 ## Edit signature description dialog
-

@@ -8,6 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext as _
+
 from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope
 from oauth2_provider.models import AccessToken
 from rest_framework import permissions
@@ -24,10 +25,10 @@ def get_allowed_groups(groups_required):
     :return: tuple of groups
     """
     groups_allowed = tuple(groups_required)
-    if 'guest' in groups_required:
-        groups_allowed = groups_allowed + ('user', 'admin')
-    if 'user' in groups_required:
-        groups_allowed = groups_allowed + ('admin',)
+    if "guest" in groups_required:
+        groups_allowed = groups_allowed + ("user", "admin")
+    if "user" in groups_required:
+        groups_allowed = groups_allowed + ("admin",)
     return groups_allowed
 
 
@@ -45,7 +46,9 @@ def has_group_permission(user, groups, no_cache=False):
         return False
     groups_allowed = get_allowed_groups(groups)
 
-    CACHE_KEY = hash((inspect.stack()[0][3], (user.pk, user.username, user.email), groups_allowed))
+    CACHE_KEY = hash(
+        (inspect.stack()[0][3], (user.pk, user.username, user.email), groups_allowed)
+    )
     if not no_cache:
         cached_result = cache.get(CACHE_KEY, default=None)
         if cached_result is not None:
@@ -75,7 +78,7 @@ def is_object_owner(user, obj):
     if not user.is_authenticated:
         return False
     try:
-        return obj.get_owner() == 'orphan' or obj.get_owner() == user
+        return obj.get_owner() == "orphan" or obj.get_owner() == user
     except Exception:
         return False
 
@@ -118,12 +121,17 @@ def share_link_valid(recipe, share):
     :return: true if a share link with the given recipe and uuid exists
     """
     try:
-        CACHE_KEY = f'recipe_share_{recipe.pk}_{share}'
+        CACHE_KEY = f"recipe_share_{recipe.pk}_{share}"
         if c := cache.get(CACHE_KEY, False):
             return c
 
-        if link := ShareLink.objects.filter(recipe=recipe, uuid=share, abuse_blocked=False).first():
-            if 0 < settings.SHARING_LIMIT < link.request_count and not link.space.no_sharing_limit:
+        if link := ShareLink.objects.filter(
+            recipe=recipe, uuid=share, abuse_blocked=False
+        ).first():
+            if (
+                0 < settings.SHARING_LIMIT < link.request_count
+                and not link.space.no_sharing_limit
+            ):
                 return False
             link.request_count += 1
             link.save()
@@ -136,6 +144,7 @@ def share_link_valid(recipe, share):
 
 # Django Views
 
+
 def group_required(*groups_required):
     """
     Decorator that tests the requesting user to be member
@@ -147,12 +156,12 @@ def group_required(*groups_required):
     def in_groups(u):
         return has_group_permission(u, groups_required)
 
-    return user_passes_test(in_groups, login_url='view_no_perm')
+    return user_passes_test(in_groups, login_url="view_no_perm")
 
 
 class GroupRequiredMixin(object):
     """
-        groups_required - list of strings, required param
+    groups_required - list of strings, required param
     """
 
     groups_required = None
@@ -160,16 +169,30 @@ class GroupRequiredMixin(object):
     def dispatch(self, request, *args, **kwargs):
         if not has_group_permission(request.user, self.groups_required):
             if not request.user.is_authenticated:
-                messages.add_message(request, messages.ERROR, _('You are not logged in and therefore cannot view this page!'))
-                return HttpResponseRedirect(reverse_lazy('account_login') + '?next=' + request.path)
+                messages.add_message(
+                    request,
+                    messages.ERROR,
+                    _("You are not logged in and therefore cannot view this page!"),
+                )
+                return HttpResponseRedirect(
+                    reverse_lazy("account_login") + "?next=" + request.path
+                )
             else:
-                messages.add_message(request, messages.ERROR, _('You do not have the required permissions to view this page!'))
-                return HttpResponseRedirect(reverse_lazy('index'))
+                messages.add_message(
+                    request,
+                    messages.ERROR,
+                    _("You do not have the required permissions to view this page!"),
+                )
+                return HttpResponseRedirect(reverse_lazy("index"))
         try:
             obj = self.get_object()
             if obj.get_space() != request.space:
-                messages.add_message(request, messages.ERROR, _('You do not have the required permissions to view this page!'))
-                return HttpResponseRedirect(reverse_lazy('index'))
+                messages.add_message(
+                    request,
+                    messages.ERROR,
+                    _("You do not have the required permissions to view this page!"),
+                )
+                return HttpResponseRedirect(reverse_lazy("index"))
         except AttributeError:
             pass
 
@@ -180,21 +203,34 @@ class OwnerRequiredMixin(object):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            messages.add_message(request, messages.ERROR,
-                                 _('You are not logged in and therefore cannot view this page!'))
-            return HttpResponseRedirect(reverse_lazy('account_login') + '?next=' + request.path)
+            messages.add_message(
+                request,
+                messages.ERROR,
+                _("You are not logged in and therefore cannot view this page!"),
+            )
+            return HttpResponseRedirect(
+                reverse_lazy("account_login") + "?next=" + request.path
+            )
         else:
             if not is_object_owner(request.user, self.get_object()):
-                messages.add_message(request, messages.ERROR,
-                                     _('You cannot interact with this object as it is not owned by you!'))
-                return HttpResponseRedirect(reverse('index'))
+                messages.add_message(
+                    request,
+                    messages.ERROR,
+                    _(
+                        "You cannot interact with this object as it is not owned by you!"
+                    ),
+                )
+                return HttpResponseRedirect(reverse("index"))
 
         try:
             obj = self.get_object()
             if not request.user.userspace.filter(space=obj.get_space()).exists():
-                messages.add_message(request, messages.ERROR,
-                                     _('You do not have the required permissions to view this page!'))
-                return HttpResponseRedirect(reverse_lazy('index'))
+                messages.add_message(
+                    request,
+                    messages.ERROR,
+                    _("You do not have the required permissions to view this page!"),
+                )
+                return HttpResponseRedirect(reverse_lazy("index"))
         except AttributeError:
             pass
 
@@ -203,13 +239,15 @@ class OwnerRequiredMixin(object):
 
 # Django Rest Framework Permission classes
 
+
 class CustomIsOwner(permissions.BasePermission):
     """
     Custom permission class for django rest framework views
     verifies user has ownership over object
     (either user or created_by or user is request user)
     """
-    message = _('You cannot interact with this object as it is not owned by you!')
+
+    message = _("You cannot interact with this object as it is not owned by you!")
 
     def has_permission(self, request, view):
         return request.user.is_authenticated
@@ -223,7 +261,10 @@ class CustomIsOwnerReadOnly(CustomIsOwner):
         return super().has_permission(request, view) and request.method in SAFE_METHODS
 
     def has_object_permission(self, request, view, obj):
-        return super().has_object_permission(request, view) and request.method in SAFE_METHODS
+        return (
+            super().has_object_permission(request, view)
+            and request.method in SAFE_METHODS
+        )
 
 
 class CustomIsSpaceOwner(permissions.BasePermission):
@@ -231,10 +272,13 @@ class CustomIsSpaceOwner(permissions.BasePermission):
     Custom permission class for django rest framework views
     verifies if the user is the owner of the space the object belongs to
     """
-    message = _('You cannot interact with this object as it is not owned by you!')
+
+    message = _("You cannot interact with this object as it is not owned by you!")
 
     def has_permission(self, request, view):
-        return request.user.is_authenticated and request.space.created_by == request.user
+        return (
+            request.user.is_authenticated and request.space.created_by == request.user
+        )
 
     def has_object_permission(self, request, view, obj):
         return is_space_owner(request.user, obj)
@@ -246,7 +290,10 @@ class CustomIsShared(permissions.BasePermission):
     Custom permission class for django rest framework views
     verifies user is shared for the object he is trying to access
     """
-    message = _('You cannot interact with this object as it is not owned by you!')  # noqa: E501
+
+    message = _(
+        "You cannot interact with this object as it is not owned by you!"
+    )  # noqa: E501
 
     def has_permission(self, request, view):
         return request.user.is_authenticated
@@ -260,13 +307,14 @@ class CustomIsGuest(permissions.BasePermission):
     Custom permission class for django rest framework views
     verifies the user is member of at least the group: guest
     """
-    message = _('You do not have the required permissions to view this page!')
+
+    message = _("You do not have the required permissions to view this page!")
 
     def has_permission(self, request, view):
-        return has_group_permission(request.user, ['guest'])
+        return has_group_permission(request.user, ["guest"])
 
     def has_object_permission(self, request, view, obj):
-        return has_group_permission(request.user, ['guest'])
+        return has_group_permission(request.user, ["guest"])
 
 
 class CustomIsUser(permissions.BasePermission):
@@ -274,10 +322,11 @@ class CustomIsUser(permissions.BasePermission):
     Custom permission class for django rest framework views
     verifies the user is member of at least the group: user
     """
-    message = _('You do not have the required permissions to view this page!')
+
+    message = _("You do not have the required permissions to view this page!")
 
     def has_permission(self, request, view):
-        return has_group_permission(request.user, ['user'])
+        return has_group_permission(request.user, ["user"])
 
 
 class CustomIsAdmin(permissions.BasePermission):
@@ -285,10 +334,11 @@ class CustomIsAdmin(permissions.BasePermission):
     Custom permission class for django rest framework views
     verifies the user is member of at least the group: admin
     """
-    message = _('You do not have the required permissions to view this page!')
+
+    message = _("You do not have the required permissions to view this page!")
 
     def has_permission(self, request, view):
-        return has_group_permission(request.user, ['admin'])
+        return has_group_permission(request.user, ["admin"])
 
 
 class CustomIsShare(permissions.BasePermission):
@@ -296,13 +346,14 @@ class CustomIsShare(permissions.BasePermission):
     Custom permission class for django rest framework views
     verifies the requesting user provided a valid share link
     """
-    message = _('You do not have the required permissions to view this page!')
+
+    message = _("You do not have the required permissions to view this page!")
 
     def has_permission(self, request, view):
-        return request.method in SAFE_METHODS and 'pk' in view.kwargs
+        return request.method in SAFE_METHODS and "pk" in view.kwargs
 
     def has_object_permission(self, request, view, obj):
-        share = request.query_params.get('share', None)
+        share = request.query_params.get("share", None)
         if share:
             return share_link_valid(obj, share)
         return False
@@ -312,51 +363,95 @@ class CustomRecipePermission(permissions.BasePermission):
     """
     Custom permission class for recipe api endpoint
     """
-    message = _('You do not have the required permissions to view this page!')
 
-    def has_permission(self, request, view):  # user is either at least a guest or a share link is given and the request is safe
-        share = request.query_params.get('share', None)
-        return ((has_group_permission(request.user, ['guest']) and request.method in SAFE_METHODS) or has_group_permission(
-            request.user, ['user'])) or (share and request.method in SAFE_METHODS and 'pk' in view.kwargs)
+    message = _("You do not have the required permissions to view this page!")
+
+    def has_permission(
+        self, request, view
+    ):  # user is either at least a guest or a share link is given and the request is safe
+        share = request.query_params.get("share", None)
+        return (
+            (
+                has_group_permission(request.user, ["guest"])
+                and request.method in SAFE_METHODS
+            )
+            or has_group_permission(request.user, ["user"])
+        ) or (share and request.method in SAFE_METHODS and "pk" in view.kwargs)
 
     def has_object_permission(self, request, view, obj):
-        share = request.query_params.get('share', None)
+        share = request.query_params.get("share", None)
         if share:
             return share_link_valid(obj, share)
         else:
             if obj.private:
-                return ((obj.created_by == request.user) or (request.user in obj.shared.all())) and obj.space == request.space
+                return (
+                    (obj.created_by == request.user)
+                    or (request.user in obj.shared.all())
+                ) and obj.space == request.space
             else:
-                return ((has_group_permission(request.user, ['guest']) and request.method in SAFE_METHODS)
-                        or has_group_permission(request.user, ['user'])) and obj.space == request.space
+                return (
+                    (
+                        has_group_permission(request.user, ["guest"])
+                        and request.method in SAFE_METHODS
+                    )
+                    or has_group_permission(request.user, ["user"])
+                ) and obj.space == request.space
+
 
 class CustomAiProviderPermission(permissions.BasePermission):
     """
     Custom permission class for the AiProvider api endpoint
     """
-    message = _('You do not have the required permissions to view this page!')
 
-    def has_permission(self, request, view):  # user is either at least a user and the request is safe
-        return (has_group_permission(request.user, ['user']) and request.method in SAFE_METHODS) or (has_group_permission(request.user, ['admin']) or request.user.is_superuser)
+    message = _("You do not have the required permissions to view this page!")
+
+    def has_permission(
+        self, request, view
+    ):  # user is either at least a user and the request is safe
+        return (
+            has_group_permission(request.user, ["user"])
+            and request.method in SAFE_METHODS
+        ) or (
+            has_group_permission(request.user, ["admin"]) or request.user.is_superuser
+        )
 
     # editing of global providers allowed for superusers, space providers by admins and users can read only access
     def has_object_permission(self, request, view, obj):
-        return ((obj.space is None and request.user.is_superuser)
-                or (obj.space == request.space and has_group_permission(request.user, ['admin']))
-                or (obj.space == request.space and has_group_permission(request.user, ['user']) and request.method in SAFE_METHODS))
+        return (
+            (obj.space is None and request.user.is_superuser)
+            or (
+                obj.space == request.space
+                and has_group_permission(request.user, ["admin"])
+            )
+            or (
+                obj.space == request.space
+                and has_group_permission(request.user, ["user"])
+                and request.method in SAFE_METHODS
+            )
+        )
 
 
 class CustomUserPermission(permissions.BasePermission):
     """
     Custom permission class for user api endpoint
     """
-    message = _('You do not have the required permissions to view this page!')
 
-    def has_permission(self, request, view):  # a space filtered user list is visible for everyone
-        return has_group_permission(request.user, ['guest'])
+    message = _("You do not have the required permissions to view this page!")
 
-    def has_object_permission(self, request, view, obj):  # object write permissions are only available for user
-        if request.method in SAFE_METHODS and 'pk' in view.kwargs and has_group_permission(request.user, ['guest']) and request.space in obj.userspace_set.all():
+    def has_permission(
+        self, request, view
+    ):  # a space filtered user list is visible for everyone
+        return has_group_permission(request.user, ["guest"])
+
+    def has_object_permission(
+        self, request, view, obj
+    ):  # object write permissions are only available for user
+        if (
+            request.method in SAFE_METHODS
+            and "pk" in view.kwargs
+            and has_group_permission(request.user, ["guest"])
+            and request.space in obj.userspace_set.all()
+        ):
             return True
         elif request.user == obj:
             return True
@@ -400,7 +495,7 @@ def above_space_limit(space):  # TODO add file storage limit
     """
     r_limit, r_msg = above_space_recipe_limit(space)
     u_limit, u_msg = above_space_user_limit(space)
-    return r_limit or u_limit, (r_msg + ' ' + u_msg).strip()
+    return r_limit or u_limit, (r_msg + " " + u_msg).strip()
 
 
 def above_space_recipe_limit(space):
@@ -409,10 +504,13 @@ def above_space_recipe_limit(space):
     :param space: Space to test for limits
     :return: Tuple (True if above or equal limit else false, message)
     """
-    limit = space.max_recipes != 0 and Recipe.objects.filter(space=space).count() >= space.max_recipes
+    limit = (
+        space.max_recipes != 0
+        and Recipe.objects.filter(space=space).count() >= space.max_recipes
+    )
     if limit:
-        return True, _('You have reached the maximum number of recipes for your space.')
-    return False, ''
+        return True, _("You have reached the maximum number of recipes for your space.")
+    return False, ""
 
 
 def above_space_user_limit(space):
@@ -421,10 +519,13 @@ def above_space_user_limit(space):
     :param space: Space to test for limits
     :return: Tuple (True if above or equal limit else false, message)
     """
-    limit = space.max_users != 0 and UserSpace.objects.filter(space=space).count() > space.max_users
+    limit = (
+        space.max_users != 0
+        and UserSpace.objects.filter(space=space).count() > space.max_users
+    )
     if limit:
-        return True, _('You have more users than allowed in your space.')
-    return False, ''
+        return True, _("You have more users than allowed in your space.")
+    return False, ""
 
 
 def switch_user_active_space(user, space):
@@ -448,7 +549,7 @@ def switch_user_active_space(user, space):
 
 
 class IsReadOnlyDRF(permissions.BasePermission):
-    message = 'You cannot interact with this object as it is not owned by you!'
+    message = "You cannot interact with this object as it is not owned by you!"
 
     def has_permission(self, request, view):
         return request.method in SAFE_METHODS

@@ -1,10 +1,10 @@
 !!! info "Community Contributed"
-    The examples in this section were contributed by members of the community.
-    This page especially contains some setups that might help you if you really want to go down a certain path but none
-    of the examples are supported (as I simply am not able to give you support for them).
+The examples in this section were contributed by members of the community.
+This page especially contains some setups that might help you if you really want to go down a certain path but none
+of the examples are supported (as I simply am not able to give you support for them).
 
 !!! danger "Tandoor 2 Compatibility"
-    This guide has not been verified/tested for Tandoor 2, which now integrates a nginx service inside the default docker container and exposes its service on port 80 instead of 8080.
+This guide has not been verified/tested for Tandoor 2, which now integrates a nginx service inside the default docker container and exposes its service on port 80 instead of 8080.
 
 ## Apache + Traefik + Sub-Path
 
@@ -15,39 +15,40 @@ My setup is docker-compose / traefik / apache / recipes. Swapping out apache for
 Relevant parts:
 
 docker-compose:
-```yaml
-  apache:
-    # omitting other config
-    volumes:
-      - ./recipes/static:/var/www/recipes/static:ro
-      - ./recipes/media:/var/www/recipes/media:ro
-    labels:
-      traefik.enable: true
-      traefik.http.routers.apache-recipes.rule: Host(`<host>`) && PathPrefix(`/<www path>`)
-      traefik.http.routers.apache-recipes.entrypoints: http
-      traefik.http.routers.apache-recipes.service: apache
-      traefik.http.services.apache.loadbalancer.server.port: 80
-      traefik.http.services.apache.loadbalancer.server.scheme: http
-...
 
-  recipes:
-    volumes:
-      - ./recipes/static:/opt/recipes/staticfiles:rw
-      - ./recipes/media:/opt/recipes/mediafiles:rw
-    environment:
-      # all the other env
-      - SCRIPT_NAME=/<sub path>
-      - STATIC_URL=/<www path>/static/
-      - MEDIA_URL=/<www path>/media/
-    labels:
-      traefik.enable: true
-      traefik.http.routers.recipes.rule: Host(`<host>`) && PathPrefix(`/<sub path>`)
-      traefik.http.routers.recipes.entrypoints: http
-      traefik.http.services.recipes.loadbalancer.server.port: 8080
-      traefik.http.services.recipes.loadbalancer.server.scheme: http
+```yaml
+apache:
+  # omitting other config
+  volumes:
+    - ./recipes/static:/var/www/recipes/static:ro
+    - ./recipes/media:/var/www/recipes/media:ro
+  labels:
+    traefik.enable: true
+    traefik.http.routers.apache-recipes.rule: Host(`<host>`) && PathPrefix(`/<www path>`)
+    traefik.http.routers.apache-recipes.entrypoints: http
+    traefik.http.routers.apache-recipes.service: apache
+    traefik.http.services.apache.loadbalancer.server.port: 80
+    traefik.http.services.apache.loadbalancer.server.scheme: http
+---
+recipes:
+  volumes:
+    - ./recipes/static:/opt/recipes/staticfiles:rw
+    - ./recipes/media:/opt/recipes/mediafiles:rw
+  environment:
+    # all the other env
+    - SCRIPT_NAME=/<sub path>
+    - STATIC_URL=/<www path>/static/
+    - MEDIA_URL=/<www path>/media/
+  labels:
+    traefik.enable: true
+    traefik.http.routers.recipes.rule: Host(`<host>`) && PathPrefix(`/<sub path>`)
+    traefik.http.routers.recipes.entrypoints: http
+    traefik.http.services.recipes.loadbalancer.server.port: 8080
+    traefik.http.services.recipes.loadbalancer.server.scheme: http
 ```
 
-apache: 
+apache:
+
 ```
   Alias /<www path>/static/ /var/www/recipes/static/
   Alias /<www path>/media/ /var/www/recipes/media/
@@ -67,6 +68,7 @@ The following could prove to be useful if you are not using Traefik, but instead
 As a side note, I am using [Blocky](https://0xerr0r.github.io/blocky/) + [Consul](https://hub.docker.com/r/hashicorp/consul) + [Registrator](https://hub.docker.com/r/gliderlabs/registrator) as a DNS solution.
 
 The relevant Apache config:
+
 ```
     <Location /tandoor>
         # in case you want to restrict access to specific IP addresses:
@@ -93,7 +95,9 @@ The relevant Apache config:
         ProxyPreserveHost On
     </Location>
 ```
+
 and the relevant section from the docker-compose.yml:
+
 ```
    tandoor:
      restart: always
@@ -124,6 +128,7 @@ and the relevant section from the docker-compose.yml:
 ```
 
 The relevant docker-compose.yml for Registrator, Consul, and Blocky, and Autoheal:
+
 ```
   consul:
     image: hashicorp/consul
@@ -199,14 +204,15 @@ The relevant docker-compose.yml for Registrator, Consul, and Blocky, and Autohea
     container_name: autoheal
 
 ```
+
 as well as a snippet of the Blocky configuration:
+
 ```
 conditional:
   fallbackUpstream: false
   mapping:
     consul.local: tcp+udp:host.docker.internal:8600
 ```
-
 
 ## WSL
 

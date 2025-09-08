@@ -1,8 +1,8 @@
 !!! danger
-        Please refer to the [official documentation](https://github.com/linuxserver/docker-swag#usage) for the container setup. This example shows just one setup that may or may not differ from yours in significant ways. This tutorial does not cover security measures, backups, and many other things that you might want to consider.
+Please refer to the [official documentation](https://github.com/linuxserver/docker-swag#usage) for the container setup. This example shows just one setup that may or may not differ from yours in significant ways. This tutorial does not cover security measures, backups, and many other things that you might want to consider.
 
 !!! danger "Tandoor 2 Compatibility"
-    This guide has not been verified/tested for Tandoor 2, which now integrates a nginx service inside the default docker container and exposes its service on port 80 instead of 8080.
+This guide has not been verified/tested for Tandoor 2, which now integrates a nginx service inside the default docker container and exposes its service on port 80 instead of 8080.
 
 ## Prerequisites
 
@@ -20,16 +20,20 @@ mkdir recipes
 cd recipes
 wget https://raw.githubusercontent.com/vabene1111/recipes/develop/.env.template -O .env
 base64 /dev/urandom | head -c50
-``` 
+```
+
 Copy the response from that last command and paste the key into the `.env` file:
+
 ```
 nano .env
 ```
+
 You'll also need to enter a Postgres password into the `.env` file. Then, save the file and exit the editor.
 
 ### Install and configure Docker Compose
 
 In keeping with [these instructions](https://docs.linuxserver.io/general/docker-compose):
+
 ```
 cd /opt
 curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
@@ -56,10 +60,10 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Berlin # <---- EDIT THIS <----  <---- 
-      - URL=mydomain.com # <---- EDIT THIS <----  <---- 
-      - SUBDOMAINS=mysubdomain,myothersubdomain # <---- EDIT THIS <----  <---- 
-      - EXTRA_DOMAINS=myotherdomain.com # <---- EDIT THIS <----  <---- 
+      - TZ=Europe/Berlin # <---- EDIT THIS <----  <----
+      - URL=mydomain.com # <---- EDIT THIS <----  <----
+      - SUBDOMAINS=mysubdomain,myothersubdomain # <---- EDIT THIS <----  <----
+      - EXTRA_DOMAINS=myotherdomain.com # <---- EDIT THIS <----  <----
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -87,7 +91,7 @@ services:
     environment:
       - UID=1000
       - GID=1000
-      - TZ=Europe/Berlin # <---- EDIT THIS  <----  <---- 
+      - TZ=Europe/Berlin # <---- EDIT THIS  <----  <----
     volumes:
       - ./recipes/static:/opt/recipes/staticfiles
       - ./recipes/media:/opt/recipes/mediafiles

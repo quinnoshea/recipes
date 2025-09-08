@@ -1,6 +1,6 @@
 ALLRECIPES = {
-    'file': ['allrecipes.html'],
-    'url': 'https://www.allrecipes.com/recipe/24010/easy-chicken-marsala/',
+    "file": ["allrecipes.html"],
+    "url": "https://www.allrecipes.com/recipe/24010/easy-chicken-marsala/",
     "name": "Easy Chicken Marsala",
     "internal": True,
     "servings": 4,
@@ -10,22 +10,10 @@ ALLRECIPES = {
     "image_url": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/8145402.jpg",
     "source_url": "https://www.allrecipes.com/recipe/24010/easy-chicken-marsala/",
     "keywords": [
-        {
-            "label": "www.allrecipes.com",
-            "name": "www.allrecipes.com"
-        },
-        {
-            "label": "chicken marsala recipes",
-            "name": "chicken marsala recipes"
-        },
-        {
-            "label": "main dish recipes",
-            "name": "main dish recipes"
-        },
-        {
-            "label": "chicken",
-            "name": "chicken"
-        }
+        {"label": "www.allrecipes.com", "name": "www.allrecipes.com"},
+        {"label": "chicken marsala recipes", "name": "chicken marsala recipes"},
+        {"label": "main dish recipes", "name": "main dish recipes"},
+        {"label": "chicken", "name": "chicken"},
     ],
     "steps": [
         {
@@ -33,97 +21,69 @@ ALLRECIPES = {
             "ingredients": [
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "olive oil or vegetable oil"
-                    },
-                    "unit": {
-                        "name": "tablespoon"
-                    },
+                    "food": {"name": "olive oil or vegetable oil"},
+                    "unit": {"name": "tablespoon"},
                     "note": "",
-                    "original_text": "1 tablespoon olive oil or vegetable oil"
+                    "original_text": "1 tablespoon olive oil or vegetable oil",
                 },
                 {
                     "amount": 4,
-                    "food": {
-                        "name": "skinless"
-                    },
+                    "food": {"name": "skinless"},
                     "unit": None,
                     "note": "boneless chicken breast halves",
-                    "original_text": "4 skinless, boneless chicken breast halves"
+                    "original_text": "4 skinless, boneless chicken breast halves",
                 },
                 {
                     "amount": 0.25,
-                    "food": {
-                        "name": "chopped green onion"
-                    },
-                    "unit": {
-                        "name": "cup"
-                    },
+                    "food": {"name": "chopped green onion"},
+                    "unit": {"name": "cup"},
                     "note": "",
-                    "original_text": "¼ cup chopped green onion"
+                    "original_text": "¼ cup chopped green onion",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "sliced fresh mushrooms"
-                    },
-                    "unit": {
-                        "name": "cup"
-                    },
+                    "food": {"name": "sliced fresh mushrooms"},
+                    "unit": {"name": "cup"},
                     "note": "",
-                    "original_text": "1 cup sliced fresh mushrooms"
+                    "original_text": "1 cup sliced fresh mushrooms",
                 },
                 {
                     "amount": 0.3333333333333333,
-                    "food": {
-                        "name": "Marsala wine"
-                    },
-                    "unit": {
-                        "name": "cup"
-                    },
+                    "food": {"name": "Marsala wine"},
+                    "unit": {"name": "cup"},
                     "note": "",
-                    "original_text": "⅓ cup Marsala wine"
+                    "original_text": "⅓ cup Marsala wine",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "salt and pepper to taste"
-                    },
+                    "food": {"name": "salt and pepper to taste"},
                     "unit": None,
                     "note": "",
-                    "original_text": "salt and pepper to taste"
+                    "original_text": "salt and pepper to taste",
                 },
                 {
                     "amount": 0.3333333333333333,
-                    "food": {
-                        "name": "heavy cream"
-                    },
-                    "unit": {
-                        "name": "cup"
-                    },
+                    "food": {"name": "heavy cream"},
+                    "unit": {"name": "cup"},
                     "note": "",
-                    "original_text": "⅓ cup heavy cream"
+                    "original_text": "⅓ cup heavy cream",
                 },
                 {
                     "amount": 0.125,
-                    "food": {
-                        "name": "milk"
-                    },
-                    "unit": {
-                        "name": "cup"
-                    },
+                    "food": {"name": "milk"},
+                    "unit": {"name": "cup"},
                     "note": "",
-                    "original_text": "⅛ cup milk"
-                }
-            ]
+                    "original_text": "⅛ cup milk",
+                },
+            ],
         }
     ],
-    "description": "Chicken breasts are sauteed, then braised in Marsala wine and cream with mushrooms and green onion. Chicken Marsala simplified!"
+    "description": "Chicken breasts are sauteed, then braised in Marsala wine and cream with mushrooms and green onion. Chicken Marsala simplified!",
 }
 
 AMERICAS_TEST_KITCHEN = {
-    "file": ['americastestkitchen.html'],
-    'url': 'http://www.americastestkitchen.com/recipes/1771-pasta-with-chicken-broccoli-and-sun-dried-tomatoes',
+    "file": ["americastestkitchen.html"],
+    "url": "http://www.americastestkitchen.com/recipes/1771-pasta-with-chicken-broccoli-and-sun-dried-tomatoes",
     "name": "Pasta with Chicken, Broccoli, and Sun-dried Tomatoes",
     "internal": True,
     "servings": 4,
@@ -133,14 +93,8 @@ AMERICAS_TEST_KITCHEN = {
     "image_url": "https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_150/33255_sfs-pasta-with-chicken-broccoli-sun-dried-tomatoes-15",
     "source_url": "http://www.americastestkitchen.com/recipes/1771-pasta-with-chicken-broccoli-and-sun-dried-tomatoes?extcode=MCSAD10L0&ref=new_search_experience_1",
     "keywords": [
-        {
-            "label": "www.americastestkitchen.com",
-            "name": "www.americastestkitchen.com"
-        },
-        {
-            "label": "main courses",
-            "name": "main courses"
-        }
+        {"label": "www.americastestkitchen.com", "name": "www.americastestkitchen.com"},
+        {"label": "main courses", "name": "main courses"},
     ],
     "steps": [
         {
@@ -148,180 +102,124 @@ AMERICAS_TEST_KITCHEN = {
             "ingredients": [
                 {
                     "amount": 4,
-                    "food": {
-                        "name": "unsalted butter"
-                    },
-                    "unit": {
-                        "name": "tablespoons"
-                    },
+                    "food": {"name": "unsalted butter"},
+                    "unit": {"name": "tablespoons"},
                     "note": "",
-                    "original_text": "4 tablespoons unsalted butter"
+                    "original_text": "4 tablespoons unsalted butter",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "boneless"
-                    },
-                    "unit": {
-                        "name": "pound"
-                    },
+                    "food": {"name": "boneless"},
+                    "unit": {"name": "pound"},
                     "note": "skinless chicken breast, trimmed of fat and cut crosswise into 1/4-inch slices",
-                    "original_text": "1 pound boneless, skinless chicken breast, trimmed of fat and cut crosswise into 1/4-inch slices"
+                    "original_text": "1 pound boneless, skinless chicken breast, trimmed of fat and cut crosswise into 1/4-inch slices",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "onion, chopped fine"
-                    },
-                    "unit": {
-                        "name": "small"
-                    },
+                    "food": {"name": "onion, chopped fine"},
+                    "unit": {"name": "small"},
                     "note": "about 2/3 cup",
-                    "original_text": "1  small onion, chopped fine (about 2/3 cup)"
+                    "original_text": "1  small onion, chopped fine (about 2/3 cup)",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Table salt"
-                    },
+                    "food": {"name": "Table salt"},
                     "unit": None,
                     "note": "",
-                    "original_text": "  Table salt"
+                    "original_text": "  Table salt",
                 },
                 {
                     "amount": 6,
                     "food": {
                         "name": "cloves garlic, minced or pressed through garlic press"
                     },
-                    "unit": {
-                        "name": "medium"
-                    },
+                    "unit": {"name": "medium"},
                     "note": "about 2 tablespoons",
-                    "original_text": "6 medium cloves garlic, minced or pressed through garlic press (about 2 tablespoons)"
+                    "original_text": "6 medium cloves garlic, minced or pressed through garlic press (about 2 tablespoons)",
                 },
                 {
                     "amount": 0.25,
-                    "food": {
-                        "name": "red pepper flakes"
-                    },
-                    "unit": {
-                        "name": "teaspoon"
-                    },
+                    "food": {"name": "red pepper flakes"},
+                    "unit": {"name": "teaspoon"},
                     "note": "",
-                    "original_text": "1/4 teaspoon red pepper flakes"
+                    "original_text": "1/4 teaspoon red pepper flakes",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "chopped fresh thyme leaves"
-                    },
-                    "unit": {
-                        "name": "teaspoons"
-                    },
+                    "food": {"name": "chopped fresh thyme leaves"},
+                    "unit": {"name": "teaspoons"},
                     "note": "",
-                    "original_text": "2 teaspoons chopped fresh thyme leaves"
+                    "original_text": "2 teaspoons chopped fresh thyme leaves",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "all-purpose flour"
-                    },
-                    "unit": {
-                        "name": "teaspoons"
-                    },
+                    "food": {"name": "all-purpose flour"},
+                    "unit": {"name": "teaspoons"},
                     "note": "",
-                    "original_text": "2 teaspoons all-purpose flour"
+                    "original_text": "2 teaspoons all-purpose flour",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "dry white wine"
-                    },
-                    "unit": {
-                        "name": "cup"
-                    },
+                    "food": {"name": "dry white wine"},
+                    "unit": {"name": "cup"},
                     "note": "",
-                    "original_text": "1 cup dry white wine"
+                    "original_text": "1 cup dry white wine",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "low-sodium chicken broth"
-                    },
-                    "unit": {
-                        "name": "cups"
-                    },
+                    "food": {"name": "low-sodium chicken broth"},
+                    "unit": {"name": "cups"},
                     "note": "",
-                    "original_text": "2 cups low-sodium chicken broth"
+                    "original_text": "2 cups low-sodium chicken broth",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "broccoli(about 1 1/2 pounds)"
-                    },
-                    "unit": {
-                        "name": "bunch"
-                    },
+                    "food": {"name": "broccoli(about 1 1/2 pounds)"},
+                    "unit": {"name": "bunch"},
                     "note": "florets trimmed into 1-inch pieces (about 6 cups), stems discarded",
-                    "original_text": "1 bunch broccoli(about 1 1/2 pounds), florets trimmed into 1-inch pieces (about 6 cups), stems discarded"
+                    "original_text": "1 bunch broccoli(about 1 1/2 pounds), florets trimmed into 1-inch pieces (about 6 cups), stems discarded",
                 },
                 {
                     "amount": 0.5,
-                    "food": {
-                        "name": "penne pasta"
-                    },
-                    "unit": {
-                        "name": "pound"
-                    },
+                    "food": {"name": "penne pasta"},
+                    "unit": {"name": "pound"},
                     "note": "ziti, cavatappi, or campanelle",
-                    "original_text": "1/2 pound penne pasta, ziti, cavatappi, or campanelle"
+                    "original_text": "1/2 pound penne pasta, ziti, cavatappi, or campanelle",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "grated Asiago cheese(1 cup)"
-                    },
-                    "unit": {
-                        "name": "ounces"
-                    },
+                    "food": {"name": "grated Asiago cheese(1 cup)"},
+                    "unit": {"name": "ounces"},
                     "note": "plus extra for serving",
-                    "original_text": "2 ounces grated Asiago cheese(1 cup), plus extra for serving"
+                    "original_text": "2 ounces grated Asiago cheese(1 cup), plus extra for serving",
                 },
                 {
                     "amount": 1,
                     "food": {
                         "name": "oil-packed sun-dried tomato(7 to 8 1/2 ounces), rinsed, patted dry, and cut into 1/4-inch strips"
                     },
-                    "unit": {
-                        "name": "jar"
-                    },
+                    "unit": {"name": "jar"},
                     "note": "about 1 cup",
-                    "original_text": "1 jar oil-packed sun-dried tomato(7 to 8 1/2 ounces), rinsed, patted dry, and cut into 1/4-inch strips (about 1 cup)"
+                    "original_text": "1 jar oil-packed sun-dried tomato(7 to 8 1/2 ounces), rinsed, patted dry, and cut into 1/4-inch strips (about 1 cup)",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "minced fresh parsley leaves"
-                    },
-                    "unit": {
-                        "name": "tablespoon"
-                    },
+                    "food": {"name": "minced fresh parsley leaves"},
+                    "unit": {"name": "tablespoon"},
                     "note": "",
-                    "original_text": "1 tablespoon minced fresh parsley leaves"
+                    "original_text": "1 tablespoon minced fresh parsley leaves",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Ground black pepper"
-                    },
+                    "food": {"name": "Ground black pepper"},
                     "unit": None,
                     "note": "",
-                    "original_text": "  Ground black pepper"
-                }
-            ]
+                    "original_text": "  Ground black pepper",
+                },
+            ],
         }
     ],
-    "description": "This restaurant-chain classic can be as off-putting as a bad horror movie: drab colors, tough meat, and a main character—the pasta—with no bite."
+    "description": "This restaurant-chain classic can be as off-putting as a bad horror movie: drab colors, tough meat, and a main character—the pasta—with no bite.",
 }
 
 CHEF_KOCH = {
@@ -336,54 +234,17 @@ CHEF_KOCH = {
     "image_url": "https://img.chefkoch-cdn.de/rezepte/1913681311847861/bilder/374151/crop-960x540/couscous-und-garnelen-im-pergament.jpg",
     "source_url": "https://www.chefkoch.de/rezepte/1913681311847861/Couscous-und-Garnelen-im-Pergament.html",
     "keywords": [
-        {
-            "label": "meeresfrüchte",
-            "name": "meeresfrüchte"
-        },
-        {
-            "label": "einfach",
-            "name": "einfach",
-            "id": 32
-        },
-        {
-            "label": "warm",
-            "name": "warm"
-        },
-        {
-            "label": "krustentier oder muscheln",
-            "name": "krustentier oder muscheln"
-        },
-        {
-            "label": "schnell",
-            "name": "schnell",
-            "id": 36
-        },
-        {
-            "label": "getreide",
-            "name": "getreide"
-        },
-        {
-            "label": "reis",
-            "name": "reis"
-        },
-        {
-            "label": "www.chefkoch.de",
-            "name": "www.chefkoch.de"
-        },
-        {
-            "label": "hauptspeise",
-            "name": "hauptspeise",
-            "id": 33
-        },
-        {
-            "label": "dünsten",
-            "name": "dünsten"
-        },
-        {
-            "label": "vorspeise",
-            "name": "vorspeise",
-            "id": 41
-        }
+        {"label": "meeresfrüchte", "name": "meeresfrüchte"},
+        {"label": "einfach", "name": "einfach", "id": 32},
+        {"label": "warm", "name": "warm"},
+        {"label": "krustentier oder muscheln", "name": "krustentier oder muscheln"},
+        {"label": "schnell", "name": "schnell", "id": 36},
+        {"label": "getreide", "name": "getreide"},
+        {"label": "reis", "name": "reis"},
+        {"label": "www.chefkoch.de", "name": "www.chefkoch.de"},
+        {"label": "hauptspeise", "name": "hauptspeise", "id": 33},
+        {"label": "dünsten", "name": "dünsten"},
+        {"label": "vorspeise", "name": "vorspeise", "id": 41},
     ],
     "steps": [
         {
@@ -391,164 +252,111 @@ CHEF_KOCH = {
             "ingredients": [
                 {
                     "amount": 16,
-                    "food": {
-                        "name": "Garnele(n)"
-                    },
-                    "unit": {
-                        "name": "große"
-                    },
+                    "food": {"name": "Garnele(n)"},
+                    "unit": {"name": "große"},
                     "note": "küchenfertig",
-                    "original_text": "16 große Garnele(n) , küchenfertig"
+                    "original_text": "16 große Garnele(n) , küchenfertig",
                 },
                 {
                     "amount": 100,
-                    "food": {
-                        "name": "Couscous"
-                    },
-                    "unit": {
-                        "name": "g"
-                    },
+                    "food": {"name": "Couscous"},
+                    "unit": {"name": "g"},
                     "note": "alternativ Bulgur",
-                    "original_text": "100 g Couscous , alternativ Bulgur"
+                    "original_text": "100 g Couscous , alternativ Bulgur",
                 },
                 {
                     "amount": 250,
-                    "food": {
-                        "name": "Wasser"
-                    },
-                    "unit": {
-                        "name": "ml"
-                    },
+                    "food": {"name": "Wasser"},
+                    "unit": {"name": "ml"},
                     "note": "",
-                    "original_text": "250 ml Wasser"
+                    "original_text": "250 ml Wasser",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "Gemüsebrühe"
-                    },
-                    "unit": {
-                        "name": "EL"
-                    },
+                    "food": {"name": "Gemüsebrühe"},
+                    "unit": {"name": "EL"},
                     "note": "",
-                    "original_text": "1 EL Gemüsebrühe"
+                    "original_text": "1 EL Gemüsebrühe",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "Kurkuma"
-                    },
-                    "unit": {
-                        "name": "TL"
-                    },
+                    "food": {"name": "Kurkuma"},
+                    "unit": {"name": "TL"},
                     "note": "",
-                    "original_text": "1 TL Kurkuma"
+                    "original_text": "1 TL Kurkuma",
                 },
                 {
                     "amount": 6,
-                    "food": {
-                        "name": "Olivenöl"
-                    },
-                    "unit": {
-                        "name": "EL"
-                    },
+                    "food": {"name": "Olivenöl"},
+                    "unit": {"name": "EL"},
                     "note": "",
-                    "original_text": "6 EL Olivenöl"
+                    "original_text": "6 EL Olivenöl",
                 },
                 {
                     "amount": 6,
-                    "food": {
-                        "name": ""
-                    },
-                    "unit": {
-                        "name": "Tomate(n)"
-                    },
+                    "food": {"name": ""},
+                    "unit": {"name": "Tomate(n)"},
                     "note": "getrocknet",
-                    "original_text": "6 Tomate(n) , getrocknet"
+                    "original_text": "6 Tomate(n) , getrocknet",
                 },
                 {
                     "amount": 0.5,
-                    "food": {
-                        "name": "Zucchini"
-                    },
-                    "unit": {
-                        "name": "kleine"
-                    },
+                    "food": {"name": "Zucchini"},
+                    "unit": {"name": "kleine"},
                     "note": "",
-                    "original_text": "½ kleine Zucchini"
+                    "original_text": "½ kleine Zucchini",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "Paprika"
-                    },
+                    "food": {"name": "Paprika"},
                     "unit": None,
                     "note": "",
-                    "original_text": "1 Paprika"
+                    "original_text": "1 Paprika",
                 },
                 {
                     "amount": 0.5,
-                    "food": {
-                        "name": "Frühlingszwiebel(n)"
-                    },
-                    "unit": {
-                        "name": "Bund"
-                    },
+                    "food": {"name": "Frühlingszwiebel(n)"},
+                    "unit": {"name": "Bund"},
                     "note": "",
-                    "original_text": "½ Bund Frühlingszwiebel(n)"
+                    "original_text": "½ Bund Frühlingszwiebel(n)",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "Knoblauch"
-                    },
-                    "unit": {
-                        "name": "Zehe/n"
-                    },
+                    "food": {"name": "Knoblauch"},
+                    "unit": {"name": "Zehe/n"},
                     "note": "",
-                    "original_text": "1 Zehe/n Knoblauch"
+                    "original_text": "1 Zehe/n Knoblauch",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "Petersilie"
-                    },
-                    "unit": {
-                        "name": "EL"
-                    },
+                    "food": {"name": "Petersilie"},
+                    "unit": {"name": "EL"},
                     "note": "Koriander und Minze, frisch und fein geschnitten",
-                    "original_text": "1 EL Petersilie , Koriander und Minze, frisch und fein geschnitten"
+                    "original_text": "1 EL Petersilie , Koriander und Minze, frisch und fein geschnitten",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": ""
-                    },
-                    "unit": {
-                        "name": "Zitrone(n)"
-                    },
+                    "food": {"name": ""},
+                    "unit": {"name": "Zitrone(n)"},
                     "note": "Bio",
-                    "original_text": "1 Zitrone(n) , Bio"
+                    "original_text": "1 Zitrone(n) , Bio",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Salz und Pfeffer"
-                    },
+                    "food": {"name": "Salz und Pfeffer"},
                     "unit": None,
                     "note": "Ras el-Hanout",
-                    "original_text": "Salz und Pfeffer , Ras el-Hanout"
-                }
-            ]
+                    "original_text": "Salz und Pfeffer , Ras el-Hanout",
+                },
+            ],
         }
     ],
-    "description": "Couscous und Garnelen im Pergament. Über 75 Bewertungen und für sehr lecker befunden. Mit ► Portionsrechner ► Kochbuch ► Video-Tipps! Jetzt entdecken und ausprobieren!"
+    "description": "Couscous und Garnelen im Pergament. Über 75 Bewertungen und für sehr lecker befunden. Mit ► Portionsrechner ► Kochbuch ► Video-Tipps! Jetzt entdecken und ausprobieren!",
 }
 
 CHEF_KOCH2 = {
     "file": ["chefkoch2.html"],
     "url": "https://www.chefkoch.de/rezepte/804871184310070/Brokkoli-Bratlinge.html",
-
     "name": "Brokkoli - Bratlinge",
     "internal": None,
     "servings": 4,
@@ -558,48 +366,16 @@ CHEF_KOCH2 = {
     "image_url": "https://img.chefkoch-cdn.de/rezepte/804871184310070/bilder/1045695/crop-960x540/brokkoli-bratlinge.jpg",
     "source_url": "https://www.chefkoch.de/rezepte/804871184310070/Brokkoli-Bratlinge.html",
     "keywords": [
-        {
-            "label": "sommer",
-            "name": "sommer"
-        },
-        {
-            "label": "www.chefkoch.de",
-            "name": "www.chefkoch.de"
-        },
-        {
-            "label": "hauptspeise",
-            "name": "hauptspeise",
-            "id": 33
-        },
-        {
-            "label": "braten",
-            "name": "braten"
-        },
-        {
-            "label": "vollwert",
-            "name": "vollwert"
-        },
-        {
-            "label": "vegetarisch",
-            "name": "vegetarisch",
-            "id": 12
-        },
-        {
-            "label": "gemüse",
-            "name": "gemüse"
-        },
-        {
-            "label": "herbst",
-            "name": "herbst"
-        },
-        {
-            "label": "raffiniert oder preiswert",
-            "name": "raffiniert oder preiswert"
-        },
-        {
-            "label": "resteverwertung",
-            "name": "resteverwertung"
-        }
+        {"label": "sommer", "name": "sommer"},
+        {"label": "www.chefkoch.de", "name": "www.chefkoch.de"},
+        {"label": "hauptspeise", "name": "hauptspeise", "id": 33},
+        {"label": "braten", "name": "braten"},
+        {"label": "vollwert", "name": "vollwert"},
+        {"label": "vegetarisch", "name": "vegetarisch", "id": 12},
+        {"label": "gemüse", "name": "gemüse"},
+        {"label": "herbst", "name": "herbst"},
+        {"label": "raffiniert oder preiswert", "name": "raffiniert oder preiswert"},
+        {"label": "resteverwertung", "name": "resteverwertung"},
     ],
     "steps": [
         {
@@ -607,112 +383,82 @@ CHEF_KOCH2 = {
             "ingredients": [
                 {
                     "amount": 500,
-                    "food": {
-                        "name": "Brokkoli"
-                    },
-                    "unit": {
-                        "name": "g"
-                    },
+                    "food": {"name": "Brokkoli"},
+                    "unit": {"name": "g"},
                     "note": "bissfest gegart",
-                    "original_text": "500 g Brokkoli , bissfest gegart"
+                    "original_text": "500 g Brokkoli , bissfest gegart",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": ""
-                    },
-                    "unit": {
-                        "name": "Ei(er)"
-                    },
+                    "food": {"name": ""},
+                    "unit": {"name": "Ei(er)"},
                     "note": "getrennt",
-                    "original_text": "2 Ei(er) , getrennt"
+                    "original_text": "2 Ei(er) , getrennt",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "Speisestärke"
-                    },
-                    "unit": {
-                        "name": "TL"
-                    },
+                    "food": {"name": "Speisestärke"},
+                    "unit": {"name": "TL"},
                     "note": "",
-                    "original_text": "2 TL Speisestärke"
+                    "original_text": "2 TL Speisestärke",
                 },
                 {
                     "amount": 100,
-                    "food": {
-                        "name": "Käse (Emmentaler)"
-                    },
-                    "unit": {
-                        "name": "g"
-                    },
+                    "food": {"name": "Käse (Emmentaler)"},
+                    "unit": {"name": "g"},
                     "note": "geraffelt",
-                    "original_text": "100 g Käse (Emmentaler), geraffelt"
+                    "original_text": "100 g Käse (Emmentaler), geraffelt",
                 },
                 {
                     "amount": 3,
-                    "food": {
-                        "name": "Sonnenblumenkerne"
-                    },
-                    "unit": {
-                        "name": "EL"
-                    },
+                    "food": {"name": "Sonnenblumenkerne"},
+                    "unit": {"name": "EL"},
                     "note": "",
-                    "original_text": "3 EL Sonnenblumenkerne"
+                    "original_text": "3 EL Sonnenblumenkerne",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Paniermehl"
-                    },
+                    "food": {"name": "Paniermehl"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Paniermehl"
+                    "original_text": "Paniermehl",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Margarine"
-                    },
+                    "food": {"name": "Margarine"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Margarine"
+                    "original_text": "Margarine",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Salz und Pfeffer"
-                    },
+                    "food": {"name": "Salz und Pfeffer"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Salz und Pfeffer"
+                    "original_text": "Salz und Pfeffer",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Paprikapulver"
-                    },
+                    "food": {"name": "Paprikapulver"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Paprikapulver"
+                    "original_text": "Paprikapulver",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Muskat"
-                    },
+                    "food": {"name": "Muskat"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Muskat"
-                }
-            ]
+                    "original_text": "Muskat",
+                },
+            ],
         }
     ],
-    "description": "Brokkoli - Bratlinge. Über 91 Bewertungen und für vorzüglich befunden. Mit ► Portionsrechner ► Kochbuch ► Video-Tipps! Jetzt entdecken und ausprobieren!"
+    "description": "Brokkoli - Bratlinge. Über 91 Bewertungen und für vorzüglich befunden. Mit ► Portionsrechner ► Kochbuch ► Video-Tipps! Jetzt entdecken und ausprobieren!",
 }
 
 COOKPAD = {
-    'file': ['cookpad.html'],
+    "file": ["cookpad.html"],
     "url": "https://cookpad.com/us/recipes/14815875-chicken-and-moringa-drumsticks-soup",
     "name": "Chicken and Moringa Drumsticks Soup",
     "internal": True,
@@ -722,115 +468,82 @@ COOKPAD = {
     "waiting_time": 0,
     "image_url": "https://img-global.cpcdn.com/recipes/53658f5fc0aa6c30/400x400cq70/photo.jpg",
     "source_url": "https://cookpad.com/us/recipes/14815875-chicken-and-moringa-drumsticks-soup",
-    "keywords": [
-        {
-            "label": "cookpad.com",
-            "name": "cookpad.com"
-        }
-    ],
+    "keywords": [{"label": "cookpad.com", "name": "cookpad.com"}],
     "steps": [
         {
             "instruction": "Sauté the onions, garlic and ginger in oil until fragrant.  \nAdd the peeled Moringa pods, with seeds. You can search the net on how to peel the pods. Forgot to take a photo of it, just remove the hard skin with a knife.  \nAdd the chicken pieces, a few tbsp water, sauté the cover. Let the juices of chicken come out.  \nDissolve the chicken broth cube in water then add to your pot.  \nCook until Moringa pods are tender. Taste and season accordingly. Delicious to eat and pour soup over rice.",
             "ingredients": [
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Chicken cuts"
-                    },
+                    "food": {"name": "Chicken cuts"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Chicken cuts"
+                    "original_text": "Chicken cuts",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Moringa or Malunggay pods"
-                    },
+                    "food": {"name": "Moringa or Malunggay pods"},
                     "unit": None,
                     "note": "peeled and split",
-                    "original_text": "Moringa or Malunggay pods, peeled and split"
+                    "original_text": "Moringa or Malunggay pods, peeled and split",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "broth cube"
-                    },
-                    "unit": {
-                        "name": "chicken"
-                    },
+                    "food": {"name": "broth cube"},
+                    "unit": {"name": "chicken"},
                     "note": "",
-                    "original_text": "1 chicken broth cube"
+                    "original_text": "1 chicken broth cube",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "Water"
-                    },
-                    "unit": {
-                        "name": "c"
-                    },
+                    "food": {"name": "Water"},
+                    "unit": {"name": "c"},
                     "note": "2-3",
-                    "original_text": "2-3 c Water"
+                    "original_text": "2-3 c Water",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "onion"
-                    },
-                    "unit": {
-                        "name": "small"
-                    },
+                    "food": {"name": "onion"},
+                    "unit": {"name": "small"},
                     "note": "chopped",
-                    "original_text": "1 small onion, chopped"
+                    "original_text": "1 small onion, chopped",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "cloves"
-                    },
-                    "unit": {
-                        "name": "garlic"
-                    },
+                    "food": {"name": "cloves"},
+                    "unit": {"name": "garlic"},
                     "note": "chopped",
-                    "original_text": "2 garlic cloves, chopped"
+                    "original_text": "2 garlic cloves, chopped",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "ginger"
-                    },
-                    "unit": {
-                        "name": "thumb"
-                    },
+                    "food": {"name": "ginger"},
+                    "unit": {"name": "thumb"},
                     "note": "",
-                    "original_text": "1 thumb ginger"
+                    "original_text": "1 thumb ginger",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "to taste Salt & pepper"
-                    },
+                    "food": {"name": "to taste Salt & pepper"},
                     "unit": None,
                     "note": "",
-                    "original_text": "to taste Salt & pepper"
+                    "original_text": "to taste Salt & pepper",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Cooking oil"
-                    },
+                    "food": {"name": "Cooking oil"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Cooking oil"
-                }
-            ]
+                    "original_text": "Cooking oil",
+                },
+            ],
         }
     ],
-    "description": "Great recipe for Chicken and Moringa Drumsticks Soup. Try this soup with Moringa / Malunggay pods, also called \"drumsticks.\" These were picked right from our yard. :) #veggies #moringaoleifera"
+    "description": 'Great recipe for Chicken and Moringa Drumsticks Soup. Try this soup with Moringa / Malunggay pods, also called "drumsticks." These were picked right from our yard. :) #veggies #moringaoleifera',
 }
 
 COOKS_COUNTRY = {
-    'file': ['cookscountry.html'],
+    "file": ["cookscountry.html"],
     "url": "http://www.cookscountry.com/recipes/2202-shrimp-piccata-pasta",
     "name": "Shrimp Piccata Pasta",
     "internal": True,
@@ -841,15 +554,8 @@ COOKS_COUNTRY = {
     "image_url": "https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_150/35585_sfs-shrimp-picatta-pasta-012",
     "source_url": "http://www.cookscountry.com/recipes/2202-shrimp-piccata-pasta?extcode=MCSKD10L0&ref=new_search_experience_2",
     "keywords": [
-        {
-            "label": "www.cookscountry.com",
-            "name": "www.cookscountry.com"
-        },
-        {
-            "label": "main courses",
-            "name": "main courses",
-            "id": 126
-        }
+        {"label": "www.cookscountry.com", "name": "www.cookscountry.com"},
+        {"label": "main courses", "name": "main courses", "id": 126},
     ],
     "steps": [
         {
@@ -857,154 +563,104 @@ COOKS_COUNTRY = {
             "ingredients": [
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "extra-virgin olive oil"
-                    },
-                    "unit": {
-                        "name": "tablespoons"
-                    },
+                    "food": {"name": "extra-virgin olive oil"},
+                    "unit": {"name": "tablespoons"},
                     "note": "",
-                    "original_text": "2 tablespoons extra-virgin olive oil"
+                    "original_text": "2 tablespoons extra-virgin olive oil",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "large shrimp"
-                    },
-                    "unit": {
-                        "name": "pound"
-                    },
+                    "food": {"name": "large shrimp"},
+                    "unit": {"name": "pound"},
                     "note": "peeled, deveined, and halved lengthwise",
-                    "original_text": "1 pound large shrimp, peeled, deveined, and halved lengthwise"
+                    "original_text": "1 pound large shrimp, peeled, deveined, and halved lengthwise",
                 },
                 {
                     "amount": 4,
-                    "food": {
-                        "name": "cloves garlic"
-                    },
-                    "unit": {
-                        "name": "medium"
-                    },
+                    "food": {"name": "cloves garlic"},
+                    "unit": {"name": "medium"},
                     "note": "minced",
-                    "original_text": "4 medium cloves garlic, minced"
+                    "original_text": "4 medium cloves garlic, minced",
                 },
                 {
                     "amount": 0.125,
-                    "food": {
-                        "name": "red pepper flakes"
-                    },
-                    "unit": {
-                        "name": "teaspoon"
-                    },
+                    "food": {"name": "red pepper flakes"},
+                    "unit": {"name": "teaspoon"},
                     "note": "",
-                    "original_text": "1/8 teaspoon red pepper flakes"
+                    "original_text": "1/8 teaspoon red pepper flakes",
                 },
                 {
                     "amount": 0.5,
-                    "food": {
-                        "name": "dry white wine"
-                    },
-                    "unit": {
-                        "name": "cup"
-                    },
+                    "food": {"name": "dry white wine"},
+                    "unit": {"name": "cup"},
                     "note": "",
-                    "original_text": "1/2 cup dry white wine"
+                    "original_text": "1/2 cup dry white wine",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "bottle clam broth"
-                    },
-                    "unit": {
-                        "name": "(8-ounce)"
-                    },
+                    "food": {"name": "bottle clam broth"},
+                    "unit": {"name": "(8-ounce)"},
                     "note": "",
-                    "original_text": "1  (8-ounce) bottle clam broth"
+                    "original_text": "1  (8-ounce) bottle clam broth",
                 },
                 {
                     "amount": 3,
-                    "food": {
-                        "name": "lemon juice"
-                    },
-                    "unit": {
-                        "name": "tablespoons"
-                    },
+                    "food": {"name": "lemon juice"},
+                    "unit": {"name": "tablespoons"},
                     "note": "",
-                    "original_text": "3 tablespoons lemon juice"
+                    "original_text": "3 tablespoons lemon juice",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Table salt"
-                    },
+                    "food": {"name": "Table salt"},
                     "unit": None,
                     "note": "",
-                    "original_text": "  Table salt"
+                    "original_text": "  Table salt",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "linguine"
-                    },
-                    "unit": {
-                        "name": "pound"
-                    },
+                    "food": {"name": "linguine"},
+                    "unit": {"name": "pound"},
                     "note": "",
-                    "original_text": "1 pound linguine"
+                    "original_text": "1 pound linguine",
                 },
                 {
                     "amount": 3,
-                    "food": {
-                        "name": "drained small capers"
-                    },
-                    "unit": {
-                        "name": "tablespoons"
-                    },
+                    "food": {"name": "drained small capers"},
+                    "unit": {"name": "tablespoons"},
                     "note": "",
-                    "original_text": "3 tablespoons drained small capers"
+                    "original_text": "3 tablespoons drained small capers",
                 },
                 {
                     "amount": 0.3333333333333333,
-                    "food": {
-                        "name": "chopped fresh parsley leaves"
-                    },
-                    "unit": {
-                        "name": "cup"
-                    },
+                    "food": {"name": "chopped fresh parsley leaves"},
+                    "unit": {"name": "cup"},
                     "note": "",
-                    "original_text": "1/3 cup chopped fresh parsley leaves"
+                    "original_text": "1/3 cup chopped fresh parsley leaves",
                 },
                 {
                     "amount": 4,
-                    "food": {
-                        "name": "unsalted butter"
-                    },
-                    "unit": {
-                        "name": "tablespoons"
-                    },
+                    "food": {"name": "unsalted butter"},
+                    "unit": {"name": "tablespoons"},
                     "note": "softened",
-                    "original_text": "4 tablespoons unsalted butter, softened"
+                    "original_text": "4 tablespoons unsalted butter, softened",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Ground black pepper"
-                    },
+                    "food": {"name": "Ground black pepper"},
                     "unit": None,
                     "note": "",
-                    "original_text": "  Ground black pepper"
-                }
-            ]
+                    "original_text": "  Ground black pepper",
+                },
+            ],
         }
     ],
-    "description": "Shrimp Piccata Pasta sounds complicated, but this elegant dish is actually easy to assemble and serve-even on a weeknight."
-
+    "description": "Shrimp Piccata Pasta sounds complicated, but this elegant dish is actually easy to assemble and serve-even on a weeknight.",
 }
 
 DELISH = {
-    'file': ['delish.html'],
+    "file": ["delish.html"],
     "url": "https://www.delish.com/cooking/recipe-ideas/recipes/a52405/cheesy-baked-asparagus-recipe/",
-
     "name": "Cheesy Baked Asparagus Is The Side That Becomes Your Main",
     "internal": True,
     "servings": 6,
@@ -1014,165 +670,90 @@ DELISH = {
     "image_url": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-cheesy-asparagus-horizontal-7-1536094595.png",
     "source_url": "https://www.delish.com/cooking/recipe-ideas/recipes/a52405/cheesy-baked-asparagus-recipe/",
     "keywords": [
-        {
-            "label": "vegetarian",
-            "name": "vegetarian"
-        },
-        {
-            "label": "baked asparagus 400",
-            "name": "baked asparagus 400"
-        },
-        {
-            "label": "side dish",
-            "name": "side dish"
-        },
-        {
-            "label": "easy baked asparagus",
-            "name": "easy baked asparagus"
-        },
-        {
-            "label": "best baked asparagus",
-            "name": "best baked asparagus"
-        },
-        {
-            "label": "gluten-free",
-            "name": "gluten-free"
-        },
-        {
-            "label": "30-minute meals",
-            "name": "30-minute meals"
-        },
-        {
-            "label": "american",
-            "name": "american"
-        },
-        {
-            "label": "baked asparagus recipe",
-            "name": "baked asparagus recipe"
-        },
-        {
-            "label": "cheesy asparagus recipe",
-            "name": "cheesy asparagus recipe"
-        },
-        {
-            "label": "weeknight meals",
-            "name": "weeknight meals"
-        },
-        {
-            "label": "cheesy asparagus",
-            "name": "cheesy asparagus"
-        },
-        {
-            "label": "cheesy baked asparagus",
-            "name": "cheesy baked asparagus"
-        },
-        {
-            "label": "www.delish.com",
-            "name": "www.delish.com"
-        },
-        {
-            "label": "low sugar",
-            "name": "low sugar"
-        },
-        {
-            "label": "feed a crowd",
-            "name": "feed a crowd"
-        }
+        {"label": "vegetarian", "name": "vegetarian"},
+        {"label": "baked asparagus 400", "name": "baked asparagus 400"},
+        {"label": "side dish", "name": "side dish"},
+        {"label": "easy baked asparagus", "name": "easy baked asparagus"},
+        {"label": "best baked asparagus", "name": "best baked asparagus"},
+        {"label": "gluten-free", "name": "gluten-free"},
+        {"label": "30-minute meals", "name": "30-minute meals"},
+        {"label": "american", "name": "american"},
+        {"label": "baked asparagus recipe", "name": "baked asparagus recipe"},
+        {"label": "cheesy asparagus recipe", "name": "cheesy asparagus recipe"},
+        {"label": "weeknight meals", "name": "weeknight meals"},
+        {"label": "cheesy asparagus", "name": "cheesy asparagus"},
+        {"label": "cheesy baked asparagus", "name": "cheesy baked asparagus"},
+        {"label": "www.delish.com", "name": "www.delish.com"},
+        {"label": "low sugar", "name": "low sugar"},
+        {"label": "feed a crowd", "name": "feed a crowd"},
     ],
     "steps": [
         {
-            "instruction": "*For the ultimate veggie side, check out this easy recipe for the best baked asparagus. To make it a classy side, top it with garlic, a little cream, Parmesan, and mozzarella and bake until the cheese is bubbly and golden and the asparagus is tender. WARNING: This will be gone in seconds.*  \n\nPreheat oven to 400º. Place asparagus in a 9\"-x-13\" baking dish and pour over heavy cream and scatter with garlic. Generously season with salt and pepper, then sprinkle with Parmesan, mozzarella and red pepper flakes (if using).  \nBake until cheese is golden and melty and asparagus is tender, about 25 to 30 minutes, and serve.",
+            "instruction": '*For the ultimate veggie side, check out this easy recipe for the best baked asparagus. To make it a classy side, top it with garlic, a little cream, Parmesan, and mozzarella and bake until the cheese is bubbly and golden and the asparagus is tender. WARNING: This will be gone in seconds.*  \n\nPreheat oven to 400º. Place asparagus in a 9"-x-13" baking dish and pour over heavy cream and scatter with garlic. Generously season with salt and pepper, then sprinkle with Parmesan, mozzarella and red pepper flakes (if using).  \nBake until cheese is golden and melty and asparagus is tender, about 25 to 30 minutes, and serve.',
             "ingredients": [
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "asparagus"
-                    },
-                    "unit": {
-                        "name": "lb."
-                    },
+                    "food": {"name": "asparagus"},
+                    "unit": {"name": "lb."},
                     "note": "stalks trimmed",
-                    "original_text": "2 lb. asparagus, stalks trimmed"
+                    "original_text": "2 lb. asparagus, stalks trimmed",
                 },
                 {
                     "amount": 0.75,
-                    "food": {
-                        "name": "heavy cream"
-                    },
-                    "unit": {
-                        "name": "c."
-                    },
+                    "food": {"name": "heavy cream"},
+                    "unit": {"name": "c."},
                     "note": "",
-                    "original_text": "3/4 c. heavy cream"
+                    "original_text": "3/4 c. heavy cream",
                 },
                 {
                     "amount": 3,
-                    "food": {
-                        "name": "garlic"
-                    },
-                    "unit": {
-                        "name": "cloves"
-                    },
+                    "food": {"name": "garlic"},
+                    "unit": {"name": "cloves"},
                     "note": "minced",
-                    "original_text": "3 cloves garlic, minced"
+                    "original_text": "3 cloves garlic, minced",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Kosher salt"
-                    },
+                    "food": {"name": "Kosher salt"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Kosher salt"
+                    "original_text": "Kosher salt",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Freshly ground black pepper"
-                    },
+                    "food": {"name": "Freshly ground black pepper"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Freshly ground black pepper"
+                    "original_text": "Freshly ground black pepper",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "freshly grated Parmesan"
-                    },
-                    "unit": {
-                        "name": "c."
-                    },
+                    "food": {"name": "freshly grated Parmesan"},
+                    "unit": {"name": "c."},
                     "note": "",
-                    "original_text": "1 c. freshly grated Parmesan"
+                    "original_text": "1 c. freshly grated Parmesan",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "shredded mozzarella"
-                    },
-                    "unit": {
-                        "name": "c."
-                    },
+                    "food": {"name": "shredded mozzarella"},
+                    "unit": {"name": "c."},
                     "note": "",
-                    "original_text": "1 c. shredded mozzarella"
+                    "original_text": "1 c. shredded mozzarella",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Red pepper flakes, for garnish"
-                    },
+                    "food": {"name": "Red pepper flakes, for garnish"},
                     "unit": None,
                     "note": "optional",
-                    "original_text": "Red pepper flakes, for garnish (optional)"
-                }
-            ]
+                    "original_text": "Red pepper flakes, for garnish (optional)",
+                },
+            ],
         }
-    ]
-
+    ],
 }
 
 FOOD_NETWORK = {
-    'file': ['foodnetwork.html'],
+    "file": ["foodnetwork.html"],
     "url": "https://www.foodnetwork.com/recipes/bobby-flay/cast-iron-home-fries-recipe-1945083",
     "name": "Cast Iron Home Fries",
     "internal": True,
@@ -1183,66 +764,21 @@ FOOD_NETWORK = {
     "image_url": "https://food.fnr.sndimg.com/content/dam/images/food/editorial/homepage/fn-feature.jpg.rend.hgtvcom.406.229.suffix/1474463768097.jpeg",
     "source_url": "https://www.foodnetwork.com/recipes/bobby-flay/cast-iron-home-fries-recipe-1945083",
     "keywords": [
-        {
-            "label": "vegetarian",
-            "name": "vegetarian"
-        },
-        {
-            "label": "side dish",
-            "name": "side dish"
-        },
-        {
-            "label": "gluten free",
-            "name": "gluten free"
-        },
-        {
-            "label": "easter",
-            "name": "easter"
-        },
-        {
-            "label": "jalapeno recipes",
-            "name": "jalapeno recipes"
-        },
-        {
-            "label": "southwestern",
-            "name": "southwestern"
-        },
-        {
-            "label": "grilling",
-            "name": "grilling"
-        },
-        {
-            "label": "american",
-            "name": "american"
-        },
-        {
-            "label": "side-dish",
-            "name": "side-dish"
-        },
-        {
-            "label": "cast iron skillet",
-            "name": "cast iron skillet"
-        },
-        {
-            "label": "potato",
-            "name": "potato"
-        },
-        {
-            "label": "brunch",
-            "name": "brunch"
-        },
-        {
-            "label": "www.foodnetwork.com",
-            "name": "www.foodnetwork.com"
-        },
-        {
-            "label": "red potato recipes",
-            "name": "red potato recipes"
-        },
-        {
-            "label": "breakfast",
-            "name": "breakfast"
-        }
+        {"label": "vegetarian", "name": "vegetarian"},
+        {"label": "side dish", "name": "side dish"},
+        {"label": "gluten free", "name": "gluten free"},
+        {"label": "easter", "name": "easter"},
+        {"label": "jalapeno recipes", "name": "jalapeno recipes"},
+        {"label": "southwestern", "name": "southwestern"},
+        {"label": "grilling", "name": "grilling"},
+        {"label": "american", "name": "american"},
+        {"label": "side-dish", "name": "side-dish"},
+        {"label": "cast iron skillet", "name": "cast iron skillet"},
+        {"label": "potato", "name": "potato"},
+        {"label": "brunch", "name": "brunch"},
+        {"label": "www.foodnetwork.com", "name": "www.foodnetwork.com"},
+        {"label": "red potato recipes", "name": "red potato recipes"},
+        {"label": "breakfast", "name": "breakfast"},
     ],
     "steps": [
         {
@@ -1250,96 +786,68 @@ FOOD_NETWORK = {
             "ingredients": [
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "new red potatoes"
-                    },
-                    "unit": {
-                        "name": "pounds"
-                    },
+                    "food": {"name": "new red potatoes"},
+                    "unit": {"name": "pounds"},
                     "note": "cooked until tender and halved",
-                    "original_text": "2 pounds new red potatoes, cooked until tender and halved"
+                    "original_text": "2 pounds new red potatoes, cooked until tender and halved",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "onion"
-                    },
-                    "unit": {
-                        "name": "Spanish"
-                    },
+                    "food": {"name": "onion"},
+                    "unit": {"name": "Spanish"},
                     "note": "peeled and cut into 1/4-inch thick slices",
-                    "original_text": "1 Spanish onion, peeled and cut into 1/4-inch thick slices"
+                    "original_text": "1 Spanish onion, peeled and cut into 1/4-inch thick slices",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "bell pepper"
-                    },
-                    "unit": {
-                        "name": "red"
-                    },
+                    "food": {"name": "bell pepper"},
+                    "unit": {"name": "red"},
                     "note": "",
-                    "original_text": "1 red bell pepper"
+                    "original_text": "1 red bell pepper",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "bell pepper"
-                    },
-                    "unit": {
-                        "name": "yellow"
-                    },
+                    "food": {"name": "bell pepper"},
+                    "unit": {"name": "yellow"},
                     "note": "",
-                    "original_text": "1 yellow bell pepper"
+                    "original_text": "1 yellow bell pepper",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "chiles"
-                    },
-                    "unit": {
-                        "name": "jalapeno"
-                    },
+                    "food": {"name": "chiles"},
+                    "unit": {"name": "jalapeno"},
                     "note": "",
-                    "original_text": "2 jalapeno chiles"
+                    "original_text": "2 jalapeno chiles",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Vegetable oil"
-                    },
+                    "food": {"name": "Vegetable oil"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Vegetable oil"
+                    "original_text": "Vegetable oil",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Salt and freshly ground pepper"
-                    },
+                    "food": {"name": "Salt and freshly ground pepper"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Salt and freshly ground pepper"
+                    "original_text": "Salt and freshly ground pepper",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "butter"
-                    },
-                    "unit": {
-                        "name": "tablespoons"
-                    },
+                    "food": {"name": "butter"},
+                    "unit": {"name": "tablespoons"},
                     "note": "",
-                    "original_text": "2 tablespoons butter"
-                }
-            ]
+                    "original_text": "2 tablespoons butter",
+                },
+            ],
         }
     ],
-    "description": ""
+    "description": "",
 }
 
 GIALLOZAFFERANO = {
-    'file': ['giallozafferano.html'],
+    "file": ["giallozafferano.html"],
     "url": "https://ricette.giallozafferano.it/Strangolapreti-alla-trentina.html",
     "name": "Strangolapreti alla trentina",
     "internal": True,
@@ -1350,86 +858,29 @@ GIALLOZAFFERANO = {
     "image_url": "https://www.giallozafferano.it/images/226-22634/Strangolapreti-alla-trentina_650x433_wm.jpg",
     "source_url": "https://ricette.giallozafferano.it/Strangolapreti-alla-trentina.html",
     "keywords": [
-        {
-            "label": "cucinare",
-            "name": "cucinare"
-        },
-        {
-            "label": "burro",
-            "name": "burro"
-        },
-        {
-            "label": "ricette.giallozafferano.it",
-            "name": "ricette.giallozafferano.it"
-        },
-        {
-            "label": "latte intero",
-            "name": "latte intero"
-        },
-        {
-            "label": "cucina",
-            "name": "cucina"
-        },
-        {
-            "label": "trentingrana",
-            "name": "trentingrana"
-        },
-        {
-            "label": "farina 00",
-            "name": "farina 00"
-        },
-        {
-            "label": "ricette",
-            "name": "ricette"
-        },
-        {
-            "label": "pepe nero",
-            "name": "pepe nero"
-        },
-        {
-            "label": "pane",
-            "name": "pane"
-        },
-        {
-            "label": "pangrattato",
-            "name": "pangrattato"
-        },
-        {
-            "label": "salvia",
-            "name": "salvia"
-        },
+        {"label": "cucinare", "name": "cucinare"},
+        {"label": "burro", "name": "burro"},
+        {"label": "ricette.giallozafferano.it", "name": "ricette.giallozafferano.it"},
+        {"label": "latte intero", "name": "latte intero"},
+        {"label": "cucina", "name": "cucina"},
+        {"label": "trentingrana", "name": "trentingrana"},
+        {"label": "farina 00", "name": "farina 00"},
+        {"label": "ricette", "name": "ricette"},
+        {"label": "pepe nero", "name": "pepe nero"},
+        {"label": "pane", "name": "pane"},
+        {"label": "pangrattato", "name": "pangrattato"},
+        {"label": "salvia", "name": "salvia"},
         {
             "label": "strangolapreti alla trentina",
-            "name": "strangolapreti alla trentina"
+            "name": "strangolapreti alla trentina",
         },
-        {
-            "label": "spinaci",
-            "name": "spinaci"
-        },
-        {
-            "label": "noce moscata",
-            "name": "noce moscata"
-        },
-        {
-            "label": "primi piatti",
-            "name": "primi piatti"
-        },
-        {
-            "label": "ricetta",
-            "name": "ricetta"
-        },
-        {
-            "label": "sale fino",
-            "name": "sale fino"
-        },
-        {
-            "label": "uova",
-            "name": "uova"
-        },
-        {
-            "label": "olio extravergine d'oliva",
-            "name": "olio extravergine d'oliva"
-        }
+        {"label": "spinaci", "name": "spinaci"},
+        {"label": "noce moscata", "name": "noce moscata"},
+        {"label": "primi piatti", "name": "primi piatti"},
+        {"label": "ricetta", "name": "ricetta"},
+        {"label": "sale fino", "name": "sale fino"},
+        {"label": "uova", "name": "uova"},
+        {"label": "olio extravergine d'oliva", "name": "olio extravergine d'oliva"},
     ],
     "steps": [
         {
@@ -1437,129 +888,103 @@ GIALLOZAFFERANO = {
             "ingredients": [
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Spinaci 650 g"
-                    },
+                    "food": {"name": "Spinaci 650 g"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Spinaci 650 g"
+                    "original_text": "Spinaci 650 g",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Pane 80 g"
-                    },
+                    "food": {"name": "Pane 80 g"},
                     "unit": None,
                     "note": "raffermo o secco",
-                    "original_text": "Pane (raffermo o secco) 80 g"
+                    "original_text": "Pane (raffermo o secco) 80 g",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Latte intero 400 g"
-                    },
+                    "food": {"name": "Latte intero 400 g"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Latte intero 400 g"
+                    "original_text": "Latte intero 400 g",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Olio extravergine d'oliva 40 g"
-                    },
+                    "food": {"name": "Olio extravergine d'oliva 40 g"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Olio extravergine d'oliva 40 g"
+                    "original_text": "Olio extravergine d'oliva 40 g",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Uova (medie) 2"
-                    },
+                    "food": {"name": "Uova (medie) 2"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Uova (medie) 2"
+                    "original_text": "Uova (medie) 2",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Farina 00 160 g"
-                    },
+                    "food": {"name": "Farina 00 160 g"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Farina 00 160 g"
+                    "original_text": "Farina 00 160 g",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Pangrattato 40 g"
-                    },
+                    "food": {"name": "Pangrattato 40 g"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Pangrattato 40 g"
+                    "original_text": "Pangrattato 40 g",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Sale fino q.b."
-                    },
+                    "food": {"name": "Sale fino q.b."},
                     "unit": None,
                     "note": "",
-                    "original_text": "Sale fino q.b."
+                    "original_text": "Sale fino q.b.",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Pepe nero q.b."
-                    },
+                    "food": {"name": "Pepe nero q.b."},
                     "unit": None,
                     "note": "",
-                    "original_text": "Pepe nero q.b."
+                    "original_text": "Pepe nero q.b.",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Noce moscata q.b."
-                    },
+                    "food": {"name": "Noce moscata q.b."},
                     "unit": None,
                     "note": "",
-                    "original_text": "Noce moscata q.b."
+                    "original_text": "Noce moscata q.b.",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Burro 80 g"
-                    },
+                    "food": {"name": "Burro 80 g"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Burro 80 g"
+                    "original_text": "Burro 80 g",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Salvia q.b."
-                    },
+                    "food": {"name": "Salvia q.b."},
                     "unit": None,
                     "note": "",
-                    "original_text": "Salvia q.b."
+                    "original_text": "Salvia q.b.",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Trentingrana 100 g"
-                    },
+                    "food": {"name": "Trentingrana 100 g"},
                     "unit": None,
                     "note": "",
-                    "original_text": "Trentingrana 100 g"
-                }
-            ]
+                    "original_text": "Trentingrana 100 g",
+                },
+            ],
         }
     ],
-    "description": "Gli strangolapreti alla trentina sono un primo piatto, un'antica ricetta: gnocchi morbidi di pane raffermo con spinaci e conditi con burro e salvia!"
+    "description": "Gli strangolapreti alla trentina sono un primo piatto, un'antica ricetta: gnocchi morbidi di pane raffermo con spinaci e conditi con burro e salvia!",
 }
 
 JOURNAL_DES_FEMMES = {
-    'file': ['journaldesfemmes.html'],
+    "file": ["journaldesfemmes.html"],
     "url": "https://cuisine.journaldesfemmes.fr/recette/317747-ratatouille",
     "name": "Ratatouille : la meilleure recette",
     "internal": True,
@@ -1570,58 +995,19 @@ JOURNAL_DES_FEMMES = {
     "image_url": "https://img-3.journaldesfemmes.fr/s_p2VOy0cZy2NWbrxc73Pk-hWoY=/748x499/smart/4693908c8adc4f8f872c9191b4ca2f09/recipe-jdf/10026679.jpg",
     "source_url": "https://cuisine.journaldesfemmes.fr/recette/317747-ratatouille",
     "keywords": [
-        {
-            "label": "recettes poivron",
-            "name": "recettes poivron"
-        },
-        {
-            "label": "vegan",
-            "name": "vegan"
-        },
-        {
-            "label": "végétarien",
-            "name": "végétarien"
-        },
-        {
-            "label": "choix de la rédaction",
-            "name": "choix de la rédaction"
-        },
-        {
-            "label": "recettes ail",
-            "name": "recettes ail"
-        },
-        {
-            "label": "recettes d'été",
-            "name": "recettes d'été"
-        },
-        {
-            "label": "familial",
-            "name": "familial"
-        },
-        {
-            "label": "recettes aubergine",
-            "name": "recettes aubergine"
-        },
-        {
-            "label": "recettes françaises",
-            "name": "recettes françaises"
-        },
-        {
-            "label": "ratatouille",
-            "name": "ratatouille"
-        },
-        {
-            "label": "recettes oignon",
-            "name": "recettes oignon"
-        },
-        {
-            "label": "cuisine.journaldesfemmes.fr",
-            "name": "cuisine.journaldesfemmes.fr"
-        },
-        {
-            "label": "recettes courgette",
-            "name": "recettes courgette"
-        }
+        {"label": "recettes poivron", "name": "recettes poivron"},
+        {"label": "vegan", "name": "vegan"},
+        {"label": "végétarien", "name": "végétarien"},
+        {"label": "choix de la rédaction", "name": "choix de la rédaction"},
+        {"label": "recettes ail", "name": "recettes ail"},
+        {"label": "recettes d'été", "name": "recettes d'été"},
+        {"label": "familial", "name": "familial"},
+        {"label": "recettes aubergine", "name": "recettes aubergine"},
+        {"label": "recettes françaises", "name": "recettes françaises"},
+        {"label": "ratatouille", "name": "ratatouille"},
+        {"label": "recettes oignon", "name": "recettes oignon"},
+        {"label": "cuisine.journaldesfemmes.fr", "name": "cuisine.journaldesfemmes.fr"},
+        {"label": "recettes courgette", "name": "recettes courgette"},
     ],
     "steps": [
         {
@@ -1629,119 +1015,89 @@ JOURNAL_DES_FEMMES = {
             "ingredients": [
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "courgette"
-                    },
+                    "food": {"name": "courgette"},
                     "unit": None,
                     "note": "",
-                    "original_text": "2 courgette"
+                    "original_text": "2 courgette",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "aubergine"
-                    },
+                    "food": {"name": "aubergine"},
                     "unit": None,
                     "note": "",
-                    "original_text": "1 aubergine"
+                    "original_text": "1 aubergine",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "vert"
-                    },
-                    "unit": {
-                        "name": "poivron"
-                    },
+                    "food": {"name": "vert"},
+                    "unit": {"name": "poivron"},
                     "note": "",
-                    "original_text": "1 poivron vert"
+                    "original_text": "1 poivron vert",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "rouge"
-                    },
-                    "unit": {
-                        "name": "poivron"
-                    },
+                    "food": {"name": "rouge"},
+                    "unit": {"name": "poivron"},
                     "note": "",
-                    "original_text": "1 poivron rouge"
+                    "original_text": "1 poivron rouge",
                 },
                 {
                     "amount": 3,
-                    "food": {
-                        "name": "tomate"
-                    },
+                    "food": {"name": "tomate"},
                     "unit": None,
                     "note": "",
-                    "original_text": "3 tomate"
+                    "original_text": "3 tomate",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "oignon"
-                    },
+                    "food": {"name": "oignon"},
                     "unit": None,
                     "note": "",
-                    "original_text": "1 oignon"
+                    "original_text": "1 oignon",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "ail"
-                    },
-                    "unit": {
-                        "name": "gousse"
-                    },
+                    "food": {"name": "ail"},
+                    "unit": {"name": "gousse"},
                     "note": "",
-                    "original_text": "2 gousse ail"
+                    "original_text": "2 gousse ail",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "garni"
-                    },
-                    "unit": {
-                        "name": "bouquet"
-                    },
+                    "food": {"name": "garni"},
+                    "unit": {"name": "bouquet"},
                     "note": "",
-                    "original_text": "1 bouquet garni"
+                    "original_text": "1 bouquet garni",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "huile d'olive"
-                    },
+                    "food": {"name": "huile d'olive"},
                     "unit": None,
                     "note": "",
-                    "original_text": "huile d'olive"
+                    "original_text": "huile d'olive",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "sel"
-                    },
+                    "food": {"name": "sel"},
                     "unit": None,
                     "note": "",
-                    "original_text": "sel"
+                    "original_text": "sel",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "poivre"
-                    },
+                    "food": {"name": "poivre"},
                     "unit": None,
                     "note": "",
-                    "original_text": "poivre"
-                }
-            ]
+                    "original_text": "poivre",
+                },
+            ],
         }
     ],
-    "description": "La ratatouille est un recette d'été délicieuse, qui mettra du soleil dans vos assiettes ! Avec ses légumes, la ratatouille est idéale pour accompagner un barbecue ou des grillades. Découvrez aussi notre recette de ratatouille en vidéo."
+    "description": "La ratatouille est un recette d'été délicieuse, qui mettra du soleil dans vos assiettes ! Avec ses légumes, la ratatouille est idéale pour accompagner un barbecue ou des grillades. Découvrez aussi notre recette de ratatouille en vidéo.",
 }
 
 MADAME_DESSERT = {
-    'file': ['madamedessert.html', 'madamedessert.json'],
+    "file": ["madamedessert.html", "madamedessert.json"],
     "url": "https://madamedessert.de/schokoladenpudding-rezept-mit-echter-schokolade/#webpage",
     "name": "Schokoladenpudding Rezept mit echter Schokolade",
     "internal": True,
@@ -1751,29 +1107,11 @@ MADAME_DESSERT = {
     "waiting_time": 20,
     "image_url": "https://assets.madamedessert.de/wp-content/uploads/2020/02/25163328/Madame-Dessert_Schokopudding-Schokoladenpudding-mit-echter-Schokolade-0238-scaled.jpg",
     "keywords": [
-        {
-            "label": "schokopudding",
-            "name": "schokopudding"
-        },
-        {
-            "label": "pudding",
-            "name": "pudding",
-            "id": 117
-        },
-        {
-            "label": "schokoladenpudding",
-            "name": "schokoladenpudding",
-            "id": 124
-        },
-        {
-            "label": "dessert",
-            "name": "dessert",
-            "id": 42
-        },
-        {
-            "label": "schokolade",
-            "name": "schokolade"
-        }
+        {"label": "schokopudding", "name": "schokopudding"},
+        {"label": "pudding", "name": "pudding", "id": 117},
+        {"label": "schokoladenpudding", "name": "schokoladenpudding", "id": 124},
+        {"label": "dessert", "name": "dessert", "id": 42},
+        {"label": "schokolade", "name": "schokolade"},
     ],
     "steps": [
         {
@@ -1781,100 +1119,68 @@ MADAME_DESSERT = {
             "ingredients": [
                 {
                     "amount": 170,
-                    "food": {
-                        "name": "hochwertige Zartbitterschokolade"
-                    },
-                    "unit": {
-                        "name": "g"
-                    },
+                    "food": {"name": "hochwertige Zartbitterschokolade"},
+                    "unit": {"name": "g"},
                     "note": "60 – 80% Kakaogehalt",
-                    "original_text": "170 g hochwertige Zartbitterschokolade (60 – 80% Kakaogehalt)"
+                    "original_text": "170 g hochwertige Zartbitterschokolade (60 – 80% Kakaogehalt)",
                 },
                 {
                     "amount": 700,
-                    "food": {
-                        "name": "Vollmilch"
-                    },
-                    "unit": {
-                        "name": "ml"
-                    },
+                    "food": {"name": "Vollmilch"},
+                    "unit": {"name": "ml"},
                     "note": "",
-                    "original_text": "700 ml Vollmilch"
+                    "original_text": "700 ml Vollmilch",
                 },
                 {
                     "amount": 120,
-                    "food": {
-                        "name": "Sahne"
-                    },
-                    "unit": {
-                        "name": "ml"
-                    },
+                    "food": {"name": "Sahne"},
+                    "unit": {"name": "ml"},
                     "note": "",
-                    "original_text": "120 ml Sahne"
+                    "original_text": "120 ml Sahne",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "Prise Salz"
-                    },
-                    "unit": {
-                        "name": "gute"
-                    },
+                    "food": {"name": "Prise Salz"},
+                    "unit": {"name": "gute"},
                     "note": "",
-                    "original_text": "1 gute Prise Salz"
+                    "original_text": "1 gute Prise Salz",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "Vanilleextrakt"
-                    },
-                    "unit": {
-                        "name": "TL"
-                    },
+                    "food": {"name": "Vanilleextrakt"},
+                    "unit": {"name": "TL"},
                     "note": "",
-                    "original_text": "1 TL Vanilleextrakt"
+                    "original_text": "1 TL Vanilleextrakt",
                 },
                 {
                     "amount": 150,
-                    "food": {
-                        "name": "Zucker"
-                    },
-                    "unit": {
-                        "name": "g"
-                    },
+                    "food": {"name": "Zucker"},
+                    "unit": {"name": "g"},
                     "note": "",
-                    "original_text": "150 g Zucker"
+                    "original_text": "150 g Zucker",
                 },
                 {
                     "amount": 30,
-                    "food": {
-                        "name": "Speisestärke"
-                    },
-                    "unit": {
-                        "name": "g"
-                    },
+                    "food": {"name": "Speisestärke"},
+                    "unit": {"name": "g"},
                     "note": "",
-                    "original_text": "30 g Speisestärke"
+                    "original_text": "30 g Speisestärke",
                 },
                 {
                     "amount": 6,
-                    "food": {
-                        "name": "(Größe L)"
-                    },
-                    "unit": {
-                        "name": "Eigelbe"
-                    },
+                    "food": {"name": "(Größe L)"},
+                    "unit": {"name": "Eigelbe"},
                     "note": "bei Raumtemperatur",
-                    "original_text": "6 Eigelbe (Größe L) (bei Raumtemperatur)"
-                }
-            ]
+                    "original_text": "6 Eigelbe (Größe L) (bei Raumtemperatur)",
+                },
+            ],
         }
     ],
-    "description": "Die besten Desserts stecken für mich voller Kindheitserinnerungen und jeder Menge Schokolade, so wie dieses Schokoladenpudding Rezept. Außerdem ist so ein cremiger Schokopudding mit echter Schokolade einfach das perfekte Soulfood."
+    "description": "Die besten Desserts stecken für mich voller Kindheitserinnerungen und jeder Menge Schokolade, so wie dieses Schokoladenpudding Rezept. Außerdem ist so ein cremiger Schokopudding mit echter Schokolade einfach das perfekte Soulfood.",
 }
 
 MARMITON = {
-    'file': ['marmiton.html'],
+    "file": ["marmiton.html"],
     "url": "https://www.marmiton.org/recettes/recette_fricassee-d-agneau-a-l-oseille_22719.aspx",
     "name": "Fricassée d'agneau à l'oseille",
     "internal": True,
@@ -1885,62 +1191,23 @@ MARMITON = {
     "image_url": "https://assets.afcdn.com/recipe/20120503/1360_w1024h1024c1cx1181cy1771.webp",
     "source_url": "https://www.marmiton.org/recettes/recette_fricassee-d-agneau-a-l-oseille_22719.aspx",
     "keywords": [
-        {
-            "label": "moyen",
-            "name": "moyen"
-        },
-        {
-            "label": "huile",
-            "name": "huile"
-        },
-        {
-            "label": "oignon",
-            "name": "oignon"
-        },
-        {
-            "label": "www.marmiton.org",
-            "name": "www.marmiton.org"
-        },
+        {"label": "moyen", "name": "moyen"},
+        {"label": "huile", "name": "huile"},
+        {"label": "oignon", "name": "oignon"},
+        {"label": "www.marmiton.org", "name": "www.marmiton.org"},
         {
             "label": "fricassée d'agneau à l'oseille",
-            "name": "fricassée d'agneau à l'oseille"
+            "name": "fricassée d'agneau à l'oseille",
         },
-        {
-            "label": "farine",
-            "name": "farine"
-        },
-        {
-            "label": "bouillon",
-            "name": "bouillon"
-        },
-        {
-            "label": "poivre",
-            "name": "poivre"
-        },
-        {
-            "label": "sel",
-            "name": "sel"
-        },
-        {
-            "label": "très facile",
-            "name": "très facile"
-        },
-        {
-            "label": "épaule",
-            "name": "épaule"
-        },
-        {
-            "label": "oseille",
-            "name": "oseille"
-        },
-        {
-            "label": "jaune d'oeuf",
-            "name": "jaune d'oeuf"
-        },
-        {
-            "label": "beurre",
-            "name": "beurre"
-        }
+        {"label": "farine", "name": "farine"},
+        {"label": "bouillon", "name": "bouillon"},
+        {"label": "poivre", "name": "poivre"},
+        {"label": "sel", "name": "sel"},
+        {"label": "très facile", "name": "très facile"},
+        {"label": "épaule", "name": "épaule"},
+        {"label": "oseille", "name": "oseille"},
+        {"label": "jaune d'oeuf", "name": "jaune d'oeuf"},
+        {"label": "beurre", "name": "beurre"},
     ],
     "steps": [
         {
@@ -1948,116 +1215,82 @@ MARMITON = {
             "ingredients": [
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "d'épaule agneau"
-                    },
-                    "unit": {
-                        "name": "kg"
-                    },
+                    "food": {"name": "d'épaule agneau"},
+                    "unit": {"name": "kg"},
                     "note": "",
-                    "original_text": "1 kg d'épaule agneau"
+                    "original_text": "1 kg d'épaule agneau",
                 },
                 {
                     "amount": 200,
-                    "food": {
-                        "name": "d'oseille"
-                    },
-                    "unit": {
-                        "name": "g"
-                    },
+                    "food": {"name": "d'oseille"},
+                    "unit": {"name": "g"},
                     "note": "",
-                    "original_text": "200 g d'oseille"
+                    "original_text": "200 g d'oseille",
                 },
                 {
                     "amount": 80,
-                    "food": {
-                        "name": "de beurre"
-                    },
-                    "unit": {
-                        "name": "g"
-                    },
+                    "food": {"name": "de beurre"},
+                    "unit": {"name": "g"},
                     "note": "",
-                    "original_text": "80 g de beurre"
+                    "original_text": "80 g de beurre",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "moyens"
-                    },
-                    "unit": {
-                        "name": "oignons"
-                    },
+                    "food": {"name": "moyens"},
+                    "unit": {"name": "oignons"},
                     "note": "",
-                    "original_text": "2 oignons moyens"
+                    "original_text": "2 oignons moyens",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "d'oeuf"
-                    },
-                    "unit": {
-                        "name": "jaunes"
-                    },
+                    "food": {"name": "d'oeuf"},
+                    "unit": {"name": "jaunes"},
                     "note": "",
-                    "original_text": "1 jaunes d'oeuf"
+                    "original_text": "1 jaunes d'oeuf",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "à soupe de farine"
-                    },
-                    "unit": {
-                        "name": "cuillères"
-                    },
+                    "food": {"name": "à soupe de farine"},
+                    "unit": {"name": "cuillères"},
                     "note": "",
-                    "original_text": "1 cuillères à soupe de farine"
+                    "original_text": "1 cuillères à soupe de farine",
                 },
                 {
                     "amount": 20,
-                    "food": {
-                        "name": "de bouillon"
-                    },
-                    "unit": {
-                        "name": "cl"
-                    },
+                    "food": {"name": "de bouillon"},
+                    "unit": {"name": "cl"},
                     "note": "",
-                    "original_text": "20 cl de bouillon"
+                    "original_text": "20 cl de bouillon",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "huile"
-                    },
+                    "food": {"name": "huile"},
                     "unit": None,
                     "note": "",
-                    "original_text": "huile"
+                    "original_text": "huile",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "poivre"
-                    },
+                    "food": {"name": "poivre"},
                     "unit": None,
                     "note": "",
-                    "original_text": "poivre"
+                    "original_text": "poivre",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "sel"
-                    },
+                    "food": {"name": "sel"},
                     "unit": None,
                     "note": "",
-                    "original_text": "sel"
-                }
-            ]
+                    "original_text": "sel",
+                },
+            ],
         }
     ],
-    "description": "épaule, oseille, beurre, oignon, jaune d'oeuf, farine, bouillon, huile, poivre, sel"
+    "description": "épaule, oseille, beurre, oignon, jaune d'oeuf, farine, bouillon, huile, poivre, sel",
 }
 
 TASTE_OF_HOME = {
-    'file': ['tasteofhome.html'],
+    "file": ["tasteofhome.html"],
     "url": "https://www.tasteofhome.com/recipes/rhubarb-tart/",
     "name": "Rhubarb Tart",
     "internal": True,
@@ -2068,22 +1301,10 @@ TASTE_OF_HOME = {
     "image_url": "https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Rhubarb-Tart_EXPS_THN17_207631_C06_15_6b.jpg",
     "source_url": "https://www.tasteofhome.com/recipes/rhubarb-tart/",
     "keywords": [
-        {
-            "label": "www.tasteofhome.com",
-            "name": "www.tasteofhome.com"
-        },
-        {
-            "label": "north america",
-            "name": "north america"
-        },
-        {
-            "label": "new england",
-            "name": "new england"
-        },
-        {
-            "label": "desserts",
-            "name": "desserts"
-        }
+        {"label": "www.tasteofhome.com", "name": "www.tasteofhome.com"},
+        {"label": "north america", "name": "north america"},
+        {"label": "new england", "name": "new england"},
+        {"label": "desserts", "name": "desserts"},
     ],
     "steps": [
         {
@@ -2091,142 +1312,97 @@ TASTE_OF_HOME = {
             "ingredients": [
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "frozen puff pastry (17.30 ounces)"
-                    },
-                    "unit": {
-                        "name": "package"
-                    },
+                    "food": {"name": "frozen puff pastry (17.30 ounces)"},
+                    "unit": {"name": "package"},
                     "note": "thawed",
-                    "original_text": "1 package frozen puff pastry (17.30 ounces), thawed"
+                    "original_text": "1 package frozen puff pastry (17.30 ounces), thawed",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "egg"
-                    },
-                    "unit": {
-                        "name": "large"
-                    },
+                    "food": {"name": "egg"},
+                    "unit": {"name": "large"},
                     "note": "",
-                    "original_text": "1 large egg"
+                    "original_text": "1 large egg",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "water"
-                    },
-                    "unit": {
-                        "name": "tablespoon"
-                    },
+                    "food": {"name": "water"},
+                    "unit": {"name": "tablespoon"},
                     "note": "",
-                    "original_text": "1 tablespoon water"
+                    "original_text": "1 tablespoon water",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "RHUBARB TOPPING:"
-                    },
+                    "food": {"name": "RHUBARB TOPPING:"},
                     "unit": None,
                     "note": "",
-                    "original_text": "RHUBARB TOPPING:"
+                    "original_text": "RHUBARB TOPPING:",
                 },
                 {
                     "amount": 12,
-                    "food": {
-                        "name": "ribs"
-                    },
-                    "unit": {
-                        "name": "rhubarb"
-                    },
+                    "food": {"name": "ribs"},
+                    "unit": {"name": "rhubarb"},
                     "note": "1/2 inch x 7 inches",
-                    "original_text": "12 rhubarb ribs (1/2 inch x 7 inches)"
+                    "original_text": "12 rhubarb ribs (1/2 inch x 7 inches)",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "orange juice"
-                    },
-                    "unit": {
-                        "name": "cup"
-                    },
+                    "food": {"name": "orange juice"},
+                    "unit": {"name": "cup"},
                     "note": "",
-                    "original_text": "1 cup orange juice"
+                    "original_text": "1 cup orange juice",
                 },
                 {
                     "amount": 0.5,
-                    "food": {
-                        "name": "honey"
-                    },
-                    "unit": {
-                        "name": "cup"
-                    },
+                    "food": {"name": "honey"},
+                    "unit": {"name": "cup"},
                     "note": "",
-                    "original_text": "1/2 cup honey"
+                    "original_text": "1/2 cup honey",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "amaretto"
-                    },
-                    "unit": {
-                        "name": "tablespoons"
-                    },
+                    "food": {"name": "amaretto"},
+                    "unit": {"name": "tablespoons"},
                     "note": "",
-                    "original_text": "2 tablespoons amaretto"
+                    "original_text": "2 tablespoons amaretto",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "FILLING:"
-                    },
+                    "food": {"name": "FILLING:"},
                     "unit": None,
                     "note": "",
-                    "original_text": "FILLING:"
+                    "original_text": "FILLING:",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "(8 ounces) mascarpone cheese"
-                    },
-                    "unit": {
-                        "name": "package"
-                    },
+                    "food": {"name": "(8 ounces) mascarpone cheese"},
+                    "unit": {"name": "package"},
                     "note": "",
-                    "original_text": "1 package (8 ounces) mascarpone cheese"
+                    "original_text": "1 package (8 ounces) mascarpone cheese",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "amaretto"
-                    },
-                    "unit": {
-                        "name": "tablespoons"
-                    },
+                    "food": {"name": "amaretto"},
+                    "unit": {"name": "tablespoons"},
                     "note": "",
-                    "original_text": "2 tablespoons amaretto"
+                    "original_text": "2 tablespoons amaretto",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "honey"
-                    },
-                    "unit": {
-                        "name": "tablespoon"
-                    },
+                    "food": {"name": "honey"},
+                    "unit": {"name": "tablespoon"},
                     "note": "",
-                    "original_text": "1 tablespoon honey"
-                }
-            ]
+                    "original_text": "1 tablespoon honey",
+                },
+            ],
         }
     ],
-    "description": "The rhubarb flavor in this tart balances nicely with the honey and amaretto. The mascarpone cheese makes it rich and creamy. Sometimes I'll even double the rhubarb for really sumptuous tarts. —Ellen Riley, Murfreesboro, Tennessee"
+    "description": "The rhubarb flavor in this tart balances nicely with the honey and amaretto. The mascarpone cheese makes it rich and creamy. Sometimes I'll even double the rhubarb for really sumptuous tarts. —Ellen Riley, Murfreesboro, Tennessee",
 }
 
 THE_SPRUCE_EATS = {
-    'file': ['thespruceeats.html'],
-    'url': 'https://www.thespruceeats.com/creamy-potato-soup-with-ham-3059797',
-
+    "file": ["thespruceeats.html"],
+    "url": "https://www.thespruceeats.com/creamy-potato-soup-with-ham-3059797",
     "name": "Creamy Potato Soup With Ham",
     "servings": 6,
     "servings_text": "servings",
@@ -2269,7 +1445,7 @@ THE_SPRUCE_EATS = {
         {
             "label": "dinner",
             "name": "dinner",
-        }
+        },
     ],
     "steps": [
         {
@@ -2277,191 +1453,131 @@ THE_SPRUCE_EATS = {
             "ingredients": [
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "butter"
-                    },
-                    "unit": {
-                        "name": "tablespoons"
-                    },
+                    "food": {"name": "butter"},
+                    "unit": {"name": "tablespoons"},
                     "note": "",
-                    "original_text": "2 tablespoons unsalted butter"
+                    "original_text": "2 tablespoons unsalted butter",
                 },
                 {
                     "amount": 1.5,
-                    "food": {
-                        "name": "2 cups coarsely chopped onion"
-                    },
-                    "unit": {
-                        "name": "to"
-                    },
+                    "food": {"name": "2 cups coarsely chopped onion"},
+                    "unit": {"name": "to"},
                     "note": "",
-                    "original_text": "1 1/2 to 2 cups coarsely chopped onion"
+                    "original_text": "1 1/2 to 2 cups coarsely chopped onion",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "coarsely chopped celery"
-                    },
-                    "unit": {
-                        "name": "cups"
-                    },
+                    "food": {"name": "coarsely chopped celery"},
+                    "unit": {"name": "cups"},
                     "note": "",
-                    "original_text": "1 cup coarsely chopped celery"
+                    "original_text": "1 cup coarsely chopped celery",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "carrots"
-                    },
-                    "unit": {
-                        "name": "large"
-                    },
+                    "food": {"name": "carrots"},
+                    "unit": {"name": "large"},
                     "note": "peeled and coarsely chopped",
-                    "original_text": "2 large carrots, peeled and coarsely chopped"
+                    "original_text": "2 large carrots, peeled and coarsely chopped",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "ham"
-                    },
-                    "unit": {
-                        "name": "pounds"
-                    },
+                    "food": {"name": "ham"},
+                    "unit": {"name": "pounds"},
                     "note": "diced",
-                    "original_text": "1 pound ham, diced"
+                    "original_text": "1 pound ham, diced",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "garlic"
-                    },
-                    "unit": {
-                        "name": "cloves"
-                    },
+                    "food": {"name": "garlic"},
+                    "unit": {"name": "cloves"},
                     "note": "minced",
-                    "original_text": "1 clove garlic, minced"
+                    "original_text": "1 clove garlic, minced",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "vegetable broth"
-                    },
-                    "unit": {
-                        "name": "cups"
-                    },
+                    "food": {"name": "vegetable broth"},
+                    "unit": {"name": "cups"},
                     "note": "",
-                    "original_text": "2 cups vegetable broth"
+                    "original_text": "2 cups vegetable broth",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "water"
-                    },
-                    "unit": {
-                        "name": "cups"
-                    },
+                    "food": {"name": "water"},
+                    "unit": {"name": "cups"},
                     "note": "",
-                    "original_text": "1 cup water"
+                    "original_text": "1 cup water",
                 },
                 {
                     "amount": 4,
-                    "food": {
-                        "name": "5 cups diced peeled potatoes"
-                    },
-                    "unit": {
-                        "name": "to"
-                    },
+                    "food": {"name": "5 cups diced peeled potatoes"},
+                    "unit": {"name": "to"},
                     "note": "",
-                    "original_text": "4 to 5 cups diced peeled potatoes"
+                    "original_text": "4 to 5 cups diced peeled potatoes",
                 },
                 {
                     "amount": 3,
-                    "food": {
-                        "name": "all purpose flour"
-                    },
-                    "unit": {
-                        "name": "tablespoons"
-                    },
+                    "food": {"name": "all purpose flour"},
+                    "unit": {"name": "tablespoons"},
                     "note": "",
-                    "original_text": "3 tablespoons all-purpose flour"
+                    "original_text": "3 tablespoons all-purpose flour",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "heavy cream"
-                    },
-                    "unit": {
-                        "name": "cups"
-                    },
+                    "food": {"name": "heavy cream"},
+                    "unit": {"name": "cups"},
                     "note": "",
-                    "original_text": "1 cup heavy cream"
+                    "original_text": "1 cup heavy cream",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "half-and-half"
-                    },
-                    "unit": {
-                        "name": "cups"
-                    },
+                    "food": {"name": "half-and-half"},
+                    "unit": {"name": "cups"},
                     "note": "or whole milk, more if needed",
-                    "original_text": "1 cup half-and-half, or whole milk, more if needed"
+                    "original_text": "1 cup half-and-half, or whole milk, more if needed",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "salt"
-                    },
+                    "food": {"name": "salt"},
                     "unit": None,
                     "note": "to taste",
-                    "original_text": "Salt, to taste"
+                    "original_text": "Salt, to taste",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Freshly ground black pepper"
-                    },
+                    "food": {"name": "Freshly ground black pepper"},
                     "unit": None,
                     "note": "to taste",
-                    "original_text": "Freshly ground black pepper, to taste"
+                    "original_text": "Freshly ground black pepper, to taste",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "finely chopped fresh parsley"
-                    },
-                    "unit": {
-                        "name": "tablespoons"
-                    },
+                    "food": {"name": "finely chopped fresh parsley"},
+                    "unit": {"name": "tablespoons"},
                     "note": "optional",
-                    "original_text": "2 tablespoons finely chopped fresh parsley, optional"
+                    "original_text": "2 tablespoons finely chopped fresh parsley, optional",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Thinly sliced green onions or chives"
-                    },
+                    "food": {"name": "Thinly sliced green onions or chives"},
                     "unit": None,
                     "note": "for garnish",
-                    "original_text": "Thinly sliced green onions or chives, for garnish"
+                    "original_text": "Thinly sliced green onions or chives, for garnish",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "Shredded cheddar cheese"
-                    },
+                    "food": {"name": "Shredded cheddar cheese"},
                     "unit": None,
                     "note": "or cheddar-jack blend, for garnish, optional",
-                    "original_text": "Shredded cheddar cheese, or cheddar-jack blend, for garnish, optional"
-                }
-            ]
+                    "original_text": "Shredded cheddar cheese, or cheddar-jack blend, for garnish, optional",
+                },
+            ],
         }
     ],
-    "description": "This is a creamy potato soup with ham, garlic, cream, and chopped vegetables. This soup is easy to prepare and is ready in under an hour."
+    "description": "This is a creamy potato soup with ham, garlic, cream, and chopped vegetables. This soup is easy to prepare and is ready in under an hour.",
 }
 
 TUDOGOSTOSO = {
-    'file': ['tudogostoso.html'],
+    "file": ["tudogostoso.html"],
     "url": "https://www.tudogostoso.com.br/receita/146568-arroz-com-bacalhau-tomate-e-ervas.html",
     "name": "Arroz com bacalhau, tomate e ervas",
     "internal": True,
@@ -2472,22 +1588,13 @@ TUDOGOSTOSO = {
     "image_url": "https://img.itdg.com.br/tdg/images/recipes/000/146/568/92699/92699_original.jpg",
     "source_url": "https://www.tudogostoso.com.br/receita/146568-arroz-com-bacalhau-tomate-e-ervas.html",
     "keywords": [
-        {
-            "label": "www.tudogostoso.com.br",
-            "name": "www.tudogostoso.com.br"
-        },
+        {"label": "www.tudogostoso.com.br", "name": "www.tudogostoso.com.br"},
         {
             "label": "receita de arroz com bacalhau",
-            "name": "receita de arroz com bacalhau"
+            "name": "receita de arroz com bacalhau",
         },
-        {
-            "label": "prato único",
-            "name": "prato único"
-        },
-        {
-            "label": "tomate e ervas",
-            "name": "tomate e ervas"
-        }
+        {"label": "prato único", "name": "prato único"},
+        {"label": "tomate e ervas", "name": "tomate e ervas"},
     ],
     "steps": [
         {
@@ -2495,110 +1602,76 @@ TUDOGOSTOSO = {
             "ingredients": [
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "(sopa) de azeite"
-                    },
-                    "unit": {
-                        "name": "colheres"
-                    },
+                    "food": {"name": "(sopa) de azeite"},
+                    "unit": {"name": "colheres"},
                     "note": "",
-                    "original_text": "2 colheres (sopa) de azeite"
+                    "original_text": "2 colheres (sopa) de azeite",
                 },
                 {
                     "amount": 10,
-                    "food": {
-                        "name": "cortados ao meio"
-                    },
-                    "unit": {
-                        "name": "tomates-cereja"
-                    },
+                    "food": {"name": "cortados ao meio"},
+                    "unit": {"name": "tomates-cereja"},
                     "note": "",
-                    "original_text": "10 tomates-cereja cortados ao meio"
+                    "original_text": "10 tomates-cereja cortados ao meio",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "meia colher (chá) de tomilho fresco"
-                    },
+                    "food": {"name": "meia colher (chá) de tomilho fresco"},
                     "unit": None,
                     "note": "",
-                    "original_text": "meia colher (chá) de tomilho fresco"
+                    "original_text": "meia colher (chá) de tomilho fresco",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "meia colher (chá) de alecrim fresco picado"
-                    },
+                    "food": {"name": "meia colher (chá) de alecrim fresco picado"},
                     "unit": None,
                     "note": "",
-                    "original_text": "meia colher (chá) de alecrim fresco picado"
+                    "original_text": "meia colher (chá) de alecrim fresco picado",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "(sopa) de uvas-passas pretas sem sementes"
-                    },
-                    "unit": {
-                        "name": "colheres"
-                    },
+                    "food": {"name": "(sopa) de uvas-passas pretas sem sementes"},
+                    "unit": {"name": "colheres"},
                     "note": "",
-                    "original_text": "2 colheres (sopa) de uvas-passas pretas sem sementes"
+                    "original_text": "2 colheres (sopa) de uvas-passas pretas sem sementes",
                 },
                 {
                     "amount": 300,
-                    "food": {
-                        "name": "de bacalhau dessalgado e desfiado"
-                    },
-                    "unit": {
-                        "name": "g"
-                    },
+                    "food": {"name": "de bacalhau dessalgado e desfiado"},
+                    "unit": {"name": "g"},
                     "note": "",
-                    "original_text": "300 g de bacalhau dessalgado e desfiado"
+                    "original_text": "300 g de bacalhau dessalgado e desfiado",
                 },
                 {
                     "amount": 0,
-                    "food": {
-                        "name": "meio pimentão amarelo pequeno picado"
-                    },
+                    "food": {"name": "meio pimentão amarelo pequeno picado"},
                     "unit": None,
                     "note": "",
-                    "original_text": "meio pimentão amarelo pequeno picado"
+                    "original_text": "meio pimentão amarelo pequeno picado",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "(chá) de arroz lavado e escorrido"
-                    },
-                    "unit": {
-                        "name": "xícara"
-                    },
+                    "food": {"name": "(chá) de arroz lavado e escorrido"},
+                    "unit": {"name": "xícara"},
                     "note": "",
-                    "original_text": "1 xícara (chá) de arroz lavado e escorrido"
+                    "original_text": "1 xícara (chá) de arroz lavado e escorrido",
                 },
                 {
                     "amount": 1,
-                    "food": {
-                        "name": "de tempero knorr meu arroz extra alho"
-                    },
-                    "unit": {
-                        "name": "sachê"
-                    },
+                    "food": {"name": "de tempero knorr meu arroz extra alho"},
+                    "unit": {"name": "sachê"},
                     "note": "",
-                    "original_text": "1 sachê de tempero knorr meu arroz extra alho"
+                    "original_text": "1 sachê de tempero knorr meu arroz extra alho",
                 },
                 {
                     "amount": 2,
-                    "food": {
-                        "name": "(chá) de água"
-                    },
-                    "unit": {
-                        "name": "xícaras"
-                    },
+                    "food": {"name": "(chá) de água"},
+                    "unit": {"name": "xícaras"},
                     "note": "",
-                    "original_text": "2 xícaras (chá) de água"
-                }
-            ]
+                    "original_text": "2 xícaras (chá) de água",
+                },
+            ],
         }
     ],
-    "description": "Receita de Arroz com bacalhau, tomate e ervas. Enviada por TudoGostoso e demora apenas 40 minutos."
+    "description": "Receita de Arroz com bacalhau, tomate e ervas. Enviada por TudoGostoso e demora apenas 40 minutos.",
 }

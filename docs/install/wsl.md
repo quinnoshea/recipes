@@ -26,7 +26,7 @@ we are just giving docker a file to point to. You can create a credentials file 
 After you run the command docker-compose up -d, you may encounter an error similar to the one below:
 fixing permissions on existing directory /var/lib/postgresql/data ... 2023-03-01T15:38:27.140501700Z chmod: /var/lib/postgresql/data: Operation not permitted
 
-This indicates that the postgresql user 'postgres' does not have the necessary permissions to 
+This indicates that the postgresql user 'postgres' does not have the necessary permissions to
 change the permissions of the /var/lib/postgresql/data directory.
 Note: This issue does not occuer in the Powershell terminal, so it might be easier to install Tandoor in powershell and continue development using WSL.
 Steps to fix this error:
@@ -45,7 +45,7 @@ Your folder structure should look like this with docker-compose.yml and docker-e
 
 The docker-entrypoint.sh file should look like this:
 ![image](https://user-images.githubusercontent.com/100102599/225214795-102c9e53-b790-498a-a6d6-ad0bcc980b2f.png)
- 
+
 3.	Open the docker-compose.yml file
 4.	Add an entrypoint configuration to the db_recipes service
 entrypoint:
@@ -53,5 +53,5 @@ entrypoint:
 This command makes sure that the docker-entrypoint.sh file is run first before the db_recipes services is started. Using this, we set the database user permission before they are needed, so it gets rid of the error.
 Your docker-compose.yml file should look like this:
 ![image](https://user-images.githubusercontent.com/100102599/225214865-869c9b24-61cf-4069-aa98-a7e18a165105.png)
- 
+
 5.	Run docker-compose up -d, all the containers should run!

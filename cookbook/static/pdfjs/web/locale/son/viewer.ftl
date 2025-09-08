@@ -253,4 +253,3 @@ pdfjs-web-fonts-disabled = Interneti šigirawey kay: ši hin ka goy nda PDF šig
 
 
 ## Edit signature description dialog
-

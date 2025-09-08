@@ -286,4 +286,3 @@ pdfjs-web-fonts-disabled = वेब टंक असमर्थीत आह�
 
 
 ## Edit signature description dialog
-

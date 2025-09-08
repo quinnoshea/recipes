@@ -3,16 +3,17 @@ import inspect
 import random
 import uuid
 
-import pytest
 from django.contrib import auth
+
+import pytest
 from django_scopes import scopes_disabled
 from pytest_factoryboy import register
 
 from cookbook.models import Food, Ingredient, Recipe, Step, Unit
 from cookbook.tests.factories import SpaceFactory, UserFactory
 
-register(SpaceFactory, 'space_1')
-register(SpaceFactory, 'space_2')
+register(SpaceFactory, "space_1")
+register(SpaceFactory, "space_2")
 
 
 # register(FoodFactory, space=LazyFixture('space_2'))
@@ -38,6 +39,7 @@ def enable_db_access_for_all_tests(db):
 
 # ---------------------- OBJECT FIXTURES ---------------------
 
+
 def get_random_recipe(space_1, u1_s1):
     r = Recipe.objects.create(
         name=str(uuid.uuid4()),
@@ -49,10 +51,16 @@ def get_random_recipe(space_1, u1_s1):
         internal=True,
     )
 
-    s1 = Step.objects.create(name=str(uuid.uuid4()),
-                             instruction=str(uuid.uuid4()), space=space_1, )
-    s2 = Step.objects.create(name=str(uuid.uuid4()),
-                             instruction=str(uuid.uuid4()), space=space_1, )
+    s1 = Step.objects.create(
+        name=str(uuid.uuid4()),
+        instruction=str(uuid.uuid4()),
+        space=space_1,
+    )
+    s2 = Step.objects.create(
+        name=str(uuid.uuid4()),
+        instruction=str(uuid.uuid4()),
+        space=space_1,
+    )
 
     r.steps.add(s1)
     r.steps.add(s2)
@@ -61,10 +69,13 @@ def get_random_recipe(space_1, u1_s1):
         s1.ingredients.add(
             Ingredient.objects.create(
                 amount=1,
-                food=Food.objects.get_or_create(
-                    name=str(uuid.uuid4()), space=space_1)[0],
+                food=Food.objects.get_or_create(name=str(uuid.uuid4()), space=space_1)[
+                    0
+                ],
                 unit=Unit.objects.create(
-                    name=str(uuid.uuid4()), space=space_1, ),
+                    name=str(uuid.uuid4()),
+                    space=space_1,
+                ),
                 note=str(uuid.uuid4()),
                 space=space_1,
             )
@@ -73,10 +84,13 @@ def get_random_recipe(space_1, u1_s1):
         s2.ingredients.add(
             Ingredient.objects.create(
                 amount=1,
-                food=Food.objects.get_or_create(
-                    name=str(uuid.uuid4()), space=space_1)[0],
+                food=Food.objects.get_or_create(name=str(uuid.uuid4()), space=space_1)[
+                    0
+                ],
                 unit=Unit.objects.create(
-                    name=str(uuid.uuid4()), space=space_1, ),
+                    name=str(uuid.uuid4()),
+                    space=space_1,
+                ),
                 note=str(uuid.uuid4()),
                 space=space_1,
             )
@@ -94,10 +108,16 @@ def get_random_json_recipe():
             {
                 "instruction": str(uuid.uuid4()),
                 "ingredients": [
-                    {"food": {"name": str(uuid.uuid4())}, "unit": {"name": str(
-                        uuid.uuid4())}, "amount": random.randint(0, 10)},
-                    {"food": {"name": str(uuid.uuid4())}, "unit": {"name": str(
-                        uuid.uuid4())}, "amount": random.randint(0, 10)},
+                    {
+                        "food": {"name": str(uuid.uuid4())},
+                        "unit": {"name": str(uuid.uuid4())},
+                        "amount": random.randint(0, 10),
+                    },
+                    {
+                        "food": {"name": str(uuid.uuid4())},
+                        "unit": {"name": str(uuid.uuid4())},
+                        "amount": random.randint(0, 10),
+                    },
                 ],
             }
         ],
@@ -110,7 +130,7 @@ def validate_recipe(expected, recipe):
     expected_lists = {}
     target_lists = {}
     # file and url are metadata not related to the recipe
-    [expected.pop(k) for k in ['file', 'url'] if k in expected]
+    [expected.pop(k) for k in ["file", "url"] if k in expected]
     # if a key is a list remove it to deal with later
     lists = [k for k, v in expected.items() if isinstance(v, list)]
     for k in lists:
@@ -123,22 +143,25 @@ def validate_recipe(expected, recipe):
     except AssertionError:
         for key in expected:
             if expected[key] != recipe[key]:
-                print('Expected : ', expected[key], ' got: ', recipe[key])
+                print("Expected : ", expected[key], " got: ", recipe[key])
 
     # this is later, it may or may not work with keys that have list values
     # it also may or may not work on complex nested dicts
     for key in expected_lists:
         for k in expected_lists[key]:
             try:
-                print('comparing ', any([dict_compare(k, i)
-                                         for i in target_lists[key]]))
+                print(
+                    "comparing ", any([dict_compare(k, i) for i in target_lists[key]])
+                )
                 assert any([dict_compare(k, i) for i in target_lists[key]])
             except AssertionError:
-                for result in [dict_compare(k, i, details=True) for i in target_lists[key]]:
-                    print('Added Keys: ', result[0])
-                    print('Removed Keys', result[1])
-                    print('Modified Value Keys', result[2])
-                    print('Modified Dictionary Keys', result[3])
+                for result in [
+                    dict_compare(k, i, details=True) for i in target_lists[key]
+                ]:
+                    print("Added Keys: ", result[0])
+                    print("Removed Keys", result[1])
+                    print("Modified Value Keys", result[2])
+                    print("Modified Dictionary Keys", result[3])
 
 
 def dict_compare(d1, d2, details=False):
@@ -150,8 +173,9 @@ def dict_compare(d1, d2, details=False):
     added = d1_keys - d2_keys
     removed = d2_keys - d1_keys
     modified = {o: (d1[o], d2[o]) for o in not_dicts if d1[o] != d2[o]}
-    modified_dicts = {o: (d1[o], d2[o])
-                      for o in sub_dicts if not d1[o].items() <= d2[o].items()}
+    modified_dicts = {
+        o: (d1[o], d2[o]) for o in sub_dicts if not d1[o].items() <= d2[o].items()
+    }
     if details:
         return added, removed, modified, modified_dicts
     else:
@@ -176,10 +200,10 @@ def transpose(text, number=2):
             lt[first], lt[second] = lt[second], lt[first]
 
         # replace original tokens with swapped
-        tokens[token_pos] = ''.join(lt)
+        tokens[token_pos] = "".join(lt)
 
     # return text with the swapped token
-    return ' '.join(tokens)
+    return " ".join(tokens)
 
 
 @pytest.fixture
@@ -196,7 +220,7 @@ def recipe_2_s1(space_1, u1_s1):
 def ext_recipe_1_s1(space_1, u1_s1):
     r = get_random_recipe(space_1, u1_s1)
     r.internal = False
-    r.link = 'test'
+    r.link = "test"
     r.save()
     return r
 
@@ -212,10 +236,11 @@ def get_random_unit(space_1, u1_s1):
 # ---------------------- USER FIXTURES -----------------------
 # maybe better with factories but this is very explict so ...
 
+
 def create_user(client, space, **kwargs):
     c = copy.deepcopy(client)
     with scopes_disabled():
-        group = kwargs.pop('group', None)
+        group = kwargs.pop("group", None)
         user = UserFactory(space=space, groups=group)
 
         c.force_login(user)
@@ -240,61 +265,61 @@ def ng1_s2(client, space_2):
 # guests
 @pytest.fixture()
 def g1_s1(client, space_1):
-    return create_user(client, space_1, group='guest')
+    return create_user(client, space_1, group="guest")
 
 
 @pytest.fixture()
 def g2_s1(client, space_1):
-    return create_user(client, space_1, group='guest')
+    return create_user(client, space_1, group="guest")
 
 
 @pytest.fixture()
 def g1_s2(client, space_2):
-    return create_user(client, space_2, group='guest')
+    return create_user(client, space_2, group="guest")
 
 
 @pytest.fixture()
 def g2_s2(client, space_2):
-    return create_user(client, space_2, group='guest')
+    return create_user(client, space_2, group="guest")
 
 
 # users
 @pytest.fixture()
 def u1_s1(client, space_1):
-    return create_user(client, space_1, group='user')
+    return create_user(client, space_1, group="user")
 
 
 @pytest.fixture()
 def u2_s1(client, space_1):
-    return create_user(client, space_1, group='user')
+    return create_user(client, space_1, group="user")
 
 
 @pytest.fixture()
 def u1_s2(client, space_2):
-    return create_user(client, space_2, group='user')
+    return create_user(client, space_2, group="user")
 
 
 @pytest.fixture()
 def u2_s2(client, space_2):
-    return create_user(client, space_2, group='user')
+    return create_user(client, space_2, group="user")
 
 
 # admins
 @pytest.fixture()
 def a1_s1(client, space_1):
-    return create_user(client, space_1, group='admin')
+    return create_user(client, space_1, group="admin")
 
 
 @pytest.fixture()
 def a2_s1(client, space_1):
-    return create_user(client, space_1, group='admin')
+    return create_user(client, space_1, group="admin")
 
 
 @pytest.fixture()
 def a1_s2(client, space_2):
-    return create_user(client, space_2, group='admin')
+    return create_user(client, space_2, group="admin")
 
 
 @pytest.fixture()
 def a2_s2(client, space_2):
-    return create_user(client, space_2, group='admin')
+    return create_user(client, space_2, group="admin")

@@ -298,4 +298,3 @@ pdfjs-editor-alt-text-mark-decorative-description = මෙය දාර හෝ �
 
 
 ## Edit signature description dialog
-

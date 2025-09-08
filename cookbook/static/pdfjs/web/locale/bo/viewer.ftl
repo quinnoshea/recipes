@@ -294,4 +294,3 @@ pdfjs-web-fonts-disabled = Web fonts are disabled: unable to use embedded PDF fo
 
 
 ## Edit signature description dialog
-

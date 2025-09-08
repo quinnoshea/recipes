@@ -7,16 +7,24 @@ from django.core.cache import caches
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import translation
-from django_scopes import scope, scopes_disabled
+
+from django_scopes import scopes_disabled
 
 from cookbook.helper.cache_helper import CacheHelper
-from cookbook.helper.shopping_helper import RecipeShoppingEditor
 from cookbook.managers import DICTIONARY
-from cookbook.models import (Food, MealPlan, PropertyType, Recipe, SearchFields, SearchPreference,
-                             Step, Unit, UserPreference)
+from cookbook.models import (
+    Food,
+    PropertyType,
+    Recipe,
+    SearchFields,
+    SearchPreference,
+    Step,
+    Unit,
+    UserPreference,
+)
 
 SQLITE = True
-if settings.DATABASES['default']['ENGINE'] == 'django.db.backends.postgresql':
+if settings.DATABASES["default"]["ENGINE"] == "django.db.backends.postgresql":
     SQLITE = False
 
 
@@ -26,7 +34,7 @@ def skip_signal(signal_func):
     def _decorator(sender, instance, **kwargs):
         if not instance:
             return None
-        if hasattr(instance, 'skip_signal'):
+        if hasattr(instance, "skip_signal"):
             return None
         return signal_func(sender, instance, **kwargs)
 
@@ -44,9 +52,9 @@ def create_user_preference(sender, instance=None, created=False, **kwargs):
 def create_search_preference(sender, instance=None, created=False, **kwargs):
     if created:
         with scopes_disabled():
-            instance.unaccent.add(SearchFields.objects.get(name='Name'))
-            instance.icontains.add(SearchFields.objects.get(name='Name'))
-            instance.trigram.add(SearchFields.objects.get(name='Name'))
+            instance.unaccent.add(SearchFields.objects.get(name="Name"))
+            instance.icontains.add(SearchFields.objects.get(name="Name"))
+            instance.trigram.add(SearchFields.objects.get(name="Name"))
 
 
 @receiver(post_save, sender=Recipe)
@@ -54,10 +62,14 @@ def create_search_preference(sender, instance=None, created=False, **kwargs):
 def update_recipe_search_vector(sender, instance=None, created=False, **kwargs):
     if SQLITE:
         return
-    language = DICTIONARY.get(translation.get_language(), 'simple')
+    language = DICTIONARY.get(translation.get_language(), "simple")
     # these indexed fields are space wide, reading user preferences would lead to inconsistent behavior
-    instance.name_search_vector = SearchVector('name__unaccent', weight='A', config=language)
-    instance.desc_search_vector = SearchVector('description__unaccent', weight='C', config=language)
+    instance.name_search_vector = SearchVector(
+        "name__unaccent", weight="A", config=language
+    )
+    instance.desc_search_vector = SearchVector(
+        "description__unaccent", weight="C", config=language
+    )
     try:
         instance.skip_signal = True
         instance.save()
@@ -70,8 +82,10 @@ def update_recipe_search_vector(sender, instance=None, created=False, **kwargs):
 def update_step_search_vector(sender, instance=None, created=False, **kwargs):
     if SQLITE:
         return
-    language = DICTIONARY.get(translation.get_language(), 'simple')
-    instance.search_vector = SearchVector('instruction__unaccent', weight='B', config=language)
+    language = DICTIONARY.get(translation.get_language(), "simple")
+    instance.search_vector = SearchVector(
+        "instruction__unaccent", weight="B", config=language
+    )
     try:
         instance.skip_signal = True
         instance.save()
@@ -90,15 +104,15 @@ def update_food_inheritance(sender, instance=None, created=False, **kwargs):
     if (not instance.parent or inherit.count() == 0) and instance.numchild == 0:
         return
 
-    inherit = inherit.values_list('field', flat=True)
+    inherit = inherit.values_list("field", flat=True)
     # apply changes from parent to instance for each inherited field
     if instance.parent and inherit.count() > 0:
         parent = instance.get_parent()
-        for field in ['ignore_shopping', 'substitute_children', 'substitute_siblings']:
+        for field in ["ignore_shopping", "substitute_children", "substitute_siblings"]:
             if field in inherit:
                 setattr(instance, field, getattr(parent, field, None))
         # if supermarket_category is not set, do not cascade - if this becomes non-intuitive can change
-        if 'supermarket_category' in inherit and parent.supermarket_category:
+        if "supermarket_category" in inherit and parent.supermarket_category:
             instance.supermarket_category = parent.supermarket_category
         try:
             instance.skip_signal = True
@@ -107,15 +121,27 @@ def update_food_inheritance(sender, instance=None, created=False, **kwargs):
             del instance.skip_signal
 
     # apply changes to direct children - depend on save signals for those objects to cascade inheritance down
-    for child in instance.get_children().filter(inherit_fields__in=Food.inheritable_fields):
+    for child in instance.get_children().filter(
+        inherit_fields__in=Food.inheritable_fields
+    ):
         # set inherited field values
-        for field in (inherit_fields := ['ignore_shopping', 'substitute_children', 'substitute_siblings']):
-            if field in instance.inherit_fields.values_list('field', flat=True):
+        for field in (
+            inherit_fields := [
+                "ignore_shopping",
+                "substitute_children",
+                "substitute_siblings",
+            ]
+        ):
+            if field in instance.inherit_fields.values_list("field", flat=True):
                 setattr(child, field, getattr(instance, field, None))
 
         # don't cascade empty supermarket category
-        if instance.supermarket_category and 'supermarket_category' in inherit_fields:
-            setattr(child, 'supermarket_category', getattr(instance, 'supermarket_category', None))
+        if instance.supermarket_category and "supermarket_category" in inherit_fields:
+            setattr(
+                child,
+                "supermarket_category",
+                getattr(instance, "supermarket_category", None),
+            )
 
         child.save()
 
@@ -123,10 +149,10 @@ def update_food_inheritance(sender, instance=None, created=False, **kwargs):
 @receiver(post_save, sender=Unit)
 def clear_unit_cache(sender, instance=None, created=False, **kwargs):
     if instance:
-        caches['default'].delete(CacheHelper(instance.space).BASE_UNITS_CACHE_KEY)
+        caches["default"].delete(CacheHelper(instance.space).BASE_UNITS_CACHE_KEY)
 
 
 @receiver(post_save, sender=PropertyType)
 def clear_property_type_cache(sender, instance=None, created=False, **kwargs):
     if instance:
-        caches['default'].delete(CacheHelper(instance.space).PROPERTY_TYPE_CACHE_KEY)
+        caches["default"].delete(CacheHelper(instance.space).PROPERTY_TYPE_CACHE_KEY)

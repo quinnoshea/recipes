@@ -113,7 +113,7 @@ span.xpassed,
   max-height: none;
 }
 .logwrapper.expanded .logexpander:after {
-  content: "collapse [-]";
+  content: 'collapse [-]';
 }
 .logwrapper .logexpander {
   z-index: 1;
@@ -128,7 +128,7 @@ span.xpassed,
   background-color: #e6e6e6;
 }
 .logwrapper .logexpander:after {
-  content: "expand [+]";
+  content: 'expand [+]';
 }
 .logwrapper .logexpander:hover {
   color: #000;
@@ -142,7 +142,7 @@ span.xpassed,
   border: 1px solid #e6e6e6;
   color: black;
   display: block;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   padding: 5px;
   padding-right: 80px;
   white-space: pre-wrap;
@@ -210,15 +210,15 @@ div.media {
   width: 130px;
 }
 .col-result:hover::after {
-  content: " (hide details)";
+  content: ' (hide details)';
 }
 
 .col-result.collapsed:hover::after {
-  content: " (show details)";
+  content: ' (show details)';
 }
 
 #environment-header h2:hover::after {
-  content: " (hide details)";
+  content: ' (hide details)';
   color: #bbb;
   font-style: italic;
   cursor: pointer;
@@ -226,7 +226,7 @@ div.media {
 }
 
 #environment-header.collapsed h2:hover::after {
-  content: " (show details)";
+  content: ' (show details)';
   color: #bbb;
   font-style: italic;
   cursor: pointer;
@@ -240,7 +240,7 @@ div.media {
   cursor: pointer;
 }
 .sortable.desc:after {
-  content: " ";
+  content: ' ';
   position: relative;
   left: 5px;
   bottom: -12.5px;
@@ -250,7 +250,7 @@ div.media {
   border-right-color: transparent;
 }
 .sortable.asc:after {
-  content: " ";
+  content: ' ';
   position: relative;
   left: 5px;
   bottom: 12.5px;
@@ -260,7 +260,8 @@ div.media {
   border-right-color: transparent;
 }
 
-.hidden, .summary__reload__button.hidden {
+.hidden,
+.summary__reload__button.hidden {
   display: none;
 }
 

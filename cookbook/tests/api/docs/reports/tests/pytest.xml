@@ -15,7 +15,7 @@ obj_1 = &lt;Sync: path&gt;
         c = request.getfixturevalue(arg[0])
 &gt;       print(reverse(DETAIL_URL, args={obj_1.id}))
 
-test_api_sync.py:83: 
+test_api_sync.py:83:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 ..\..\..\venv\Lib\site-packages\django\test\client.py:1054: in patch
     response = super().patch(

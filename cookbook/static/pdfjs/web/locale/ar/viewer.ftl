@@ -593,4 +593,3 @@ pdfjs-editor-add-signature-add-button = أضِف
 
 
 ## Edit signature description dialog
-

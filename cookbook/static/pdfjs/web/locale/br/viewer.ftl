@@ -367,4 +367,3 @@ pdfjs-editor-alt-text-settings-close-button = Serriñ
 
 
 ## Edit signature description dialog
-

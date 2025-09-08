@@ -30,6 +30,7 @@
 ![Preview](docs/preview.png)
 
 ## Core Features
+
 - 🥗 **Manage your recipes** - Manage your ever growing recipe collection
 - 📆 **Plan** - multiple meals for each day
 - 🛒 **Shopping lists** - via the meal plan or straight from recipes
@@ -63,6 +64,7 @@ a public page.
 Documentation can be found [here](https://docs.tandoor.dev/).
 
 ## Support our work
+
 Tandoor is developed by volunteers in their free time just because its fun. That said earning
 some money with the project allows us to spend more time on it and thus make improvements we otherwise couldn't.
 Because of that there are several ways you can support us
@@ -72,6 +74,7 @@ Because of that there are several ways you can support us
 - **Let us host for you** We are offering a [hosted version](https://app.tandoor.dev) where all profits support us and the development of tandoor (currently only available in germany).
 
 ## Contributing
+
 Contributions are welcome but please read [this](https://docs.tandoor.dev/contribute/guidelines/) **BEFORE** contributing anything!
 
 ## Your Feedback
@@ -98,11 +101,11 @@ Beginning with version 0.10.0 the code in this repository is licensed under the 
 [common clause](https://commonsclause.com/) selling exception. See [LICENSE.md](https://github.com/vabene1111/recipes/blob/develop/LICENSE.md) for details.
 
 > NOTE: There appears to be a whole range of legal issues with licensing anything other than the standard completely open licenses.
-> I am in the process of getting some professional legal advice to sort out these issues. 
+> I am in the process of getting some professional legal advice to sort out these issues.
 > Please also see [Issue 238](https://github.com/vabene1111/recipes/issues/238) for some discussion and **reasoning** regarding the topic.
 
 **Reasoning**
-**This software and *all* its features are and will always be free for everyone to use and enjoy.**
+**This software and _all_ its features are and will always be free for everyone to use and enjoy.**
 
 The reason for the selling exception is that a significant amount of time was spend over multiple years to develop this software.
 A paid hosted version which will be identical in features and code base to the software offered in this repository will

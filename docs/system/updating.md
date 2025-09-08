@@ -4,6 +4,7 @@ While intermediate updates can be skipped when updating please make sure to
 **read the release notes** in case some special action is required to update.
 
 ## Docker
+
 For all setups using Docker the updating process look something like this
 
 0. Before updating it is recommended to **create a [backup](/system/backup)!**
@@ -34,31 +35,32 @@ A full list of options to upgrade a database provide in the [official PostgreSQL
 
 1.  Collect information about your environment.
 
-``` bash
+```bash
 grep -E 'POSTGRES|DATABASE' ~/.docker/compose/.env
 docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}' | awk 'NR == 1 || /postgres/ || /recipes/'
 ```
 
 2. Export the tandoor database
 
-``` bash
+```bash
 docker exec -t {{database_container}} pg_dumpall -U {{djangouser}} > ~/tandoor.sql
 ```
 
 3. Stop the tandoor application
-``` bash
+
+```bash
 docker compose down
 ```
 
 4. Rename the tandoor volume
 
-``` bash
+```bash
 mv ./postgresql ./postgresql.old
 ```
 
 5. Update image tag on postgres container in the docker-compose.yaml
 
-``` yaml
+```yaml
 db_recipes:
   restart: always
   image: postgres:16-alpine
@@ -70,22 +72,25 @@ db_recipes:
 
 6. Pull and rebuild database container
 
-``` bash
+```bash
 docker compose pull && docker compose up -d db_recipes
 ```
 
 7. Import the database export
 
-``` bash
+```bash
 cat ~/tandoor.sql | docker exec -i {{database_container}} psql postgres -U {{djangouser}}
 ```
 
 8. Install postgres extensions
-``` bash
+
+```bash
 docker exec -it {{database_container}} psql postgres -U {{djangouser}}
 ```
-  then
-``` psql
+
+then
+
+```psql
 CREATE EXTENSION IF NOT EXISTS unaccent;
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 ```

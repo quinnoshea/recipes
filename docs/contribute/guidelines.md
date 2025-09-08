@@ -53,7 +53,7 @@ Install it using your desired setup method. (For example, using `npm install @op
 
 ### Vue
 
-Generate the schema using the `generate_api_client.py` script in the main directory. 
+Generate the schema using the `generate_api_client.py` script in the main directory.
 
 ## Install and Configuration
 

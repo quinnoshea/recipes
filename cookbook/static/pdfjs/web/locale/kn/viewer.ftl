@@ -260,4 +260,3 @@ pdfjs-web-fonts-disabled = ಜಾಲ ಅಕ್ಷರಶೈಲಿಯನ್ನು 
 
 
 ## Edit signature description dialog
-

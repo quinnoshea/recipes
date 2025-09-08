@@ -1,14 +1,14 @@
 !!! info "Community Contributed"
-    This guide was contributed by the community and is neither officially supported, nor updated or tested.
+This guide was contributed by the community and is neither officially supported, nor updated or tested.
 
 !!! danger "Tandoor 2 Compatibility"
-    This guide has not been verified/tested for Tandoor 2, which now integrates a nginx service inside the default docker container and exposes its service on port 80 instead of 8080.
+This guide has not been verified/tested for Tandoor 2, which now integrates a nginx service inside the default docker container and exposes its service on port 80 instead of 8080.
 
 [Unraid](https://unraid.net/) is an operating system that allows you to easily install and setup applications.
 
 Thanks to [CorneliousJD](https://github.com/CorneliousJD) this application can easily be installed using unraid.
 Please view [Issue #184](https://github.com/vabene1111/recipes/issues/184) for further details.
-There is [also a discussion thread](https://forums.unraid.net/topic/98179-support-recipes-corneliousjd-repo/) on the 
+There is [also a discussion thread](https://forums.unraid.net/topic/98179-support-recipes-corneliousjd-repo/) on the
 unraid forum where he gives additional information.
 
 ## Installation
@@ -21,7 +21,7 @@ You will first need to install `Community Applications (CA)` by following the di
 
 ### Locate and install Tandoor Recipes
 
-After that, you can go to the "Apps" tab in unRAID and search for `Tandoor Recipes`, locate the correct container and install it. 
+After that, you can go to the "Apps" tab in unRAID and search for `Tandoor Recipes`, locate the correct container and install it.
 ![image](https://user-images.githubusercontent.com/724777/111038251-faa0cb00-83f5-11eb-9807-37815de8d795.png)
 
 ### Configure settings
@@ -33,5 +33,5 @@ Then click `Apply`.
 ### Access website
 
 After the container is installed, click on the `Tandoor Recipes` icon and click the WebUI button to launch the web user interface.
-Set the container to auto-start if you wish. 
+Set the container to auto-start if you wish.
 ![image](https://user-images.githubusercontent.com/724777/111038276-16a46c80-83f6-11eb-866b-b3bc9a2efb87.png)

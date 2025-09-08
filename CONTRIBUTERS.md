@@ -5,7 +5,7 @@ to this list.
 
 ## Code/Features
 
-Please have a look at the [list of pull requests](https://github.com/vabene1111/recipes/pulls) for 
+Please have a look at the [list of pull requests](https://github.com/vabene1111/recipes/pulls) for
 a complete list of contributions.
 Below are some of the larger contributions made yet.
 

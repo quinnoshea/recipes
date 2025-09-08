@@ -270,4 +270,3 @@ pdfjs-web-fonts-disabled = Web fontovi su onemogućeni: nemoguće koristiti uba�
 
 
 ## Edit signature description dialog
-

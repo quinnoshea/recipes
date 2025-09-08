@@ -294,4 +294,3 @@ pdfjs-web-fonts-disabled = Ponte geese ko daaƴaaɗe: horiima huutoraade ponte P
 
 
 ## Edit signature description dialog
-

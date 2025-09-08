@@ -4,7 +4,6 @@ import uuid
 from io import BytesIO
 from zipfile import BadZipFile, ZipFile
 
-from bs4 import Tag
 from django.core.cache import cache
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.files import File
@@ -12,6 +11,8 @@ from django.db import IntegrityError
 from django.http import HttpResponse
 from django.utils.formats import date_format
 from django.utils.translation import gettext as _
+
+from bs4 import Tag
 from django_scopes import scope
 from lxml import etree
 
@@ -39,23 +40,28 @@ class Integration:
         description = f'Imported by {request.user.get_user_display_name()} at {date_format(datetime.datetime.now(), "DATETIME_FORMAT")}. Type: {export_type}'
 
         try:
-            last_kw = Keyword.objects.filter(name__regex=r'^(Import [0-9]+)', space=request.space).latest('created_at')
+            last_kw = Keyword.objects.filter(
+                name__regex=r"^(Import [0-9]+)", space=request.space
+            ).latest("created_at")
             name = f'Import {int(last_kw.name.replace("Import ", "")) + 1}'
         except (ObjectDoesNotExist, ValueError):
-            name = 'Import 1'
+            name = "Import 1"
 
-        parent, created = Keyword.objects.get_or_create(name='Import', space=request.space)
+        parent, created = Keyword.objects.get_or_create(
+            name="Import", space=request.space
+        )
         try:
             self.keyword = parent.add_child(
-                name=name,
-                description=description,
-                space=request.space
+                name=name, description=description, space=request.space
             )
-        except (IntegrityError, ValueError):  # in case, for whatever reason, the name does exist append UUID to it. Not nice but works for now.
+        except (
+            IntegrityError,
+            ValueError,
+        ):  # in case, for whatever reason, the name does exist append UUID to it. Not nice but works for now.
             self.keyword = parent.add_child(
-                name=f'{name} {str(uuid.uuid4())[0:8]}',
+                name=f"{name} {str(uuid.uuid4())[0:8]}",
                 description=description,
-                space=request.space
+                space=request.space,
             )
 
     def do_export(self, recipes, el):
@@ -76,7 +82,7 @@ class Integration:
                 # zip the files if there is more then one file
                 export_filename = self.get_export_file_name()
                 export_stream = BytesIO()
-                export_obj = ZipFile(export_stream, 'w')
+                export_obj = ZipFile(export_stream, "w")
 
                 for filename, file in files:
                     export_obj.writestr(filename, file)
@@ -84,12 +90,18 @@ class Integration:
                 export_obj.close()
                 export_file = export_stream.getvalue()
 
-            cache.set('export_file_' + str(el.pk), {'filename': export_filename, 'file': export_file}, EXPORT_FILE_CACHE_DURATION)
+            cache.set(
+                "export_file_" + str(el.pk),
+                {"filename": export_filename, "file": export_file},
+                EXPORT_FILE_CACHE_DURATION,
+            )
             el.running = False
             el.save()
 
-        response = HttpResponse(export_file, content_type='application/force-download')
-        response['Content-Disposition'] = 'attachment; filename="' + export_filename + '"'
+        response = HttpResponse(export_file, content_type="application/force-download")
+        response["Content-Disposition"] = (
+            'attachment; filename="' + export_filename + '"'
+        )
         return response
 
     def import_file_name_filter(self, zip_info_object):
@@ -115,8 +127,8 @@ class Integration:
             try:
                 self.files = files
                 for f in files:
-                    if 'RecipeKeeper' in f['name']:
-                        import_zip = ZipFile(f['file'])
+                    if "RecipeKeeper" in f["name"]:
+                        import_zip = ZipFile(f["file"])
                         file_list = []
                         for z in import_zip.filelist:
                             if self.import_file_name_filter(z):
@@ -124,7 +136,9 @@ class Integration:
                         il.total_recipes += len(file_list)
 
                         for z in file_list:
-                            data_list = self.split_recipe_file(import_zip.read(z.filename).decode('utf-8'))
+                            data_list = self.split_recipe_file(
+                                import_zip.read(z.filename).decode("utf-8")
+                            )
                             for d in data_list:
                                 recipe = self.get_recipe_from_file(d)
                                 recipe.keywords.add(self.keyword)
@@ -133,8 +147,12 @@ class Integration:
                                 il.imported_recipes += 1
                                 il.save()
                         import_zip.close()
-                    elif '.zip' in f['name'] or '.paprikarecipes' in f['name'] or '.mcb' in f['name']:
-                        import_zip = ZipFile(f['file'])
+                    elif (
+                        ".zip" in f["name"]
+                        or ".paprikarecipes" in f["name"]
+                        or ".mcb" in f["name"]
+                    ):
+                        import_zip = ZipFile(f["file"])
                         file_list = []
                         for z in import_zip.filelist:
                             if self.import_file_name_filter(z):
@@ -142,14 +160,21 @@ class Integration:
                         il.total_recipes += len(file_list)
 
                         import cookbook
+
                         if isinstance(self, cookbook.integration.copymethat.CopyMeThat):
-                            file_list = self.split_recipe_file(BytesIO(import_zip.read('recipes.html')))
+                            file_list = self.split_recipe_file(
+                                BytesIO(import_zip.read("recipes.html"))
+                            )
                             il.total_recipes += len(file_list)
 
                         if isinstance(self, cookbook.integration.cookmate.Cookmate):
                             new_file_list = []
                             for file in file_list:
-                                new_file_list += etree.parse(BytesIO(import_zip.read(file.filename))).getroot().getchildren()
+                                new_file_list += (
+                                    etree.parse(BytesIO(import_zip.read(file.filename)))
+                                    .getroot()
+                                    .getchildren()
+                                )
                             il.total_recipes = len(new_file_list)
                             file_list = new_file_list
 
@@ -162,16 +187,20 @@ class Integration:
                                 if file.filename.startswith("index.htm"):
                                     next
                                 if file.filename.endswith(".htm"):
-                                    new_file_list += self.split_recipe_file(BytesIO(import_zip.read(file.filename)))
+                                    new_file_list += self.split_recipe_file(
+                                        BytesIO(import_zip.read(file.filename))
+                                    )
                             il.total_recipes = len(new_file_list)
                             file_list = new_file_list
 
                         for z in file_list:
                             try:
-                                if not hasattr(z, 'filename') or isinstance(z, Tag):
+                                if not hasattr(z, "filename") or isinstance(z, Tag):
                                     recipe = self.get_recipe_from_file(z)
                                 else:
-                                    recipe = self.get_recipe_from_file(BytesIO(import_zip.read(z.filename)))
+                                    recipe = self.get_recipe_from_file(
+                                        BytesIO(import_zip.read(z.filename))
+                                    )
                                 recipe.keywords.add(self.keyword)
                                 il.msg += self.get_recipe_processed_msg(recipe)
                                 self.handle_duplicates(recipe, import_duplicates)
@@ -179,10 +208,21 @@ class Integration:
                                 il.save()
                             except Exception as e:
                                 traceback.print_exc()
-                                self.handle_exception(e, log=il, message=f'-------------------- \nERROR \n{e}\n--------------------\n')
+                                self.handle_exception(
+                                    e,
+                                    log=il,
+                                    message=f"-------------------- \nERROR \n{e}\n--------------------\n",
+                                )
                         import_zip.close()
-                    elif '.json' in f['name'] or '.xml' in f['name'] or '.txt' in f['name'] or '.mmf' in f['name'] or '.rk' in f['name'] or '.melarecipe' in f['name']:
-                        data_list = self.split_recipe_file(f['file'])
+                    elif (
+                        ".json" in f["name"]
+                        or ".xml" in f["name"]
+                        or ".txt" in f["name"]
+                        or ".mmf" in f["name"]
+                        or ".rk" in f["name"]
+                        or ".melarecipe" in f["name"]
+                    ):
+                        data_list = self.split_recipe_file(f["file"])
                         il.total_recipes += len(data_list)
                         for d in data_list:
                             try:
@@ -193,12 +233,18 @@ class Integration:
                                 il.imported_recipes += 1
                                 il.save()
                             except Exception as e:
-                                self.handle_exception(e, log=il, message=f'-------------------- \nERROR \n{e}\n--------------------\n')
-                    elif '.rtk' in f['name']:
-                        import_zip = ZipFile(f['file'])
+                                self.handle_exception(
+                                    e,
+                                    log=il,
+                                    message=f"-------------------- \nERROR \n{e}\n--------------------\n",
+                                )
+                    elif ".rtk" in f["name"]:
+                        import_zip = ZipFile(f["file"])
                         for z in import_zip.filelist:
                             if self.import_file_name_filter(z):
-                                data_list = self.split_recipe_file(import_zip.read(z.filename).decode('utf-8'))
+                                data_list = self.split_recipe_file(
+                                    import_zip.read(z.filename).decode("utf-8")
+                                )
                                 il.total_recipes += len(data_list)
 
                                 for d in data_list:
@@ -206,32 +252,57 @@ class Integration:
                                         recipe = self.get_recipe_from_file(d)
                                         recipe.keywords.add(self.keyword)
                                         il.msg += self.get_recipe_processed_msg(recipe)
-                                        self.handle_duplicates(recipe, import_duplicates)
+                                        self.handle_duplicates(
+                                            recipe, import_duplicates
+                                        )
                                         il.imported_recipes += 1
                                         il.save()
                                     except Exception as e:
-                                        self.handle_exception(e, log=il, message=f'-------------------- \nERROR \n{e}\n--------------------\n')
+                                        self.handle_exception(
+                                            e,
+                                            log=il,
+                                            message=f"-------------------- \nERROR \n{e}\n--------------------\n",
+                                        )
                         import_zip.close()
                     else:
-                        recipe = self.get_recipe_from_file(f['file'])
+                        recipe = self.get_recipe_from_file(f["file"])
                         recipe.keywords.add(self.keyword)
                         il.msg += self.get_recipe_processed_msg(recipe)
                         self.handle_duplicates(recipe, import_duplicates)
             except BadZipFile:
-                il.msg += 'ERROR ' + _(
-                    'Importer expected a .zip file. Did you choose the correct importer type for your data ?') + '\n'
+                il.msg += (
+                    "ERROR "
+                    + _(
+                        "Importer expected a .zip file. Did you choose the correct importer type for your data ?"
+                    )
+                    + "\n"
+                )
             except Exception as e:
-                msg = 'ERROR ' + _(
-                    'An unexpected error occurred during the import. Please make sure you have uploaded a valid file.') + '\n'
+                msg = (
+                    "ERROR "
+                    + _(
+                        "An unexpected error occurred during the import. Please make sure you have uploaded a valid file."
+                    )
+                    + "\n"
+                )
                 self.handle_exception(e, log=il, message=msg)
 
             if len(self.ignored_recipes) > 0:
-                il.msg += '\n' + _(
-                    'The following recipes were ignored because they already existed:') + ' ' + ', '.join(
-                    self.ignored_recipes) + '\n\n'
+                il.msg += (
+                    "\n"
+                    + _(
+                        "The following recipes were ignored because they already existed:"
+                    )
+                    + " "
+                    + ", ".join(self.ignored_recipes)
+                    + "\n\n"
+                )
 
             il.keyword = self.keyword
-            il.msg += (_('Imported %s recipes.') % Recipe.objects.filter(keywords=self.keyword).count()) + '\n'
+            il.msg += (
+                _("Imported %s recipes.")
+                % Recipe.objects.filter(keywords=self.keyword).count()
+            ) + "\n"
             il.running = False
             il.save()
 
@@ -241,18 +312,27 @@ class Integration:
         :param recipe: Recipe object
         :param import_duplicates: if duplicates should be imported
         """
-        if Recipe.objects.filter(space=self.request.space, name=recipe.name).count() > 1 and not import_duplicates:
+        if (
+            Recipe.objects.filter(space=self.request.space, name=recipe.name).count()
+            > 1
+            and not import_duplicates
+        ):
             self.ignored_recipes.append(recipe.name)
             recipe.delete()
 
-    def import_recipe_image(self, recipe, image_file, filetype='.jpeg'):
+    def import_recipe_image(self, recipe, image_file, filetype=".jpeg"):
         """
         Adds an image to a recipe naming it correctly
         :param recipe: Recipe object
         :param image_file: ByteIO stream containing the image
         :param filetype: type of file to write bytes to, default to .jpeg if unknown
         """
-        recipe.image = File(handle_image(self.request, File(image_file, name='image'), filetype=filetype), name=f'{uuid.uuid4()}_{recipe.pk}{filetype}')
+        recipe.image = File(
+            handle_image(
+                self.request, File(image_file, name="image"), filetype=filetype
+            ),
+            name=f"{uuid.uuid4()}_{recipe.pk}{filetype}",
+        )
         recipe.save()
 
     def get_recipe_from_file(self, file):
@@ -261,7 +341,7 @@ class Integration:
         :param file: ByteIO or any file like object, depends on provider
         :return: Recipe object
         """
-        raise NotImplementedError('Method not implemented in integration')
+        raise NotImplementedError("Method not implemented in integration")
 
     def split_recipe_file(self, file):
         """
@@ -269,7 +349,7 @@ class Integration:
         :param file: ByteIO or any file like object, depends on provider
         :return: list of strings
         """
-        raise NotImplementedError('Method not implemented in integration')
+        raise NotImplementedError("Method not implemented in integration")
 
     def get_file_from_recipe(self, recipe):
         """
@@ -280,7 +360,7 @@ class Integration:
             - name - file name in export
             - data - string content for file to get created in export zip
         """
-        raise NotImplementedError('Method not implemented in integration')
+        raise NotImplementedError("Method not implemented in integration")
 
     def get_files_from_recipes(self, recipes, el, cookie):
         """
@@ -290,10 +370,10 @@ class Integration:
         :returns:
             [[filename, data], ...]
         """
-        raise NotImplementedError('Method not implemented in integration')
+        raise NotImplementedError("Method not implemented in integration")
 
     @staticmethod
-    def handle_exception(exception, log=None, message=''):
+    def handle_exception(exception, log=None, message=""):
         if log:
             if message:
                 log.msg += message
@@ -302,8 +382,10 @@ class Integration:
         if DEBUG:
             traceback.print_exc()
 
-    def get_export_file_name(self, format='zip'):
-        return "export_{}.{}".format(datetime.datetime.now().strftime("%Y-%m-%d"), format)
+    def get_export_file_name(self, format="zip"):
+        return "export_{}.{}".format(
+            datetime.datetime.now().strftime("%Y-%m-%d"), format
+        )
 
     def get_recipe_processed_msg(self, recipe):
-        return f'{recipe.pk} - {recipe.name} \n'
+        return f"{recipe.pk} - {recipe.name} \n"

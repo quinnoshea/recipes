@@ -294,4 +294,3 @@ pdfjs-editor-free-text-color-input = रंग
 
 
 ## Edit signature description dialog
-

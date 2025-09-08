@@ -1,6 +1,6 @@
 !!! success "Recommended Installation"
-    Setting up this application using Docker is recommended. This does not mean that other options are bad, but its the only method 
-    that is officially maintained and gets regularly tested. 
+Setting up this application using Docker is recommended. This does not mean that other options are bad, but its the only method
+that is officially maintained and gets regularly tested.
 
 This guide shows you some basic setups using Docker and docker compose. For configuration options see the [configuration page](https://docs.tandoor.dev/system/configuration/).
 
@@ -8,15 +8,15 @@ This guide shows you some basic setups using Docker and docker compose. For conf
 
 There are different versions (tags) released on [Docker Hub](https://hub.docker.com/r/vabene1111/recipes/tags).
 
--   **latest** Default image. The one you should use if you don't know that you need anything else.
--   **beta** Partially stable version that gets updated every now and then. Expect to have some problems.
--   **develop** If you want the most bleeding-edge version with potentially many breaking changes, feel free to use this version (not recommended!).
--   **X.Y.Z** each released version has its own image. If you need to revert to an old version or want to make sure you stay on one specific use these tags.
+- **latest** Default image. The one you should use if you don't know that you need anything else.
+- **beta** Partially stable version that gets updated every now and then. Expect to have some problems.
+- **develop** If you want the most bleeding-edge version with potentially many breaking changes, feel free to use this version (not recommended!).
+- **X.Y.Z** each released version has its own image. If you need to revert to an old version or want to make sure you stay on one specific use these tags.
 
 !!! danger "No Downgrading"
-    There is currently no way to migrate back to an older version as there is no mechanism to downgrade the database.
-    You could probably do it but I cannot help you with that. Choose wisely if you want to use the unstable images.
-    That said **beta** should usually be working if you like frequent updates and new stuff.
+There is currently no way to migrate back to an older version as there is no mechanism to downgrade the database.
+You could probably do it but I cannot help you with that. Choose wisely if you want to use the unstable images.
+That said **beta** should usually be working if you like frequent updates and new stuff.
 
 ## **Docker**
 
@@ -38,7 +38,7 @@ docker run -d \
     vabene1111/recipes
 ```
 
-Please make sure to replace the ```SECRET_KEY``` and ```POSTGRES_PASSWORD``` placeholders!
+Please make sure to replace the `SECRET_KEY` and `POSTGRES_PASSWORD` placeholders!
 
 ## **Docker Compose**
 
@@ -46,9 +46,9 @@ The main, and also recommended, installation option for this application is Dock
 
 1. Choose your `docker-compose.yml` from the examples below.
 2. Download the `.env` configuration file with `wget`
-    ```shell
-    wget https://raw.githubusercontent.com/vabene1111/recipes/develop/.env.template -O .env
-    ```
+   ```shell
+   wget https://raw.githubusercontent.com/vabene1111/recipes/develop/.env.template -O .env
+   ```
 3. **Edit it accordingly** (you NEED to set `SECRET_KEY` and `POSTGRES_PASSWORD`), see [configuration page](https://docs.tandoor.dev/system/configuration/).
 4. Start your container using `docker-compose up -d`.
 
@@ -61,9 +61,9 @@ Be aware that having some other web server or container running on your host mac
 wget https://raw.githubusercontent.com/vabene1111/recipes/develop/docs/install/docker/plain/docker-compose.yml
 ```
 
-~~~yaml
-{% include "./docker/plain/docker-compose.yml" %}
-~~~
+```yaml
+{ % include "./docker/plain/docker-compose.yml" % }
+```
 
 ### **Reverse Proxy**
 
@@ -76,18 +76,17 @@ If your reverse proxy is not listed below, please refer to chapter [Others](#oth
 If you use Traefik, this configuration is the one for you.
 
 !!! info
-    Traefik can be a little confusing to setup.
-    Please refer to [their excellent documentation](https://doc.traefik.io/traefik/). If that does not help,
-    [this little example](traefik.md) might be for you.
+Traefik can be a little confusing to setup.
+Please refer to [their excellent documentation](https://doc.traefik.io/traefik/). If that does not help,
+[this little example](traefik.md) might be for you.
 
 ```shell
 wget https://raw.githubusercontent.com/vabene1111/recipes/develop/docs/install/docker/traefik-nginx/docker-compose.yml
 ```
 
-~~~yaml
-{% include "./docker/traefik-nginx/docker-compose.yml" %}
-~~~
-
+```yaml
+{ % include "./docker/traefik-nginx/docker-compose.yml" % }
+```
 
 #### **jwilder's Nginx-proxy**
 
@@ -97,7 +96,7 @@ in combination with [jrcs's letsencrypt companion](https://hub.docker.com/r/jrcs
 Please refer to the appropriate documentation on how to setup the reverse proxy and networks.
 
 !!! warning "Adjust client_max_body_size"
-    By using jwilder's Nginx-proxy, uploads will be restricted to 1 MB file size. This can be resolved by adjusting the ```client_max_body_size``` variable in the jwilder nginx configuration.
+By using jwilder's Nginx-proxy, uploads will be restricted to 1 MB file size. This can be resolved by adjusting the `client_max_body_size` variable in the jwilder nginx configuration.
 
 Remember to add the appropriate environment variables to the `.env` file:
 
@@ -111,9 +110,9 @@ LETSENCRYPT_EMAIL=
 wget https://raw.githubusercontent.com/vabene1111/recipes/develop/docs/install/docker/nginx-proxy/docker-compose.yml
 ```
 
-~~~yaml
-{% include "./docker/nginx-proxy/docker-compose.yml" %}
-~~~
+```yaml
+{ % include "./docker/nginx-proxy/docker-compose.yml" % }
+```
 
 ## **DockSTARTer**
 
@@ -121,25 +120,25 @@ The main goal of [DockSTARTer](https://dockstarter.com/) is to make it quick and
 You may choose to rely on DockSTARTer for various changes to your Docker system or use DockSTARTer as a stepping stone and learn to do more advanced configurations.
 Follow the guide for installing DockSTARTer and then run `ds` then select 'Configuration' and 'Select Apps' to get Tandoor up and running quickly and easily.
 
-
 !!!note
-    DockSTARTer might not be updated for Tandoor 2 configurations
+DockSTARTer might not be updated for Tandoor 2 configurations
 
 ## **Additional Information**
 
 ### **Nginx Config**
+
 Starting with Tandoor 2 the Docker container includes a nginx service. Its default configuration is pulled from the [http.d](https://github.com/TandoorRecipes/recipes/tree/develop/http.d) folder
-in the repository. 
+in the repository.
 
-You can setup a volume to link to the ```/opt/recipes/http.d``` folder inside your container to change the configuration. Keep in mind that you will not receive any updates on the configuration 
-if you manually change it/bind the folder as a volume. 
-
+You can setup a volume to link to the `/opt/recipes/http.d` folder inside your container to change the configuration. Keep in mind that you will not receive any updates on the configuration
+if you manually change it/bind the folder as a volume.
 
 ### **Required Headers**
 
 Please be sure to supply all required headers in your nginx/Apache/Caddy/... configuration!
 
 nginx:
+
 ```nginx
 location / {
     proxy_set_header Host $http_host; # try $host instead if this doesn't work
@@ -150,6 +149,7 @@ location / {
 ```
 
 Apache:
+
 ```apache
 RequestHeader set X-Forwarded-Proto "https"
 Header always set Access-Control-Allow-Origin "*"
@@ -163,12 +163,11 @@ ProxyPassReverse / http://localhost:8080/ # replace port
 ### **Setup issues on Raspberry Pi**
 
 !!! danger
-    Tandoor 2 does no longer build images for arm/v7 architectures. You can certainly get Tandoor working there but it has simply been to much effort to maintain these architectures over the past years
-    to justify the continued support of this mostly deprecated platform. 
+Tandoor 2 does no longer build images for arm/v7 architectures. You can certainly get Tandoor working there but it has simply been to much effort to maintain these architectures over the past years
+to justify the continued support of this mostly deprecated platform.
 
 !!!info
-    Always wait at least 2-3 minutes after the very first start, since migrations will take some time!
-
+Always wait at least 2-3 minutes after the very first start, since migrations will take some time!
 
 If you're having issues with installing Tandoor on your Raspberry Pi or similar device,
 follow these instructions:
@@ -208,10 +207,12 @@ location /static/ {
 
 }
 ```
+
 ### Tandoor 1 vs Tandoor 2
-Tandoor 1 includes gunicorn, a python WSGI server that handles python code well but is not meant to serve mediafiles. Thus, it has always been recommended to set up a nginx webserver 
+
+Tandoor 1 includes gunicorn, a python WSGI server that handles python code well but is not meant to serve mediafiles. Thus, it has always been recommended to set up a nginx webserver
 (not just a reverse proxy) in front of Tandoor to handle mediafiles. The gunicorn server by default is exposed on port 8080.
 
 Tandoor 2 now occasionally bundles nginx inside the container and exposes port 80 where mediafiles are handled by nginx and all the other requests are (mostly) passed to gunicorn.
 
-A [GitHub Issue](https://github.com/TandoorRecipes/recipes/issues/3851) has been created to allow for discussions and FAQ's on this issue while this change is fresh. It will later be updated in the docs here if necessary. 
+A [GitHub Issue](https://github.com/TandoorRecipes/recipes/issues/3851) has been created to allow for discussions and FAQ's on this issue while this change is fresh. It will later be updated in the docs here if necessary.

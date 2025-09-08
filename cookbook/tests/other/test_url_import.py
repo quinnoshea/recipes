@@ -1,16 +1,31 @@
 import json
 import os
 
-import pytest
 from django.urls import reverse
+
+import pytest
 
 from cookbook.tests.conftest import validate_recipe
 
-from ._recipes import (ALLRECIPES, AMERICAS_TEST_KITCHEN, CHEF_KOCH, CHEF_KOCH2, COOKPAD,
-                       COOKS_COUNTRY, DELISH, FOOD_NETWORK, GIALLOZAFFERANO, JOURNAL_DES_FEMMES,
-                       MADAME_DESSERT, MARMITON, TASTE_OF_HOME, THE_SPRUCE_EATS, TUDOGOSTOSO)
+from ._recipes import (
+    ALLRECIPES,
+    AMERICAS_TEST_KITCHEN,
+    CHEF_KOCH,
+    CHEF_KOCH2,
+    COOKPAD,
+    COOKS_COUNTRY,
+    DELISH,
+    FOOD_NETWORK,
+    GIALLOZAFFERANO,
+    JOURNAL_DES_FEMMES,
+    MADAME_DESSERT,
+    MARMITON,
+    TASTE_OF_HOME,
+    THE_SPRUCE_EATS,
+    TUDOGOSTOSO,
+)
 
-IMPORT_SOURCE_URL = 'api_recipe_from_source'
+IMPORT_SOURCE_URL = "api_recipe_from_source"
 DATA_DIR = "cookbook/tests/other/test_data/"
 
 
@@ -38,32 +53,38 @@ RECIPES = [
 ]
 
 
-@pytest.mark.parametrize("arg", [
-    ['a_u', 403],
-    ['g1_s1', 403],
-    ['u1_s1', 405],
-    ['a1_s1', 405],
-])
+@pytest.mark.parametrize(
+    "arg",
+    [
+        ["a_u", 403],
+        ["g1_s1", 403],
+        ["u1_s1", 405],
+        ["a1_s1", 405],
+    ],
+)
 def test_import_permission(arg, request):
     c = request.getfixturevalue(arg[0])
     assert c.get(reverse(IMPORT_SOURCE_URL)).status_code == arg[1]
 
 
-@pytest.mark.parametrize("arg", RECIPES, ids=[x['file'][0] for x in RECIPES])
+@pytest.mark.parametrize("arg", RECIPES, ids=[x["file"][0] for x in RECIPES])
 def test_recipe_import(arg, u1_s1):
-    url = arg['url']
-    for f in list(arg['file']):  # url and files get popped later
-        if 'cookbook' in os.getcwd():
-            test_file = os.path.join(os.getcwd(), 'other', 'test_data', f)
+    url = arg["url"]
+    for f in list(arg["file"]):  # url and files get popped later
+        if "cookbook" in os.getcwd():
+            test_file = os.path.join(os.getcwd(), "other", "test_data", f)
         else:
-            test_file = os.path.join(os.getcwd(), 'cookbook', 'tests', 'other', 'test_data', f)
-        with open(test_file, 'r', encoding='UTF-8') as d:
+            test_file = os.path.join(
+                os.getcwd(), "cookbook", "tests", "other", "test_data", f
+            )
+        with open(test_file, "r", encoding="UTF-8") as d:
             response = u1_s1.post(
                 reverse(IMPORT_SOURCE_URL),
                 {
-                    'data': d.read(),
-                    'url': url,
+                    "data": d.read(),
+                    "url": url,
                 },
-                content_type='application/json')
-        recipe = json.loads(response.content)['recipe']
+                content_type="application/json",
+            )
+        recipe = json.loads(response.content)["recipe"]
         validate_recipe(arg, recipe)

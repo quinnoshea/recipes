@@ -294,4 +294,3 @@ pdfjs-web-fonts-disabled = વેબ ફોન્ટ નિષ્ક્રિય
 
 
 ## Edit signature description dialog
-

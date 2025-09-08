@@ -298,4 +298,3 @@ pdfjs-web-fonts-disabled = Fonturile web sunt dezactivate: nu se pot folosi font
 
 
 ## Edit signature description dialog
-

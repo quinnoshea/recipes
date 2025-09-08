@@ -1,14 +1,15 @@
 !!! info "Community Contributed"
-    This guide was contributed by the community and is neither officially supported, nor updated or tested. 
-    Many thanks to [alexbelgium](https://github.com/alexbelgium) for making implementing everything required to have 
-    Tandoor run in HA.
+This guide was contributed by the community and is neither officially supported, nor updated or tested.
+Many thanks to [alexbelgium](https://github.com/alexbelgium) for making implementing everything required to have
+Tandoor run in HA.
 
 !!! danger "Tandoor 2 Compatibility"
-    This guide has not been verified/tested for Tandoor 2, which now integrates a nginx service inside the default docker container and exposes its service on port 80 instead of 8080.
+This guide has not been verified/tested for Tandoor 2, which now integrates a nginx service inside the default docker container and exposes its service on port 80 instead of 8080.
 
 ![Addon version](https://img.shields.io/badge/dynamic/json?label=Version&query=%24.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Falexbelgium%2Fhassio-addons%2Fmaster%2Ftandoor_recipes%2Fconfig.json) ![Last update](https://img.shields.io/badge/dynamic/json?label=Updated&query=%24.last_update&url=https%3A%2F%2Fraw.githubusercontent.com%2Falexbelgium%2Fhassio-addons%2Fmaster%2Ftandoor_recipes%2Fupdater.json) ![aarch64][aarch64-badge] ![amd64][amd64-badge] ![armv7][armv7-badge]
 
 ### Introduction
+
 [Home Assistant (HA)](https://www.home-assistant.io/) is a free and open-source software for home automation designed to be a central control system for smart home devices with a focus on local control and privacy. It can be accessed through a web-based user interface by using companion apps for Android and iOS, or by voice commands via a supported virtual assistant such as Google Assistant or Amazon Alexa.
 
 It can be [installed](https://www.home-assistant.io/installation/) as a standalone Operating System on a dedicated system, making it easy to deploy and maintain through Over The Air updates. It can also be installed as Docker container.

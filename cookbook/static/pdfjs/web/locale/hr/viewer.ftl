@@ -542,4 +542,3 @@ pdfjs-editor-undo-bar-close-button-label = Zatvori
 
 
 ## Edit signature description dialog
-

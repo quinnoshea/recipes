@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 import traceback
 
 from django.conf import settings
@@ -23,33 +24,35 @@ from django.views.i18n import JavaScriptCatalog
 from django.views.static import serve
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("allauth.urls")),
     path("_allauth/", include("allauth.headless.urls")),
-    path('i18n/', include('django.conf.urls.i18n')),
+    path("i18n/", include("django.conf.urls.i18n")),
     path(
-        'jsi18n/',
-        JavaScriptCatalog.as_view(domain='django'),
-        name='javascript-catalog'
+        "jsi18n/", JavaScriptCatalog.as_view(domain="django"), name="javascript-catalog"
     ),
 ]
 
 if settings.DEBUG:
-    urlpatterns += path('__debug__/', include('debug_toolbar.urls')),
+    urlpatterns += (path("__debug__/", include("debug_toolbar.urls")),)
 
 if settings.ENABLE_METRICS:
-    urlpatterns += re_path('', include('django_prometheus.urls')),
+    urlpatterns += (re_path("", include("django_prometheus.urls")),)
 
 if settings.GUNICORN_MEDIA or settings.DEBUG:
-    urlpatterns += re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    urlpatterns += (
+        re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
+    )
 
 for p in settings.PLUGINS:
     try:
-        urlpatterns += path(p['base_url'], include(f'{p["module"]}.urls')),
+        urlpatterns += (path(p["base_url"], include(f'{p["module"]}.urls')),)
     except ModuleNotFoundError as e:
         if settings.DEBUG:
             print(e.msg)
-            print(f'ERROR failed loading plugin <{p["name"]}> urls, did you forget creating urls.py in your plugin?')
+            print(
+                f'ERROR failed loading plugin <{p["name"]}> urls, did you forget creating urls.py in your plugin?'
+            )
     except Exception:
         if settings.DEBUG:
             print(f'ERROR failed loading urls for plugin <{p["name"]}>')
@@ -57,5 +60,5 @@ for p in settings.PLUGINS:
 
 # include cookbook urls last because it has a catchall view to the tandoor frontend
 urlpatterns.append(
-    path('', include('cookbook.urls')),
+    path("", include("cookbook.urls")),
 )

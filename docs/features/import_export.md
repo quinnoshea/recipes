@@ -2,8 +2,8 @@ This application features a very versatile import and export feature in order
 to offer the best experience possible and allow you to freely choose where your data goes.
 
 !!! WARNING "WIP"
-    The Module is relatively new. There is a known issue with [Timeouts](https://github.com/vabene1111/recipes/issues/417) on large exports.
-    A fix is being developed and will likely be released with the next version.
+The Module is relatively new. There is a known issue with [Timeouts](https://github.com/vabene1111/recipes/issues/417) on large exports.
+A fix is being developed and will likely be released with the next version.
 
 The Module is built with maximum flexibility and expandability in mind and allows to easily add new
 integrations to allow you to both import and export your recipes into whatever format you desire.
@@ -12,11 +12,11 @@ Feel like there is an important integration missing? Just take a look at the [in
 if your favorite one is missing.
 
 !!! info "Export"
-    I strongly believe in everyone's right to use their data as they please and therefore want to give you
-    the best possible flexibility with your recipes.
-    That said for most of the people getting this application running with their recipes is the biggest priority.
-    Because of this importing as many formats as possible is prioritized over exporting.
-    Exporter for the different formats will follow over time.
+I strongly believe in everyone's right to use their data as they please and therefore want to give you
+the best possible flexibility with your recipes.
+That said for most of the people getting this application running with their recipes is the biggest priority.
+Because of this importing as many formats as possible is prioritized over exporting.
+Exporter for the different formats will follow over time.
 
 Overview of the capabilities of the different integrations.
 
@@ -36,12 +36,12 @@ Overview of the capabilities of the different integrations.
 | MealMaster         | ✔️     | ❌     | ❌     |
 | RezKonv            | ✔️     | ❌     | ❌     |
 | OpenEats           | ✔️     | ❌     | ⌚     |
-| Plantoeat          | ✔️     | ❌     | ✔      |
+| Plantoeat          | ✔️     | ❌     | ✔     |
 | CookBookApp        | ✔️     | ⌚     | ✔️     |
 | CopyMeThat         | ✔️     | ❌     | ✔️     |
 | Melarecipes        | ✔️     | ⌚     | ✔️     |
 | Cookmate           | ✔️     | ⌚     | ✔️     |
-| PDF (experimental) | ⌚️    | ✔️     | ✔️     |
+| PDF (experimental) | ⌚️     | ✔️     | ✔️     |
 | Gourmet            | ✔️     | ❌     | ✔️     |
 
 ✔️ = implemented, ❌ = not implemented and not possible/planned, ⌚ = not yet implemented
@@ -79,11 +79,10 @@ Follow these steps to import your recipes
 3. Download that folder to get your `Recipes.zip` which includes the folder `Recipes` and in that a folder for each recipe
 4. Upload the `Recipes.zip` to Tandoor and import it
 
-
 !!! WARNING "Folder Structure"
-    Importing only works if the folder structure is correct. If you do not use the standard path or create the
-    zip file in any other way make sure the structure is as follows
-    `  Recipes.zip/
+Importing only works if the folder structure is correct. If you do not use the standard path or create the
+zip file in any other way make sure the structure is as follows
+`  Recipes.zip/
         └── Recipes/
             ├── Recipe1/
             │   ├── recipe.json
@@ -112,7 +111,7 @@ In order to import your Chowdown recipes simply create a `.zip` file from those 
 The folder structure should look as follows
 
 !!! info "_recipes"
-    For some reason chowdown uses `_`before the`recipes`folder. To avoid confusion the import supports both `\_recipes`and`recipes`
+For some reason chowdown uses `_`before the`recipes`folder. To avoid confusion the import supports both `\_recipes`and`recipes`
 
 ```
 Recipes.zip/

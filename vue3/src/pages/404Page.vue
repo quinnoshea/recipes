@@ -1,24 +1,20 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-<v-container>
+  <v-container>
     <v-row>
-        <v-col class="text-center">
-            <h1>404</h1>
-            Oops, there is nothing here.
-        </v-col>
+      <v-col class="text-center">
+        <h1>404</h1>
+        Oops, there is nothing here.
+      </v-col>
     </v-row>
 
     <v-row>
-        <v-col class="text-center">
-            <v-btn :to="{name: 'StartPage'}">{{$t('Home')}}</v-btn>
-        </v-col>
+      <v-col class="text-center">
+        <v-btn :to="{ name: 'StartPage' }">{{ $t('Home') }}</v-btn>
+      </v-col>
     </v-row>
-</v-container>
+  </v-container>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

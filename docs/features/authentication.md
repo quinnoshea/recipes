@@ -2,6 +2,7 @@ Besides the normal django username and password authentication this application 
 methods of central account management and authentication.
 
 ## Allauth
+
 [Django Allauth](https://django-allauth.readthedocs.io/en/latest/index.html) is an awesome project that
 allows you to use a [huge number](https://docs.allauth.org/en/latest/socialaccount/providers/index.html) of different
 authentication providers.
@@ -56,8 +57,8 @@ SOCIALACCOUNT_PROVIDERS_FILE=/run/secrets/socialaccount_providers.txt
 ```
 
 !!! success "Improvements ?"
-    There are most likely ways to achieve the same goal but with a cleaner or simpler system.
-    If you know such a way feel free to let me know.
+There are most likely ways to achieve the same goal but with a cleaner or simpler system.
+If you know such a way feel free to let me know.
 
 ### Configuration, via Django Admin
 
@@ -93,6 +94,7 @@ SOCIALACCOUNT_PROVIDERS='{"openid_connect":{"APPS":[{"provider_id":"keycloak","n
 You are now able to sign in using Keycloak after a restart of the service.
 
 ### Linking accounts
+
 To link an account to an already existing normal user go to the settings page of the user and link it.
 Here you can also unlink your account if you no longer want to use a social login method.
 

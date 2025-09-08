@@ -286,4 +286,3 @@ pdfjs-editor-ink-opacity-input = అకిరణ్యత
 
 
 ## Edit signature description dialog
-

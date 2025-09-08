@@ -304,4 +304,3 @@ pdfjs-web-fonts-disabled = Necowe fōnty sōm zastawiōne: niy idzie użyć wklu
 
 
 ## Edit signature description dialog
-

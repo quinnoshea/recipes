@@ -134,4 +134,3 @@ pdfjs-password-cancel-button = Nkuvi-ka
 
 
 ## Edit signature description dialog
-

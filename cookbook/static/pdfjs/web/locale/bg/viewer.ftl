@@ -444,4 +444,3 @@ pdfjs-editor-new-alt-text-not-now-button = Не сега
 
 
 ## Edit signature description dialog
-

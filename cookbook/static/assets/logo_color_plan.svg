@@ -17,12 +17,12 @@
 <sodipodi:namedview  bordercolor="#666666" borderopacity="1" gridtolerance="10" guidetolerance="10" id="namedview50" inkscape:current-layer="svg48" inkscape:cx="256" inkscape:cy="256" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-height="1377" inkscape:window-maximized="1" inkscape:window-width="2560" inkscape:window-x="2552" inkscape:window-y="-8" inkscape:zoom="2.0039062" objecttolerance="10" pagecolor="#ffffff" showgrid="false">
 	</sodipodi:namedview>
 <g id="Kreis" transform="matrix(0.92371046,0,0,0.95776263,3.7134303,-54.329713)">
-	
+
 		<linearGradient id="ellipse2_00000072976586691886204630000005673338158137684613_" gradientUnits="userSpaceOnUse" x1="-24.1585" y1="348.0664" x2="-23.1585" y2="348.0664" gradientTransform="matrix(2.147900e-06 0 0 -2.227081e-06 4347.1548 66.3621)">
 		<stop  offset="0" style="stop-color:#272727"/>
 		<stop  offset="1" style="stop-color:#6C6C6C"/>
 	</linearGradient>
-	
+
 		<ellipse id="ellipse2" style="fill-rule:evenodd;clip-rule:evenodd;fill:url(#ellipse2_00000072976586691886204630000005673338158137684613_);" cx="298.1" cy="348.1" rx="302.1" ry="291.3"/>
 	<g>
 		<defs>

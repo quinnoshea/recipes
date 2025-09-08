@@ -1,15 +1,15 @@
 :root > * {
-    --md-primary-fg-color: #ddbf86;
-    --md-accent-fg-color: #b55e4f;
+  --md-primary-fg-color: #ddbf86;
+  --md-accent-fg-color: #b55e4f;
 
-    --md-primary-fg-color--light: #ddbf86;
+  --md-primary-fg-color--light: #ddbf86;
 
-    /* not working part, has no effect */
-    --md-primary-bg-color: #121212;
-    --md-default-bg-color: #121212;
-    --md-default-bg-color--light: #f5efea;
-    --md-default-bg-color--lighter: #f5efea;
-    --md-default-bg-color--lightest: #f5efea;
+  /* not working part, has no effect */
+  --md-primary-bg-color: #121212;
+  --md-default-bg-color: #121212;
+  --md-default-bg-color--light: #f5efea;
+  --md-default-bg-color--lighter: #f5efea;
+  --md-default-bg-color--lightest: #f5efea;
 }
 
 /*

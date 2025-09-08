@@ -15,7 +15,7 @@ tools:
     paths:
       - "recipes/**"
       - "cookbook/**"
-      
+
   - name: bandit
     # Applies to Python for security scanning
     configuration:
@@ -24,7 +24,7 @@ tools:
     paths:
       - "recipes/**"
       - "cookbook/**"
-      
+
   - name: eslint-8
     # Applies to JavaScript/TypeScript files in the frontend
     configuration:
@@ -34,12 +34,12 @@ tools:
       # You can extend from other configs here if you have them
     paths:
       - "vue3/**"
-      
+
   - name: stylelint
     # Lints CSS/Sass files in your Vue.js project
     paths:
       - "vue3/**"
-      
+
   - name: mypy
     # Static type checking for your Python code
     configuration:

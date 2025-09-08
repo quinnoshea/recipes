@@ -294,4 +294,3 @@ pdfjs-web-fonts-disabled = Fon web dinyahdayakan: tidak dapat menggunakan fon te
 
 
 ## Edit signature description dialog
-

@@ -294,4 +294,3 @@ pdfjs-web-fonts-disabled = ওয়েব ফন্ট নিষ্ক্রিয়
 
 
 ## Edit signature description dialog
-

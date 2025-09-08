@@ -281,4 +281,3 @@ pdfjs-web-fonts-disabled = वेब फन्ट असक्षम छन्: 
 
 
 ## Edit signature description dialog
-

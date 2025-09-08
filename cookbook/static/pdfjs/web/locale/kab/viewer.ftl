@@ -464,4 +464,3 @@ pdfjs-editor-alt-text-settings-close-button = Mdel
 
 
 ## Edit signature description dialog
-

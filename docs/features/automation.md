@@ -20,8 +20,8 @@ views and creating the automation there.
 
 You can also create them manually by setting the following
 
--   **Parameter 1**: name of food/unit/keyword to match
--   **Parameter 2**: name of food/unit/keyword to replace matched food with
+- **Parameter 1**: name of food/unit/keyword to match
+- **Parameter 2**: name of food/unit/keyword to replace matched food with
 
 These rules are processed whenever you are importing recipes from websites or other apps
 and when using the simple ingredient input (shopping, recipe editor, ...).
@@ -32,11 +32,11 @@ This automation is a bit more complicated than the alias rules. It is run when i
 from a website.
 
 It uses Regular Expressions (RegEx) to determine if a description should be altered, what exactly to remove
-and what to replace it with.  The search string ignores case, the replacement string respects case.
+and what to replace it with. The search string ignores case, the replacement string respects case.
 
--   **Parameter 1**: pattern of which sites to match (e.g. `.*.chefkoch.de.*`, `.*`)
--   **Parameter 2**: pattern of what to replace (e.g. `.*`)
--   **Parameter 3**: value to replace matched occurrence of parameter 2 with. Only the first occurrence of the pattern is replaced.
+- **Parameter 1**: pattern of which sites to match (e.g. `.*.chefkoch.de.*`, `.*`)
+- **Parameter 2**: pattern of what to replace (e.g. `.*`)
+- **Parameter 3**: value to replace matched occurrence of parameter 2 with. Only the first occurrence of the pattern is replaced.
 
 To replace the description the python [re.sub](https://docs.python.org/2/library/re.html#re.sub) function is used
 like this `re.sub(<parameter 2>, <parameter 3>, <description>, count=1)`
@@ -56,7 +56,8 @@ that will change the string <example string here> into the string <desired resul
 
 These work just like the Description Replace automation.
 Instruction, Food and Unit Replace will run against every iteration of the object in a recipe during import.
-- Instruction Replace will run for the instructions in every step.  It will also replace every occurrence, not just the first.
+
+- Instruction Replace will run for the instructions in every step. It will also replace every occurrence, not just the first.
 - Food & Unit Replace will run for every food and unit in every ingredient in every step.
 
 Also instead of just replacing a single occurrence of the matched pattern it will replace all.
@@ -69,8 +70,8 @@ a unit.
 
 You can also create them manually by setting the following
 
--   **Parameter 1**: string to detect
--   **Parameter 2**: Optional: unit to insert into ingredient (e.g. 1 whole 'egg yolk' instead of 1 <empty> 'egg yolk')
+- **Parameter 1**: string to detect
+- **Parameter 2**: Optional: unit to insert into ingredient (e.g. 1 whole 'egg yolk' instead of 1 <empty> 'egg yolk')
 
 These rules are processed whenever you are importing recipes from websites or other apps
 and when using the simple ingredient input (shopping, recipe editor, ...).
@@ -80,8 +81,8 @@ and when using the simple ingredient input (shopping, recipe editor, ...).
 Some recipes list the food before the units for some foods (garlic cloves). This automation will transpose 2 words in an
 ingredient so "garlic cloves" will automatically become "cloves garlic"
 
--   **Parameter 1**: first word to detect
--   **Parameter 2**: second word to detect
+- **Parameter 1**: first word to detect
+- **Parameter 2**: second word to detect
 
 These rules are processed whenever you are importing recipes from websites or other apps
 and when using the simple ingredient input (shopping, recipe editor, ...).

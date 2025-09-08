@@ -259,4 +259,3 @@ pdfjs-web-fonts-disabled = Webfonte is gedeaktiveer: kan nie PDF-fonte wat ingeb
 
 
 ## Edit signature description dialog
-

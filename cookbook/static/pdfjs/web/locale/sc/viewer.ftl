@@ -391,4 +391,3 @@ pdfjs-editor-alt-text-settings-close-button = Serra
 
 
 ## Edit signature description dialog
-

@@ -315,4 +315,3 @@ pdfjs-web-fonts-disabled = Veebifondid on keelatud: PDFiga kaasatud fonte pole v
 
 
 ## Edit signature description dialog
-

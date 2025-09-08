@@ -411,4 +411,3 @@ pdfjs-editor-resizer-middle-left =
 
 
 ## Edit signature description dialog
-

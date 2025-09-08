@@ -1,7 +1,7 @@
-import {getCookie} from "@/utils/cookie";
-import {Recipe, RecipeFromJSON, RecipeImageFromJSON, UserFileFromJSON} from "@/openapi";
-import {ErrorMessageType, PreparedMessage, useMessageStore} from "@/stores/MessageStore";
-import {DateTime} from "luxon";
+import { getCookie } from '@/utils/cookie'
+import { Recipe, RecipeFromJSON, RecipeImageFromJSON, UserFileFromJSON } from '@/openapi'
+import { ErrorMessageType, PreparedMessage, useMessageStore } from '@/stores/MessageStore'
+import { DateTime } from 'luxon'
 
 /**
  * Gets a nested property of an object given a dot-notation path.
@@ -11,15 +11,15 @@ import {DateTime} from "luxon";
  * @returns The value of the nested property, or `undefined` if not found.
  */
 export function getNestedProperty(object: any, path: string): any {
-    const pathParts = path.split('.');
+  const pathParts = path.split('.')
 
-    return pathParts.reduce((obj, key) => {
-        if (obj && typeof obj === 'object') {
-            return obj[key]
-        } else {
-            return undefined;
-        }
-    }, object);
+  return pathParts.reduce((obj, key) => {
+    if (obj && typeof obj === 'object') {
+      return obj[key]
+    } else {
+      return undefined
+    }
+  }, object)
 }
 
 //TODO just some partial code
@@ -28,26 +28,26 @@ export function getNestedProperty(object: any, path: string): any {
  * helper function uploads files for now
  */
 export function uploadRecipeImage(recipeId: number, file: File) {
-    let formData = new FormData()
-    formData.append('image', file)
+  let formData = new FormData()
+  formData.append('image', file)
 
-    //TODO proper URL finding (sub path setups)
-    // TODO maybe better use existing URL clients response functions for parsing
+  //TODO proper URL finding (sub path setups)
+  // TODO maybe better use existing URL clients response functions for parsing
 
-    fetch('/api/recipe/' + recipeId + '/image/', {
-        method: 'PUT',
-        headers: {'X-CSRFToken': getCookie('csrftoken')},
-        body: formData
-    }).then(r => {
-        r.json().then(r => {
-            return RecipeImageFromJSON(r)
-        })
-
-    }).catch(err => {
-        useMessageStore().addError(ErrorMessageType.UPDATE_ERROR, err)
-    }).finally(() => {
-
+  fetch('/api/recipe/' + recipeId + '/image/', {
+    method: 'PUT',
+    headers: { 'X-CSRFToken': getCookie('csrftoken') },
+    body: formData,
+  })
+    .then((r) => {
+      r.json().then((r) => {
+        return RecipeImageFromJSON(r)
+      })
     })
+    .catch((err) => {
+      useMessageStore().addError(ErrorMessageType.UPDATE_ERROR, err)
+    })
+    .finally(() => {})
 }
 
 /**
@@ -56,7 +56,7 @@ export function uploadRecipeImage(recipeId: number, file: File) {
  * @param param
  */
 export function toNumberArray(param: string | string[]): number[] {
-    return Array.isArray(param) ? param.map(Number) : [parseInt(param)];
+  return Array.isArray(param) ? param.map(Number) : [parseInt(param)]
 }
 
 /**
@@ -64,19 +64,20 @@ export function toNumberArray(param: string | string[]): number[] {
  * @param param
  */
 export function stringToBool(param: string): boolean | undefined {
-    if (param == "true") {
-        return true
-    } else if (param == "false") {
-        return false
-    } else {
-        return undefined
-    }
+  if (param == 'true') {
+    return true
+  } else if (param == 'false') {
+    return false
+  } else {
+    return undefined
+  }
 }
 
 /**
  * allows binding and transforming of dates to route query parameters
  */
 export const routeQueryDateTransformer = {
-    get: (value: string | null | Date) => ((value == null) ? null : (new Date(value))),
-    set: (value: string | null | Date) => ((value == null) ? null : (DateTime.fromJSDate(new Date(value)).toISODate()))
+  get: (value: string | null | Date) => (value == null ? null : new Date(value)),
+  set: (value: string | null | Date) =>
+    value == null ? null : DateTime.fromJSDate(new Date(value)).toISODate(),
 }

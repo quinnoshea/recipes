@@ -262,4 +262,3 @@ pdfjs-web-fonts-disabled = Интернет фонтовите се оневоз
 
 
 ## Edit signature description dialog
-

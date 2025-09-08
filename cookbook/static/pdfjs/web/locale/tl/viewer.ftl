@@ -304,4 +304,3 @@ pdfjs-web-fonts-disabled = Naka-disable ang mga Web font: hindi kayang gamitin a
 
 
 ## Edit signature description dialog
-

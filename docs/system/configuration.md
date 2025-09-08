@@ -42,10 +42,10 @@ ALLOWED_HOSTS=recipes.mydomain.com
 ### Database
 
 Multiple parameters are required to configure the database.
-*Note: You can setup parameters for a test database by defining all of the parameters preceded by `TEST_` e.g. TEST_DB_ENGINE=*
+_Note: You can setup parameters for a test database by defining all of the parameters preceded by `TEST_` e.g. TEST_DB_ENGINE=_
 
 | Var               | Options                                                            | Description                                                             |
-|-------------------|--------------------------------------------------------------------|-------------------------------------------------------------------------|
+| ----------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------- |
 | DB_ENGINE         | django.db.backends.postgresql (default) django.db.backends.sqlite3 | Type of database connection. Production should always use postgresql.   |
 | POSTGRES_HOST     | any                                                                | Used to connect to database server. Use container name in docker setup. |
 | POSTGRES_DB       | any                                                                | Name of database.                                                       |
@@ -104,7 +104,6 @@ Port for gunicorn to bind to. Should not be changed if using docker stack with r
 TANDOOR_PORT=8080
 ```
 
-
 #### URL Path
 
 > default `None` - options: `/custom/url/base/path`
@@ -124,9 +123,7 @@ SCRIPT_NAME=/recipes
 If staticfiles are stored or served from a different location uncomment and change accordingly.
 This can either be a relative path from the applications base path or the url of an external host.
 
-!!! info
-    - MUST END IN `/`
-    - This is not required if you are just using a subfolder
+!!! info - MUST END IN `/` - This is not required if you are just using a subfolder
 
 ```
 STATIC_URL=/static/
@@ -146,10 +143,7 @@ Where staticfiles should be stored on disk. The default location is a
 If mediafiles are stored at a different location uncomment and change accordingly.
 This can either be a relative path from the applications base path or the url of an external host
 
-!!! info
-    - MUST END IN `/`
-    - This is **not required** if you are just using a subfolder
-    - This is **not required** if using S3/object storage
+!!! info - MUST END IN `/` - This is **not required** if you are just using a subfolder - This is **not required** if using S3/object storage
 
 ```
 MEDIA_URL=/media/
@@ -252,8 +246,8 @@ HCAPTCHA_SECRET=
 Enable serving of prometheus metrics under the `/metrics` path
 
 !!! danger
-    The view is not secured (as per the prometheus default way) so make sure to secure it
-    through your web server.
+The view is not secured (as per the prometheus default way) so make sure to secure it
+through your web server.
 
 ```
 ENABLE_METRICS=0
@@ -270,8 +264,8 @@ Keywords and Food can be manually sorted by name in Admin
 This value can also be temporarily changed in Admin, it will revert the next time the application is started
 
 !!! info
-    Disabling tree sorting is a temporary fix, in the future we might find a better implementation to allow tree sorting
-    without the large performance impacts.
+Disabling tree sorting is a temporary fix, in the future we might find a better implementation to allow tree sorting
+without the large performance impacts.
 
 ```
 SORT_TREE_BY_NAME=0
@@ -320,10 +314,10 @@ This setting is targeted at private, single space instances that typically have 
 access to the data.
 
 !!! danger
-    With public signup enabled this will give everyone access to the data in the given space
+With public signup enabled this will give everyone access to the data in the given space
 
 !!! warning
-    This feature might be deprecated in favor of a space join and public viewing system in the future
+This feature might be deprecated in favor of a space join and public viewing system in the future
 
 > default `0` (disabled) - options `0`, `1-X` (space id)
 
@@ -347,7 +341,7 @@ Allow everyone to create local accounts on your application instance (without an
 You might want to setup HCAPTCHA to prevent bots from creating accounts/spam.
 
 !!! info
-    Social accounts will always be able to sign up, if providers are configured
+Social accounts will always be able to sign up, if providers are configured
 
 ```
 ENABLE_SIGNUP=0
@@ -362,13 +356,14 @@ SOCIAL_PROVIDERS = allauth.socialaccount.providers.github, allauth.socialaccount
 ```
 
 #### Remote User Auth
+
 > default `0` - options `0`, `1`
 
 Allow authentication via the REMOTE-USER header (can be used for e.g. authelia).
 
 !!! danger
-    Leave off if you don't know what you are doing! Enabling this without proper configuration will enable anybody
-    to login with any username!
+Leave off if you don't know what you are doing! Enabling this without proper configuration will enable anybody
+to login with any username!
 
 ```
 REMOTE_USER_AUTH=0
@@ -443,7 +438,7 @@ See also [Django Storages Docs](https://django-storages.readthedocs.io/en/latest
 information.
 
 !!! info
-    Settings are only named S3 but apply to all compatible object storage providers.
+Settings are only named S3 but apply to all compatible object storage providers.
 
 Required settings
 
@@ -473,10 +468,10 @@ S3_CUSTOM_DOMAIN= # when using a CDN/proxy to S3 (see https://github.com/Tandoor
 #### AI Integration
 
 To use AI to perform different tasks you need to configure an API key and the AI provider. [LiteLLM](https://www.litellm.ai/) is used
-to make a standardized request to different AI providers of your liking. 
+to make a standardized request to different AI providers of your liking.
 
 Configuring this via environment parameters is a temporary solution. In the future I plan on adding support for multiple AI providers per Tandoor instance
-with the option to select them for various tasks. For now only gemini 2.0 flash has been tested but feel free to try out other models. 
+with the option to select them for various tasks. For now only gemini 2.0 flash has been tested but feel free to try out other models.
 
 ```
 AI_API_KEY=
@@ -511,15 +506,15 @@ EXTERNAL_CONNECTORS_QUEUE_SIZE=100  # Defaults to 100, set to any number >1
 ### Debugging/Development settings
 
 !!! warning
-    These settings should not be left on in production as they might provide additional attack surfaces and
-    information to adversaries.
+These settings should not be left on in production as they might provide additional attack surfaces and
+information to adversaries.
 
 #### Debug
 
 > default `0` - options: `0`, `1`
 
 !!! info
-    Please enable this before posting logs anywhere to ask for help.
+Please enable this before posting logs anywhere to ask for help.
 
 Setting to `1` enables several django debug features and additional
 logs ([see docs](https://docs.djangoproject.com/en/5.0/ref/settings/#std-setting-DEBUG)).
@@ -560,7 +555,6 @@ Please set to `DEBUG` when making a bug report.
 ```
  LOG_LEVEL="DEBUG"
 ```
-
 
 #### Gunicorn Log Level
 
@@ -618,7 +612,6 @@ Superusers can always bypass this limit.
 MAX_OWNED_SPACES_PREF_DEFAULT=100
 ```
 
-
 ### Cosmetic / Preferences
 
 #### Timezone
@@ -634,6 +627,7 @@ TZ=Europe/Berlin
 ```
 
 #### Default Theme
+
 > default `0` - options `1-X` (space ID)
 
 Tandoors appearance can be changed on a user and space level but unauthenticated users always see the tandoor default style.
@@ -644,6 +638,7 @@ UNAUTHENTICATED_THEME_FROM_SPACE=
 ```
 
 #### Force Theme
+
 > default `0` - options `1-X` (space ID)
 
 Similar to the Default theme but forces the theme upon all users (authenticated/unauthenticated) and all spaces
@@ -682,6 +677,7 @@ DRF_THROTTLE_RECIPE_URL_IMPORT=60/hour
 ```
 
 #### Default Space Limits
+
 You might want to limit how many resources a user might create. The following settings apply automatically to newly
 created spaces. These defaults can be changed in the admin view after a space has been created.
 
@@ -695,9 +691,11 @@ SPACE_DEFAULT_ALLOW_SHARING=1 # Allow users to share recipes with public links
 ```
 
 #### Export file caching
+
 > default `600` - options `1-X`
 
 Recipe exports are cached for a certain time (in seconds) by default, adjust time if needed
+
 ```
 EXPORT_FILE_CACHE_DURATION=600
 ```

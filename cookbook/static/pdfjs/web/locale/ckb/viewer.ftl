@@ -289,4 +289,3 @@ pdfjs-web-fonts-disabled = جۆرەپیتی وێب ناچالاکە: نەتوا�
 
 
 ## Edit signature description dialog
-

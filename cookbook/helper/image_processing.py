@@ -6,25 +6,27 @@ from PIL import Image
 
 def rescale_image_jpeg(image_object, base_width=1020):
     img = Image.open(image_object)
-    icc_profile = img.info.get('icc_profile')  # remember color profile to not mess up colors
-    width_percent = (base_width / float(img.size[0]))
+    icc_profile = img.info.get(
+        "icc_profile"
+    )  # remember color profile to not mess up colors
+    width_percent = base_width / float(img.size[0])
     height = int((float(img.size[1]) * float(width_percent)))
 
     img = img.resize((base_width, height), Image.LANCZOS)
     img_bytes = BytesIO()
-    img.save(img_bytes, 'JPEG', quality=90, optimize=True, icc_profile=icc_profile)
+    img.save(img_bytes, "JPEG", quality=90, optimize=True, icc_profile=icc_profile)
 
     return img_bytes
 
 
 def rescale_image_png(image_object, base_width=1020):
     image_object = Image.open(image_object)
-    wpercent = (base_width / float(image_object.size[0]))
+    wpercent = base_width / float(image_object.size[0])
     hsize = int((float(image_object.size[1]) * float(wpercent)))
     img = image_object.resize((base_width, hsize), Image.LANCZOS)
 
     im_io = BytesIO()
-    img.save(im_io, 'PNG', quality=90)
+    img.save(im_io, "PNG", quality=90)
     return im_io
 
 
@@ -32,13 +34,13 @@ def get_filetype(name):
     try:
         return os.path.splitext(name)[1]
     except Exception:
-        return '.jpeg'
+        return ".jpeg"
 
 
 def is_file_type_allowed(filename, image_only=False):
     is_file_allowed = False
-    allowed_file_types = ['.pdf', '.docx', '.xlsx', '.css', '.mp4', '.mov']
-    allowed_image_types = ['.png', '.jpg', '.jpeg', '.gif', '.webp']
+    allowed_file_types = [".pdf", ".docx", ".xlsx", ".css", ".mp4", ".mov"]
+    allowed_image_types = [".png", ".jpg", ".jpeg", ".gif", ".webp"]
     check_list = allowed_image_types
     if not image_only:
         check_list += allowed_file_types
@@ -73,17 +75,17 @@ def handle_image(request, image_object, filetype):
         return None
 
     file_format = None
-    if filetype == '.jpeg' or filetype == '.jpg':
-        file_format = 'JPEG'
-    if filetype == '.png':
-        file_format = 'PNG'
-    if filetype == '.webp':
-        file_format = 'WEBP'
+    if filetype == ".jpeg" or filetype == ".jpg":
+        file_format = "JPEG"
+    if filetype == ".png":
+        file_format = "PNG"
+    if filetype == ".webp":
+        file_format = "WEBP"
 
     if (image_object.size / 1000) > 500:  # if larger than 500 kb compress
-        if filetype == '.jpeg' or filetype == '.jpg':
+        if filetype == ".jpeg" or filetype == ".jpg":
             return rescale_image_jpeg(image_object)
-        if filetype == '.png':
+        if filetype == ".png":
             return rescale_image_png(image_object)
     else:
         return strip_image_meta(image_object, file_format)

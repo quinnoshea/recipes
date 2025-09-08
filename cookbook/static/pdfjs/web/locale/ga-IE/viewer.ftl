@@ -260,4 +260,3 @@ pdfjs-web-fonts-disabled = Tá clófhoirne Gréasáin díchumasaithe: ní féidi
 
 
 ## Edit signature description dialog
-

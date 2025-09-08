@@ -174,4 +174,3 @@ pdfjs-password-cancel-button = Neenal
 
 
 ## Edit signature description dialog
-

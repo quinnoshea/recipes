@@ -1,4 +1,5 @@
 from django.test import utils
+
 from django_scopes import scopes_disabled
 
 # disables scoping error in all queries used inside the test FUNCTIONS

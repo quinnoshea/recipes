@@ -315,4 +315,3 @@ pdfjs-web-fonts-disabled = Saityno šriftai išjungti – PDF faile esančių š
 
 
 ## Edit signature description dialog
-

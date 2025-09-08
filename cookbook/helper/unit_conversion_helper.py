@@ -1,37 +1,33 @@
-from django.core.cache import caches
 from decimal import Decimal
+
+from django.core.cache import caches
 
 from cookbook.helper.cache_helper import CacheHelper
 from cookbook.models import Ingredient, Unit
 
 CONVERSION_TABLE = {
-    'weight': {
-        'g': 1000,
-        'kg': 1,
-        'ounce': 35.274,
-        'pound': 2.20462
-    },
-    'volume': {
-        'ml': 1000,
-        'l': 1,
-        'fluid_ounce': 33.814,
-        'pint': 2.11338,
-        'quart': 1.05669,
-        'gallon': 0.264172,
-        'tbsp': 67.628,
-        'tsp': 202.884,
-        'us_cup': 4.22675,
-        'imperial_fluid_ounce': 35.1951,
-        'imperial_pint': 1.75975,
-        'imperial_quart': 0.879877,
-        'imperial_gallon': 0.219969,
-        'imperial_tbsp': 56.3121,
-        'imperial_tsp': 168.936,
+    "weight": {"g": 1000, "kg": 1, "ounce": 35.274, "pound": 2.20462},
+    "volume": {
+        "ml": 1000,
+        "l": 1,
+        "fluid_ounce": 33.814,
+        "pint": 2.11338,
+        "quart": 1.05669,
+        "gallon": 0.264172,
+        "tbsp": 67.628,
+        "tsp": 202.884,
+        "us_cup": 4.22675,
+        "imperial_fluid_ounce": 35.1951,
+        "imperial_pint": 1.75975,
+        "imperial_quart": 0.879877,
+        "imperial_gallon": 0.219969,
+        "imperial_tbsp": 56.3121,
+        "imperial_tsp": 168.936,
     },
 }
 
-BASE_UNITS_WEIGHT = list(CONVERSION_TABLE['weight'].keys())
-BASE_UNITS_VOLUME = list(CONVERSION_TABLE['volume'].keys())
+BASE_UNITS_WEIGHT = list(CONVERSION_TABLE["weight"].keys())
+BASE_UNITS_VOLUME = list(CONVERSION_TABLE["volume"].keys())
 
 
 class ConversionException(Exception):
@@ -59,14 +55,21 @@ class UnitConversionHelper:
         """
         system = None
         if from_unit in BASE_UNITS_WEIGHT and to_unit in BASE_UNITS_WEIGHT:
-            system = 'weight'
+            system = "weight"
         if from_unit in BASE_UNITS_VOLUME and to_unit in BASE_UNITS_VOLUME:
-            system = 'volume'
+            system = "volume"
 
         if not system:
-            raise ConversionException('Trying to convert units not existing or not in one unit system (weight/volume)')
+            raise ConversionException(
+                "Trying to convert units not existing or not in one unit system (weight/volume)"
+            )
 
-        return Decimal(amount / Decimal(CONVERSION_TABLE[system][from_unit] / CONVERSION_TABLE[system][to_unit]))
+        return Decimal(
+            amount
+            / Decimal(
+                CONVERSION_TABLE[system][from_unit] / CONVERSION_TABLE[system][to_unit]
+            )
+        )
 
     def base_conversions(self, ingredient_list):
         """
@@ -84,15 +87,34 @@ class UnitConversionHelper:
                     conversion_unit = i.unit.base_unit
 
                 # TODO allow setting which units to convert to? possibly only once conversions become visible
-                units = caches['default'].get(CacheHelper(self.space).BASE_UNITS_CACHE_KEY, None)
+                units = caches["default"].get(
+                    CacheHelper(self.space).BASE_UNITS_CACHE_KEY, None
+                )
                 if not units:
-                    units = Unit.objects.filter(space=self.space, base_unit__in=(BASE_UNITS_VOLUME + BASE_UNITS_WEIGHT)).all()
-                    caches['default'].set(CacheHelper(self.space).BASE_UNITS_CACHE_KEY, units, 60 * 60)  # cache is cleared on unit save signal so long duration is fine
+                    units = Unit.objects.filter(
+                        space=self.space,
+                        base_unit__in=(BASE_UNITS_VOLUME + BASE_UNITS_WEIGHT),
+                    ).all()
+                    caches["default"].set(
+                        CacheHelper(self.space).BASE_UNITS_CACHE_KEY, units, 60 * 60
+                    )  # cache is cleared on unit save signal so long duration is fine
 
                 for u in units:
                     try:
-                        ingredient = Ingredient(amount=self.convert_from_to(conversion_unit, u.base_unit, i.amount), unit=u, food=ingredient_list[0].food, )
-                        if not any((x.unit.name == ingredient.unit.name or x.unit.base_unit == ingredient.unit.name) for x in base_conversion_ingredient_list):
+                        ingredient = Ingredient(
+                            amount=self.convert_from_to(
+                                conversion_unit, u.base_unit, i.amount
+                            ),
+                            unit=u,
+                            food=ingredient_list[0].food,
+                        )
+                        if not any(
+                            (
+                                x.unit.name == ingredient.unit.name
+                                or x.unit.base_unit == ingredient.unit.name
+                            )
+                            for x in base_conversion_ingredient_list
+                        ):
                             base_conversion_ingredient_list.append(ingredient)
                     except ConversionException:
                         pass
@@ -112,12 +134,16 @@ class UnitConversionHelper:
         if ingredient.unit:
             for c in ingredient.unit.unit_conversion_base_relation.all():
                 if c.space == self.space:
-                    r = self._uc_convert(c, ingredient.amount, ingredient.unit, ingredient.food)
+                    r = self._uc_convert(
+                        c, ingredient.amount, ingredient.unit, ingredient.food
+                    )
                     if r and r not in conversions:
                         conversions.append(r)
             for c in ingredient.unit.unit_conversion_converted_relation.all():
                 if c.space == self.space:
-                    r = self._uc_convert(c, ingredient.amount, ingredient.unit, ingredient.food)
+                    r = self._uc_convert(
+                        c, ingredient.amount, ingredient.unit, ingredient.food
+                    )
                     if r and r not in conversions:
                         conversions.append(r)
 
@@ -137,6 +163,16 @@ class UnitConversionHelper:
         """
         if uc.food is None or uc.food == food:
             if unit == uc.base_unit:
-                return Ingredient(amount=amount * (uc.converted_amount / uc.base_amount), unit=uc.converted_unit, food=food, space=self.space)
+                return Ingredient(
+                    amount=amount * (uc.converted_amount / uc.base_amount),
+                    unit=uc.converted_unit,
+                    food=food,
+                    space=self.space,
+                )
             else:
-                return Ingredient(amount=amount * (uc.base_amount / uc.converted_amount), unit=uc.base_unit, food=food, space=self.space)
+                return Ingredient(
+                    amount=amount * (uc.base_amount / uc.converted_amount),
+                    unit=uc.base_unit,
+                    food=food,
+                    space=self.space,
+                )

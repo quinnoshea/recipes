@@ -433,4 +433,3 @@ pdfjs-editor-undo-bar-close-button-label = Tampar
 
 
 ## Edit signature description dialog
-

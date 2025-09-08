@@ -1,4 +1,5 @@
 from django.core.management.commands.dumpdata import Command as DumpdataCommand
+
 from django_scopes import scopes_disabled
 
 

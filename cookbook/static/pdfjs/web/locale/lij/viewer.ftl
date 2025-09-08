@@ -294,4 +294,3 @@ pdfjs-web-fonts-disabled = I font do web en dizativæ: inposcibile adeuviâ i ca
 
 
 ## Edit signature description dialog
-

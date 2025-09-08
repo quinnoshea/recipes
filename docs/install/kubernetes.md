@@ -1,8 +1,8 @@
 !!! info "Community Contributed"
-    This guide was contributed by the community and is neither officially supported, nor updated or tested.
+This guide was contributed by the community and is neither officially supported, nor updated or tested.
 
 !!! danger "Tandoor 2 Compatibility"
-    This guide has not been verified/tested for Tandoor 2, which now integrates a nginx service inside the default docker container and exposes its service on port 80 instead of 8080.
+This guide has not been verified/tested for Tandoor 2, which now integrates a nginx service inside the default docker container and exposes its service on port 80 instead of 8080.
 
 ## K8s Setup
 
@@ -17,7 +17,7 @@ The nginx config map. This is loaded as nginx.conf in the nginx sidecar to confi
 ### 15-secrets.yaml
 
 !!! warning "Contains secrets"
-    **Replace them!**
+**Replace them!**
 
 This file is only here for a quick start. Be aware that changing secrets after installation will be messy and is not documented here. **You should set new secrets before the installation.** As you are reading this document **before** the installation ;-)
 
@@ -27,26 +27,26 @@ See also [Managing Secrets using kubectl](https://kubernetes.io/docs/tasks/confi
 
 **Replace** `db-password`, `postgres-user-password` and `secret-key` **with something - well - secret :-)**
 
-~~~
+```
 echo -n 'db-password' > ./db-password.txt
 echo -n 'postgres-user-password' > ./postgres-password.txt
 echo -n 'secret-key' | sha256sum | awk '{ printf $1 }' > ./secret-key.txt
-~~~
+```
 
 Delete the default secrets file `15-secrets.yaml` and generate the K8s secret from your files.
 
-~~~
+```
 kubectl create secret generic recipes \
   --from-file=postgresql-password=./db-password.txt \
   --from-file=postgresql-postgres-password=./postgres-password.txt \
   --from-file=secret-key=./secret-key.txt
-~~~
+```
 
 ### 20-service-account.yml
 
 Creating service account `recipes` for deployment and stateful set.
 
-###  30-pvc.yaml
+### 30-pvc.yaml
 
 The creation of the persistent volume claims for media and static content. May you want to increase the size. This expects to have a storage class installed.
 
@@ -60,15 +60,15 @@ Creating the database service.
 
 ### 50-deployment.yaml
 
-The deployment first fires up a init container to do the database migrations and file modifications. This init container runs as root. The init container runs part of the [boot.sh](https://github.com/TandoorRecipes/recipes/blob/develop/boot.sh) script from the `vabene1111/recipes` image. 
+The deployment first fires up a init container to do the database migrations and file modifications. This init container runs as root. The init container runs part of the [boot.sh](https://github.com/TandoorRecipes/recipes/blob/develop/boot.sh) script from the `vabene1111/recipes` image.
 
 The deployment then runs two containers, the recipes-nginx and the recipes container which runs the gunicorn app. The nginx container gets it's nginx.conf via config map to deliver static content `/static` and `/media`. The guincorn container gets it's secret key and the database password from the secret `recipes`. `gunicorn` runs as user `nobody`.
 
 Currently, this deployment is using the `latest` image. You may want to explicitly set the tag, e.g.
 
-~~~
+```
 image: vabene1111/recipes:1.4.7
-~~~
+```
 
 It is **extremely important** to use the same image in both the initialization `init-chmod-data` and the main `recipes` containers.
 
@@ -96,7 +96,7 @@ I tried the setup with [kind](https://kind.sigs.k8s.io/) and it runs well on my 
 There is a warning, when you check your system as super user:
 
 !!! warning "Media Serving Warning"
-    Serving media files directly using gunicorn/python is not recommend! Please follow the steps described here to update your installation.
+Serving media files directly using gunicorn/python is not recommend! Please follow the steps described here to update your installation.
 
 I don't know how this check works, but this warning is simply wrong! ;-) Media and static files are routed by ingress to the nginx container - I promise :-)
 
@@ -110,6 +110,6 @@ If everything works as expected, the `init-chmod-data` initialization container 
 
 To apply the manifest with kubectl, use the following command:
 
-~~~
+```
 kubectl apply -f ./docs/install/k8s/
-~~~
+```

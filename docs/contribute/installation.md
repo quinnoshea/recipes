@@ -31,14 +31,14 @@ populated from default values.
 ### Vue.js
 
 !!! danger "Development Setup"
-    The vite dev server **must** be started before the django runserver command is run or else django will **not** recognize it and try to fallback to the build files. 
+    The vite dev server **must** be started before the django runserver command is run or else django will **not** recognize it and try to fallback to the build files.
 
 The frontend is build using [Vue.js](https://vuejs.org/).
 
 In order to work on these pages, you will have to install a Javascript package manager of your choice. The following examples use yarn.
 
-1. go to the `vue3` and run `yarn install` to install the dependencies  
+1. go to the `vue3` and run `yarn install` to install the dependencies
 2. run `yarn serve` to start the dev server that allows hot reloading and easy and quick development
 
-If you do not wish to work on those pages, but instead want the application to work properly during development, run `yarn build` to build the frontend pages once. After that you 
+If you do not wish to work on those pages, but instead want the application to work properly during development, run `yarn build` to build the frontend pages once. After that you
 might need to run `python manage.py collectstatic` to setup the static files.

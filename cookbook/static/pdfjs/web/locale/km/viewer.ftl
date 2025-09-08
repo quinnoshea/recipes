@@ -270,4 +270,3 @@ pdfjs-web-fonts-disabled = បាន​បិទ​ពុម្ពអក្ស�
 
 
 ## Edit signature description dialog
-

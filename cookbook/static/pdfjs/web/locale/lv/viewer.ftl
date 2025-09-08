@@ -294,4 +294,3 @@ pdfjs-web-fonts-disabled = Tīmekļa fonti nav aktivizēti: Nevar iegult PDF fon
 
 
 ## Edit signature description dialog
-

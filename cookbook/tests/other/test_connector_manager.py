@@ -1,5 +1,6 @@
-import pytest
 from django.contrib import auth
+
+import pytest
 from mock.mock import Mock
 
 from cookbook.connectors.connector import Connector, ShoppingListEntryDTO
@@ -9,7 +10,11 @@ from cookbook.models import Food, ShoppingListEntry
 
 @pytest.fixture()
 def obj_1(space_1, u1_s1):
-    e = ShoppingListEntry.objects.create(created_by=auth.get_user(u1_s1), food=Food.objects.get_or_create(name='test 1', space=space_1)[0], space=space_1)
+    e = ShoppingListEntry.objects.create(
+        created_by=auth.get_user(u1_s1),
+        food=Food.objects.get_or_create(name="test 1", space=space_1)[0],
+        space=space_1,
+    )
     return e
 
 

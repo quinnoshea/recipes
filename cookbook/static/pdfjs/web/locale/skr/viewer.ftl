@@ -522,4 +522,3 @@ pdfjs-editor-undo-bar-close-button-label = بند کرو
 
 
 ## Edit signature description dialog
-

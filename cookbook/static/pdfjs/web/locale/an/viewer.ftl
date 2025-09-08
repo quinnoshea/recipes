@@ -304,4 +304,3 @@ pdfjs-web-fonts-disabled = As fuents web son desactivadas: no se puet incrustar 
 
 
 ## Edit signature description dialog
-
