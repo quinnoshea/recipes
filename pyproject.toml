@@ -1,3 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tandoor-recipes"
+version = "2.1.0"
+description = "Tandoor Recipes - The recipe manager that allows you to manage your ever growing collection of digital recipes."
+readme = "README.md"
+license = {text = "MIT"}
+
 [tool.yapf]
 column_limit = 179
 based_on_style = "pep8"
@@ -10,6 +21,86 @@ SPLIT_BEFORE_DOT = true
 ALLOW_SPLIT_BEFORE_DICT_VALUE = false
 
 [tool.isort]
+profile = "black"
 multi_line_output = 5
-skip = [".gitignore", ".dockerignore"]
-line_length = 179
+skip = [".gitignore", ".dockerignore", "migrations", "vue3"]
+line_length = 88
+known_django = ["django"]
+known_first_party = ["cookbook", "recipes"]
+sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+[tool.black]
+line-length = 88
+target-version = ['py310', 'py311', 'py312']
+exclude = '''
+/(
+    \.git
+  | migrations
+  | vue3
+  | node_modules
+  | \.venv
+)/
+'''
+
+[tool.coverage.run]
+source = ["cookbook"]
+omit = [
+    "*/tests/*",
+    "*/migrations/*",
+    "*/management/*",
+    "*/templates/*",
+    "*/static/*",
+    "*/__init__.py",
+    "*/admin.py",
+    "*/apps.py",
+    "recipes/*",
+    "vue3/*",
+]
+branch = true
+data_file = ".coverage"
+relative_files = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+skip_empty = false
+sort = "Cover"
+precision = 2
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "def __str__",
+    "if settings.DEBUG",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
+
+[tool.coverage.html]
+directory = "htmlcov"
+title = "Tandoor Recipes Coverage Report"
+
+[tool.coverage.xml]
+output = "coverage.xml"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "recipes.test_settings"
+python_files = ["test_*.py", "*_test.py", "tests.py"]
+addopts = """
+    --verbose
+    --tb=short
+    --strict-markers
+    --cov=cookbook
+    --cov-report=term-missing:skip-covered
+    --cov-report=html
+    --cov-report=xml
+    --cov-branch
+"""
+testpaths = ["cookbook/tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+select = ["E", "W", "F", "I", "B", "C4", "UP"]
+ignore = ["E501", "B008", "C901", "W191"]
+exclude = ["migrations", "vue3", "node_modules", ".venv"]

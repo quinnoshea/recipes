@@ -1,0 +1,51 @@
+{
+  "id": "tandoor",
+  "name": "Tandoor Default",
+  "description": "The classic Tandoor Recipes theme with warm, inviting colors",
+  "author": "Tandoor Team",
+  "version": "1.0.0",
+  "type": "light",
+  "colors": {
+    "--color-primary": "#8b6a4a",
+    "--color-secondary": "#b55e4f",
+    "--color-success": "#82aa8b",
+    "--color-info": "#385f84",
+    "--color-warning": "#eaaa21",
+    "--color-error": "#a7240e",
+    "--color-background": "#f5efea",
+    "--color-surface": "#ffffff",
+    "--color-surface-variant": "#faf7f4",
+    "--color-on-primary": "#ffffff",
+    "--color-on-secondary": "#ffffff",
+    "--color-on-background": "#1a1a1a",
+    "--color-on-surface": "#1a1a1a",
+    "--color-text-primary": "#1a1a1a",
+    "--color-text-secondary": "#666666",
+    "--color-text-disabled": "#999999",
+    "--color-divider": "#e0e0e0",
+    "--color-tandoor": "#ddbf86",
+    "--nav-bg-color": "#ddbf86",
+    "--nav-text-color": "#1a1a1a",
+    "--nav-hover-bg": "#c9aa6f",
+    "--card-border-radius": "4px",
+    "--button-border-radius": "4px",
+    "--input-border-radius": "4px",
+    "--shadow-sm": "0 1px 2px rgba(0,0,0,0.1)",
+    "--shadow-md": "0 4px 6px rgba(0,0,0,0.1)",
+    "--shadow-lg": "0 10px 15px rgba(0,0,0,0.1)",
+    "--font-family-base": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+    "--font-size-base": "14px",
+    "--font-size-small": "12px",
+    "--font-size-large": "16px",
+    "--font-weight-normal": "400",
+    "--font-weight-medium": "500",
+    "--font-weight-bold": "700"
+  },
+  "compatibility": {
+    "min_version": "1.5.0",
+    "max_version": null
+  },
+  "screenshots": [
+    "https://raw.githubusercontent.com/TandoorRecipes/recipes/develop/docs/assets/img/recipes_dashboard.png"
+  ]
+}

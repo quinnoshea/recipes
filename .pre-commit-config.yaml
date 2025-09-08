@@ -1,0 +1,144 @@
+repos:
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^(.*\.(min\.css|min\.js)|cookbook/static/themes/)
+      - id: end-of-file-fixer
+        exclude: ^(.*\.(min\.css|min\.js)|cookbook/static/themes/)
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+      - id: check-merge-conflict
+      - id: check-json
+        exclude: ^(vue3/dist/|node_modules/)
+      - id: check-toml
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+      - id: check-case-conflict
+      - id: detect-private-key
+
+  # Python - Django Backend
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [--profile=black, --line-length=88]
+        exclude: ^(migrations/|vue3/)
+
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+        language_version: python3
+        args: [--line-length=88]
+        exclude: ^(migrations/|vue3/)
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.7.2
+    hooks:
+      - id: ruff
+        args: [
+          --fix,
+          --select=F,E402,E403,E501,E711,E712,E713,E714,E721,E722,E731,E741,E742,E743,E902,E999,
+          --ignore=T201,S314,S603,S607,E501,
+          --line-length=88
+        ]
+        exclude: ^(migrations/|vue3/|cookbook/static/)
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.11.2
+    hooks:
+      - id: mypy
+        additional_dependencies: [
+          django-stubs,
+          djangorestframework-stubs,
+          types-requests,
+          types-PyYAML,
+          types-redis
+        ]
+        args: [--ignore-missing-imports, --no-strict-optional]
+        exclude: ^(migrations/|vue3/|tests/)
+        files: \.py$
+
+  # JavaScript/TypeScript - Vue.js Frontend
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v8.56.0
+    hooks:
+      - id: eslint
+        files: \.(js|jsx|ts|tsx|vue)$
+        args: ['--fix', '--max-warnings=0']
+        exclude: ^(vue3/dist/|node_modules/|.*\.min\.js$)
+        additional_dependencies:
+          - eslint@8.56.0
+          - eslint-plugin-vue@9.19.2
+          - '@typescript-eslint/eslint-plugin@6.16.0'
+          - '@typescript-eslint/parser@6.16.0'
+          - eslint-config-prettier@9.1.0
+          - eslint-plugin-prettier@5.1.2
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.1.0
+    hooks:
+      - id: prettier
+        files: \.(js|jsx|ts|tsx|vue|css|scss|json|md)$
+        exclude: ^(vue3/dist/|node_modules/|.*\.min\.(css|js)$|cookbook/static/themes/)
+        args: ['--write', '--single-quote', '--print-width=100']
+
+  # Security checks
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: ^(.*\.lock$|package-lock\.json$|poetry\.lock$)
+
+
+  # CSS/SCSS
+  - repo: https://github.com/pre-commit/mirrors-csslint
+    rev: v1.0.5
+    hooks:
+      - id: csslint
+        exclude: ^(.*\.min\.css$|vue3/dist/|node_modules/|cookbook/static/themes/)
+
+  # Markdown
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.42.0
+    hooks:
+      - id: markdownlint
+        args: [--disable, MD033, MD013, --fix]
+        exclude: ^(vue3/node_modules/|docs/vendor/)
+
+  # Theme validation (custom hook for our new theme system)
+  - repo: local
+    hooks:
+      - id: validate-theme-manifests
+        name: Validate theme manifests
+        entry: python scripts/validate_themes.py
+        language: python
+        files: ^cookbook/themes/.*\.json$
+        additional_dependencies: [jsonschema]
+
+# Configuration for specific tools
+default_language_version:
+  python: python3.11
+  node: 20.11.0
+
+exclude: |
+  (?x)^(
+    .*migrations/.*|
+    .*\.min\.(css|js)$|
+    vue3/dist/.*|
+    node_modules/.*|
+    \.venv/.*|
+    venv/.*|
+    build/.*|
+    dist/.*|
+    .*\.egg-info/.*|
+    htmlcov/.*|
+    \.coverage.*|
+    .*\.pyc$|
+    .*\.pyo$|
+    __pycache__/.*
+  )$
